@@ -1,0 +1,7 @@
+package id.co.lesku.views.activities.others;
+
+import android.support.v7.app.AppCompatActivity;
+
+public class AboutUsActivity extends AppCompatActivity {
+
+}

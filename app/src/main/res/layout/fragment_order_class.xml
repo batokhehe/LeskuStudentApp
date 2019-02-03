@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.fragments.transaction.OrderClassFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="0.9"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/btnAddOrder"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/add_order"
+                android:layout_weight="0.1"/>
+
+            <Button
+                android:id="@+id/btnRemoveOrder"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/remove_order"
+                android:layout_weight="0.1"/>
+
+            <!-- TODO: Update blank fragment layout -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvOrder"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnOrderClass"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:text="@string/orderClass"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabRemoveAssembly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="140dp"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:layout_gravity="bottom|right"
+        app:layout_anchor="@id/fabAddAssembly"
+        app:layout_anchorGravity="bottom"
+        app:srcCompat="@mipmap/remove_white" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddAssembly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="75dp"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:layout_gravity="bottom|right"
+        app:srcCompat="@mipmap/add_white" />
+
+</FrameLayout>

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "915442474535",
+    "firebase_url": "https://lesku-1-0-0.firebaseio.com",
+    "project_id": "lesku-1-0-0",
+    "storage_bucket": "lesku-1-0-0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915442474535:android:be9db768aea50168",
+        "android_client_info": {
+          "package_name": "co.id.lesku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915442474535-5u24jfibcgd7qbcvl337gklcc5e0sll4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi6YBMm0HMbNTZEsFPtYWyiJ6GSIxhu3E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915442474535:android:d65a9e640ecc8a45",
+        "android_client_info": {
+          "package_name": "id.co.lesku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915442474535-5u24jfibcgd7qbcvl337gklcc5e0sll4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi6YBMm0HMbNTZEsFPtYWyiJ6GSIxhu3E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
