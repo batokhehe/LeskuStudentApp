@@ -8,6 +8,7 @@ import id.co.lesku.data.local.DetailsOrderStorage;
 import id.co.lesku.data.local.ProductStorage;
 import id.co.lesku.data.local.StudyLevelStorage;
 import id.co.lesku.data.local.SubjectStorage;
+import id.co.lesku.data.local.TeacherBlankScheduleStorage;
 import id.co.lesku.data.local.TeacherOrderStorage;
 import id.co.lesku.data.local.UnpaidOrderStorage;
 import id.co.lesku.data.local.UserStorage;
@@ -23,6 +24,7 @@ import id.co.lesku.models.Product;
 import id.co.lesku.models.StudyLevel;
 import id.co.lesku.models.Subject;
 import id.co.lesku.models.TeacherOrder;
+import id.co.lesku.models.TeacherSchedule;
 import id.co.lesku.models.UnpaidOrder;
 import id.co.lesku.models.User;
 import io.reactivex.Maybe;
@@ -55,6 +57,7 @@ public class DataManager implements DataManagerType
     private static UserStorage sUserStorage = new UserStorage();
     private static ProductStorage sProductStorage = new ProductStorage();
     private static TeacherOrderStorage sTeacherOrderStorage = new TeacherOrderStorage();
+    private static TeacherBlankScheduleStorage sTeacherBlankScheduleStorage = new TeacherBlankScheduleStorage();
     private static UnpaidOrderStorage sUnpaidOrderStorage = new UnpaidOrderStorage();
     private static DetailsOrderStorage sDetailsOrderStorage = new DetailsOrderStorage();
     private static StudyLevelStorage sStudyLevelStorage = new StudyLevelStorage();
@@ -192,6 +195,19 @@ public class DataManager implements DataManagerType
             public void accept (List<DetailsOrder> detailsOrder) throws Exception
             {
                 sDetailsOrderStorage.addAll(detailsOrder);
+            }
+        })).firstElement();
+    }
+
+    @Override
+    public Maybe<List<TeacherSchedule>> getTeacherBlankScheduleList(String teacherId)
+    {
+        return Maybe.concat(sTeacherBlankScheduleStorage.getList(), sOrderAPI.getTeacherBlankScheduleList(teacherId).doOnSuccess(new Consumer<List<TeacherSchedule>>()
+        {
+            @Override
+            public void accept (List<TeacherSchedule> teacherSchedules) throws Exception
+            {
+                sTeacherBlankScheduleStorage.addAll(teacherSchedules);
             }
         })).firstElement();
     }

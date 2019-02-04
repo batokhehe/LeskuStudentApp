@@ -9,6 +9,7 @@ import id.co.lesku.models.Product;
 import id.co.lesku.models.StudyLevel;
 import id.co.lesku.models.Subject;
 import id.co.lesku.models.TeacherOrder;
+import id.co.lesku.models.TeacherSchedule;
 import id.co.lesku.models.UnpaidOrder;
 import id.co.lesku.models.User;
 import io.reactivex.Maybe;
@@ -91,6 +92,12 @@ public interface LeskuAPIService
     @POST ("order/detail")
     Maybe<List<DetailsOrder>> getDetailsOrder (
             @Field("study_class_id") String studyclassid
+    );
+
+    @FormUrlEncoded
+    @POST ("order/teacher_blank_schedules")
+    Maybe<List<TeacherSchedule>> getTeacherBlankSchedule (
+            @Field("teacher_id") String teacherid
     );
 
     @FormUrlEncoded

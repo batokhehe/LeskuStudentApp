@@ -28,6 +28,8 @@ import id.co.lesku.data.DataManager;
 import id.co.lesku.manager.ConfigManager;
 import id.co.lesku.models.OrderClass;
 import id.co.lesku.models.Subject;
+import id.co.lesku.models.TeacherSchedule;
+import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.utils.constants.K;
 import id.co.lesku.views.adapters.transaction.OrderClassAdapter;
 import id.co.lesku.views.fragments.BaseFragment;
@@ -317,6 +319,25 @@ public class OrderClassFragment extends BaseFragment {
             int position = data.getIntExtra("position", 0);
 //            Toast.makeText(getContext(), "Image : " + image + " Position : " + position, Toast.LENGTH_SHORT).show();
             mOrderClassAdapter.changeImage(image, subject, subjectId, date, position, teacherId);
+
+            DataManager.can().getTeacherBlankScheduleList(String.valueOf(teacherId)).observeOn(AndroidSchedulers.mainThread())
+                    .defaultIfEmpty(new ArrayList<TeacherSchedule>())
+                    .subscribe(new Consumer<List<TeacherSchedule>>()
+                    {
+                        @Override
+                        public void accept (List<TeacherSchedule> teacherSchedules) throws Exception
+                        {
+                            Log.d(TAG, "accept: " + teacherSchedules.toString());
+//                            Toast.makeText(getContext(), "" + teacherSchedules, Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept (Throwable throwable) throws Exception
+                        {
+                            RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
+                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
         }
     }
 

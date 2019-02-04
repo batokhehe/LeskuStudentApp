@@ -6,6 +6,7 @@ import java.util.List;
 
 import id.co.lesku.data.remote.contracts.OrderClass;
 import id.co.lesku.models.DetailsOrder;
+import id.co.lesku.models.TeacherSchedule;
 import id.co.lesku.models.UnpaidOrder;
 import id.co.lesku.utils.constants.K;
 import io.reactivex.Maybe;
@@ -27,6 +28,11 @@ public class OrderAPI extends BaseAPI implements OrderClass {
     @Override
     public Maybe<List<DetailsOrder>> getDetailsOrderList(String studyClassId) {
         return app.mAPIService.getDetailsOrder(studyClassId).retry(K.MAX_RETRIES).subscribeOn(Schedulers.io());
+    }
+
+    @Override
+    public Maybe<List<TeacherSchedule>> getTeacherBlankScheduleList(String teacherId) {
+        return app.mAPIService.getTeacherBlankSchedule(teacherId).retry(K.MAX_RETRIES).subscribeOn(Schedulers.io());
     }
 
     @Override

@@ -9,6 +9,7 @@ import id.co.lesku.models.Product;
 import id.co.lesku.models.StudyLevel;
 import id.co.lesku.models.Subject;
 import id.co.lesku.models.TeacherOrder;
+import id.co.lesku.models.TeacherSchedule;
 import id.co.lesku.models.UnpaidOrder;
 import id.co.lesku.models.User;
 import io.reactivex.Maybe;
@@ -55,6 +56,8 @@ public interface DataManagerType
 
     //ORDER DETAILS
     Maybe<List<DetailsOrder>> getDetailsOrderList(String studyClassId);
+
+    Maybe<List<TeacherSchedule>> getTeacherBlankScheduleList(String teacherId);
 
     Maybe<JsonObject> uploadTrfFile(String id, String trfFile);
 }
