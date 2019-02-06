@@ -14,7 +14,7 @@ import id.co.lesku.views.fragments.transaction.TeacherOrderFragment;
 
 public class TeacherOrderActivity extends AppCompatActivity {
 
-    private String subject, date;
+    private String subject, selectedSchedule;
     private int position, subjectId;
     private Toolbar toolbar;
     private Handler mHandler;
@@ -34,22 +34,20 @@ public class TeacherOrderActivity extends AppCompatActivity {
             if(extras == null) {
                 subject= null;
                 position = 0;
-                date = null;
                 subjectId = 0;
+                selectedSchedule = null;
             } else {
                 subject = extras.getString("subject");
                 subjectId = extras.getInt("subjectId");
                 position = extras.getInt("position");
-                date = extras.getString("date");
+                selectedSchedule = extras.getString("selectedSchedule");
             }
         } else {
             subject = (String) savedInstanceState.getSerializable("subject");
             subjectId = (int) savedInstanceState.getSerializable("subjectId");
             position = (int) savedInstanceState.getSerializable("position");
-            date = (String) savedInstanceState.getSerializable("date");
+            selectedSchedule = (String) savedInstanceState.getSerializable("selectedSchedule");
         }
-
-//        Toast.makeText(this, "Subject : " + subject, Toast.LENGTH_SHORT).show();
 
         if (savedInstanceState == null) {
             loadFragment();
@@ -66,7 +64,7 @@ public class TeacherOrderActivity extends AppCompatActivity {
                 bundle.putString("subject", subject);
                 bundle.putInt("subjectId", subjectId);
                 bundle.putInt("position", position);
-                bundle.putString("date", date);
+                bundle.putString("selectedSchedule", selectedSchedule);
                 fragment.setArguments(bundle);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,

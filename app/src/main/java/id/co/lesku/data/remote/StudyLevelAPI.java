@@ -3,7 +3,7 @@ package id.co.lesku.data.remote;
 import java.util.List;
 
 import id.co.lesku.data.remote.contracts.CRUDContract;
-import id.co.lesku.models.StudyLevel;
+import id.co.lesku.model.StudyLevel;
 import id.co.lesku.utils.constants.K;
 import io.reactivex.Maybe;
 import io.reactivex.schedulers.Schedulers;

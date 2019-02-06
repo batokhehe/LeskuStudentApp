@@ -1,7 +1,9 @@
-package id.co.lesku.models;
+package id.co.lesku.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class OrderClass {
 
@@ -25,25 +27,30 @@ public class OrderClass {
     @Expose
     private int subjectId;
 
-    @SerializedName("date")
-    @Expose
-    private String date;
-
     @SerializedName("teacherId")
     @Expose
     private int teacherId;
 
+    @SerializedName("schedule")
+    @Expose
+    private List<String> schedule;
+
+    @SerializedName("selectedSchedule")
+    @Expose
+    private String selectedSchedule;
+
     public OrderClass()
     {    }
 
-    public OrderClass(int id, String name, String image, String subject, int subjectId, String date)
+    public OrderClass(int id, String name, String image, String subject, int subjectId, List<String> schedule, String selectedSchedule)
     {
         this.id = id;
         this.name = name;
         this.image = image;
         this.subject = subject;
         this.subjectId = subjectId;
-        this.date = date;
+        this.schedule = schedule;
+        this.selectedSchedule = selectedSchedule;
     }
 
     public int getId() {
@@ -94,11 +101,19 @@ public class OrderClass {
         this.subjectId = subjectId;
     }
 
-    public String getDate() {
-        return date;
+    public List<String> getSchedule() {
+        return schedule;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSchedule(List<String> schedule) {
+        this.schedule = schedule;
+    }
+
+    public String getSelectedSchedule() {
+        return selectedSchedule;
+    }
+
+    public void setSelectedSchedule(String selectedSchedule) {
+        this.selectedSchedule = selectedSchedule;
     }
 }

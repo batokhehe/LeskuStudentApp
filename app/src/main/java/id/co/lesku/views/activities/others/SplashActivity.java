@@ -11,22 +11,22 @@ import java.util.List;
 
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
-import id.co.lesku.manager.PrefManager;
-import id.co.lesku.models.Subject;
+import id.co.lesku.manager.HawkManager;
+import id.co.lesku.model.Subject;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 
 public class SplashActivity extends AppCompatActivity {
 
-    PrefManager prefManager;
+    HawkManager hawkManager;
     List<Subject> mSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        prefManager = new PrefManager(this);
+        hawkManager = new HawkManager();
         mSubject = new ArrayList<>();
         startGetData();
     }
@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            if(prefManager.getAppUserToken() != null){
+            if(hawkManager.getAppUserToken() != null){
                 DataManager.can().getSubject().observeOn(AndroidSchedulers.mainThread())
                         .defaultIfEmpty(new ArrayList<Subject>())
                         .subscribe(new Consumer<List<Subject>>()

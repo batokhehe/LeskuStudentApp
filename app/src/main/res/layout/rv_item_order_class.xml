@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -13,60 +13,50 @@
         android:layout_marginRight="5dip"
         android:foreground="?attr/selectableItemBackground">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:padding="5dip"
-                android:weightSum="1">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.7"
-                    android:orientation="vertical">
-
-                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                        android:id="@+id/sSubject"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:weightSum="1">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="1">
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvDate"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.7"/>
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:id="@+id/sSubject"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"/>
 
-                        <Button
-                            android:id="@+id/btnOrderDatePicker"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.3"/>
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:id="@+id/sSchedule"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="@string/class_time"
+                            app:met_floatingLabel="normal"
+                            android:focusableInTouchMode="false"/>
+
                     </LinearLayout>
 
+                    <ImageView
+                        android:id="@+id/ivTeacher"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_above="@+id/productDesc"
+                        android:layout_weight="0.3"
+                        android:src="@drawable/blank_photo"/>
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/ivTeacher"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_above="@+id/productDesc"
-                    android:layout_weight="0.3"
-                    android:src="@drawable/blank_photo"/>
             </LinearLayout>
-
-        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

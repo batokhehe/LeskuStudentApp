@@ -10,7 +10,7 @@ import java.util.List;
 
 import id.co.lesku.R;
 import id.co.lesku.databinding.FragmentListItemBinding;
-import id.co.lesku.models.User;
+import id.co.lesku.model.User;
 import id.co.lesku.viewmodels.UserViewModel;
 
 

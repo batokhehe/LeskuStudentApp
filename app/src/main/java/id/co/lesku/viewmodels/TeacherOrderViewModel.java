@@ -1,6 +1,6 @@
 package id.co.lesku.viewmodels;
 
-import id.co.lesku.models.TeacherOrder;
+import id.co.lesku.model.TeacherOrder;
 import id.co.lesku.viewmodels.inputs.TeacherOrderViewModelInputs;
 import id.co.lesku.viewmodels.outputs.TeacherOrderViewModelOutputs;
 

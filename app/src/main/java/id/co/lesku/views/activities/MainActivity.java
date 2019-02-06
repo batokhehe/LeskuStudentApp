@@ -27,7 +27,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 
 import id.co.lesku.R;
-import id.co.lesku.manager.PrefManager;
+import id.co.lesku.manager.ConfigManager;
+import id.co.lesku.manager.HawkManager;
 import id.co.lesku.views.activities.auth.LoginActivity;
 import id.co.lesku.views.activities.others.AboutUsActivity;
 import id.co.lesku.views.activities.others.PrivacyPolicyActivity;
@@ -47,13 +48,13 @@ public class MainActivity extends AppCompatActivity
     private ImageView ivUserImg, ivHeaderImg;
     private TextView tvUserName, tvUserEmail;
     private byte[] decodedString;
-    PrefManager prefManager;
+    HawkManager hawkManager;
     private DrawerLayout drawer;
     private Toolbar toolbar;
 
     // urls to load navigation header background image
     // and profile image
-    private static final String urlNavHeaderBg = "https://api.androidhive.info/images/nav-menu-header-bg.jpg";
+    private static final String urlNavHeaderBg = ConfigManager.BASE_URL_IMAGE + "/sample_background.jpg";
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -87,10 +88,10 @@ public class MainActivity extends AppCompatActivity
 
         mHandler = new Handler();
 
-        prefManager = new PrefManager(this);
-        userName = prefManager.getAppUserName();
-        userEmail = prefManager.getAppUserEmail();
-        userImg = prefManager.getAppUserImg();
+        hawkManager = new HawkManager();
+        userName = hawkManager.getAppUserName();
+        userEmail = hawkManager.getAppUserEmail();
+        userImg = hawkManager.getAppUserImg();
 
         decodedString = Base64.decode(userImg, Base64.DEFAULT);
 //        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
@@ -127,7 +128,17 @@ public class MainActivity extends AppCompatActivity
         //initializing navigation menu
         setUpNavigationView();
 
-        if (savedInstanceState == null) {
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            Toast.makeText(this, "Go To Order : " + extras.getInt("gotoOrder", 0), Toast.LENGTH_SHORT).show();
+            int gotoOrder = extras.getInt("gotoOrder", 0);
+            if(gotoOrder == 1){
+                navItemIndex = 2;
+                CURRENT_TAG = TAG_ORDER;
+                loadHomeFragment();
+            }
+        }
+        if (savedInstanceState == null && extras == null) {
             navItemIndex = 1;
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
@@ -206,7 +217,7 @@ public class MainActivity extends AppCompatActivity
                         drawer.closeDrawers();
                         return true;
                     case R.id.nav_logout:
-                        prefManager.destroyAppData();
+                        hawkManager.destroyAppData();
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         drawer.closeDrawers();
                         finish();

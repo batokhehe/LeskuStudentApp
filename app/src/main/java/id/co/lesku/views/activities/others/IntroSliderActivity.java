@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import id.co.lesku.R;
-import id.co.lesku.manager.PrefManager;
+import id.co.lesku.manager.HawkManager;
 import id.co.lesku.views.activities.auth.LoginActivity;
 
 public class IntroSliderActivity extends AppCompatActivity {
@@ -29,15 +29,15 @@ public class IntroSliderActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private PrefManager prefManager;
+    private HawkManager hawkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 //         Checking activity setContentView()
-        prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        hawkManager = new HawkManager();
+        if (!hawkManager.isFirstTimeLaunch()) {
             launchHomeScreen();
         }
 
@@ -119,7 +119,7 @@ public class IntroSliderActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
+        hawkManager.setFirstTimeLaunch(false);
         startActivity(new Intent(IntroSliderActivity.this, LoginActivity.class));
         finish();
     }

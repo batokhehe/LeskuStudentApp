@@ -37,6 +37,7 @@
     <!-- B -->
     <!-- C -->
     <string name="choose_teacher_order">Choose Your Teacher</string>
+    <string name="class_time">Waktu Les</string>
     <string name="closeDrawer">close_drawer</string>
     <string name="cpassword">Confirm Password</string>
     <!-- D -->
@@ -52,10 +53,12 @@
     <string name="fcm_message">FCM Message</string>
     <string name="forgot_password">Forgot Password</string>
     <!-- G -->
+    <string name="goto_order">Go to Order page</string>
     <!-- H -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="help_feedback">Help &amp; Feedback</string>
     <!-- I -->
+    <string name="invoice">Invoice</string>
     <!-- J -->
     <!-- K -->
     <!-- L -->
@@ -117,11 +120,6 @@
     <string name="sign_in">Sign In</string>
     <string name="study_level">Study Level</string>
     <string name="study_level_hint">Select Study Level</string>
-    <string-array name="subject_name">
-        <item>Matematika</item>
-        <item>Bhs. Inggris</item>
-        <item>Bhs. Indonesia</item>
-    </string-array>
     <!-- T -->
     <string name="title_activity_main">MainActivity</string>
     <!-- U -->

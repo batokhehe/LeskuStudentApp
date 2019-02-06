@@ -7,7 +7,7 @@ import java.util.List;
 
 import id.co.lesku.data.local.contracts.CacheContract;
 import id.co.lesku.data.local.contracts.RAGEContract;
-import id.co.lesku.models.TeacherOrder;
+import id.co.lesku.model.TeacherOrder;
 import id.co.lesku.utils.constants.K;
 import io.reactivex.Maybe;
 import io.reactivex.schedulers.Schedulers;

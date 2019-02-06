@@ -11,13 +11,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import id.co.lesku.R;
-import id.co.lesku.manager.PrefManager;
 import id.co.lesku.views.adapters.order.OrderAdapter;
 import id.co.lesku.views.fragments.BaseFragment;
 
@@ -25,7 +23,6 @@ public class OrderFragment extends BaseFragment {
 
     private OnFragmentInteractionListener mListener;
     List<Fragment> mFragments;
-    PrefManager prefManager;
 
     public OrderFragment() {
         // Required empty public constructor
@@ -67,9 +64,6 @@ public class OrderFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        prefManager = new PrefManager(getContext());
-        Toast.makeText(getContext(), "" + prefManager, Toast.LENGTH_SHORT).show();
 
         mFragments = new ArrayList<>();
         mFragments.add(new UnpaidOrderFragment());

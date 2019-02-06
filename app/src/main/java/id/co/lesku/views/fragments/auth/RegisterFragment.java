@@ -21,7 +21,7 @@ import br.com.ilhasoft.support.validation.Validator;
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.databinding.FragmentRegisterBinding;
-import id.co.lesku.models.StudyLevel;
+import id.co.lesku.model.StudyLevel;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.utils.constants.S;
 import id.co.lesku.views.activities.auth.LoginActivity;

@@ -15,7 +15,7 @@ import java.util.List;
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.databinding.FragmentListBinding;
-import id.co.lesku.models.User;
+import id.co.lesku.model.User;
 import id.co.lesku.utils.DummyDataFactory;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.viewmodels.UserListViewModel;

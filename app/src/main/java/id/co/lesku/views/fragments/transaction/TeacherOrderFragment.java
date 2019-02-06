@@ -19,7 +19,7 @@ import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.databinding.FragmentTeacherOrderBinding;
 import id.co.lesku.manager.ConfigManager;
-import id.co.lesku.models.TeacherOrder;
+import id.co.lesku.model.TeacherOrder;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.viewmodels.TeacherOrderListViewModel;
 import id.co.lesku.views.adapters.transaction.TeacherOrderAdapter;
@@ -34,7 +34,7 @@ public class TeacherOrderFragment extends BaseFragment {
     private OnFragmentInteractionListener mListener;
     TeacherOrderAdapter adapter;
     private int position, subjectId;
-    private String subject, date;
+    private String subject, selectedSchedule;
 
     public TeacherOrderFragment() {
         // Required empty public constructor
@@ -71,9 +71,9 @@ public class TeacherOrderFragment extends BaseFragment {
         subject = getArguments().getString("subject");
         subjectId = getArguments().getInt("subjectId", 0);
         position = getArguments().getInt("position");
-        date = getArguments().getString("date");
+        selectedSchedule = getArguments().getString("selectedSchedule");
 
-        Toast.makeText(getContext(), "Subject : " + subject + " Subject ID : " + subjectId + " Position : " + position + " Date : " + date, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Subject : " + subject + " Subject ID : " + subjectId + " Position : " + position + " Schedule : " + selectedSchedule, Toast.LENGTH_SHORT).show();
 
         mBinding.llTeacherOrder.showCustomLoading(true, "Loading Teacher List...");
 
@@ -112,7 +112,9 @@ public class TeacherOrderFragment extends BaseFragment {
                 intent.putExtra("position", position);
                 intent.putExtra("subject", subject);
                 intent.putExtra("subjectId", subjectId);
-                intent.putExtra("date", date);
+                intent.putExtra("selectedSchedule", selectedSchedule);
+//                intent.putExtra("date", date);
+                intent.putStringArrayListExtra("schedule", (ArrayList<String>) teacherOrder.getSchedule());
                 getActivity().setResult(ConfigManager.REQUEST_CODE_TEACHER, intent);
                 getActivity().finish();
             }

@@ -8,7 +8,6 @@ import id.co.lesku.data.local.DetailsOrderStorage;
 import id.co.lesku.data.local.ProductStorage;
 import id.co.lesku.data.local.StudyLevelStorage;
 import id.co.lesku.data.local.SubjectStorage;
-import id.co.lesku.data.local.TeacherBlankScheduleStorage;
 import id.co.lesku.data.local.TeacherOrderStorage;
 import id.co.lesku.data.local.UnpaidOrderStorage;
 import id.co.lesku.data.local.UserStorage;
@@ -19,14 +18,13 @@ import id.co.lesku.data.remote.StudyLevelAPI;
 import id.co.lesku.data.remote.SubjectAPI;
 import id.co.lesku.data.remote.TeacherOrderAPI;
 import id.co.lesku.data.remote.UserAPI;
-import id.co.lesku.models.DetailsOrder;
-import id.co.lesku.models.Product;
-import id.co.lesku.models.StudyLevel;
-import id.co.lesku.models.Subject;
-import id.co.lesku.models.TeacherOrder;
-import id.co.lesku.models.TeacherSchedule;
-import id.co.lesku.models.UnpaidOrder;
-import id.co.lesku.models.User;
+import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.Product;
+import id.co.lesku.model.StudyLevel;
+import id.co.lesku.model.Subject;
+import id.co.lesku.model.TeacherOrder;
+import id.co.lesku.model.UnpaidOrder;
+import id.co.lesku.model.User;
 import io.reactivex.Maybe;
 import io.reactivex.functions.Consumer;
 import okhttp3.RequestBody;
@@ -57,7 +55,6 @@ public class DataManager implements DataManagerType
     private static UserStorage sUserStorage = new UserStorage();
     private static ProductStorage sProductStorage = new ProductStorage();
     private static TeacherOrderStorage sTeacherOrderStorage = new TeacherOrderStorage();
-    private static TeacherBlankScheduleStorage sTeacherBlankScheduleStorage = new TeacherBlankScheduleStorage();
     private static UnpaidOrderStorage sUnpaidOrderStorage = new UnpaidOrderStorage();
     private static DetailsOrderStorage sDetailsOrderStorage = new DetailsOrderStorage();
     private static StudyLevelStorage sStudyLevelStorage = new StudyLevelStorage();
@@ -200,16 +197,9 @@ public class DataManager implements DataManagerType
     }
 
     @Override
-    public Maybe<List<TeacherSchedule>> getTeacherBlankScheduleList(String teacherId)
+    public Maybe<JsonObject> getTeacherBlankScheduleList(String teacherId)
     {
-        return Maybe.concat(sTeacherBlankScheduleStorage.getList(), sOrderAPI.getTeacherBlankScheduleList(teacherId).doOnSuccess(new Consumer<List<TeacherSchedule>>()
-        {
-            @Override
-            public void accept (List<TeacherSchedule> teacherSchedules) throws Exception
-            {
-                sTeacherBlankScheduleStorage.addAll(teacherSchedules);
-            }
-        })).firstElement();
+        return sOrderAPI.getTeacherBlankScheduleList(teacherId);
     }
 
     @Override

@@ -9,7 +9,7 @@ import com.readystatesoftware.chuck.ChuckInterceptor;
 import java.io.IOException;
 
 import id.co.lesku.manager.ConfigManager;
-import id.co.lesku.manager.PrefManager;
+import id.co.lesku.manager.HawkManager;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -34,11 +34,11 @@ public class RetrofitServiceFactory {
 
     public static <S> S createService (Class<S> serviceClass, Context context)
     {
-        final String authHeader;
-        PrefManager prefManager = new PrefManager(context);
-        if (prefManager.getAppUserToken() != null)
+        String authHeader;
+        HawkManager hawkManager = new HawkManager();
+        if (hawkManager.getAppUserToken() != null)
         {
-            authHeader = "Bearer " + prefManager.getAppUserToken();
+            authHeader = "Bearer " + hawkManager.getAppUserToken();
         }
         else
         {

@@ -12,7 +12,7 @@ import java.util.List;
 
 import id.co.lesku.R;
 import id.co.lesku.databinding.RvItemUnpaidOrderBinding;
-import id.co.lesku.models.UnpaidOrder;
+import id.co.lesku.model.UnpaidOrder;
 import id.co.lesku.viewmodels.UnpaidOrderViewModel;
 
 public class UnpaidOrderAdapter extends RecyclerView.Adapter<UnpaidOrderAdapter.ListViewHolder> {

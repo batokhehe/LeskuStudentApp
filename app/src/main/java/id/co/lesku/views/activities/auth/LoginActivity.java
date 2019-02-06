@@ -20,7 +20,7 @@ import com.google.firebase.iid.InstanceIdResult;
 import java.util.List;
 
 import id.co.lesku.R;
-import id.co.lesku.manager.PrefManager;
+import id.co.lesku.manager.HawkManager;
 import id.co.lesku.utils.constants.I;
 import id.co.lesku.utils.constants.S;
 import id.co.lesku.views.activities.BaseActivity;
@@ -39,7 +39,7 @@ public class LoginActivity extends BaseActivity implements LoginFragment.OnLogin
     FragmentTransaction ft = fm.beginTransaction();
     LoginFragment loginFragment = new LoginFragment();
 
-    private PrefManager prefManager;
+    private HawkManager hawkManager;
 
     @Override
     protected void onCreate (Bundle savedInstanceState)
@@ -47,9 +47,9 @@ public class LoginActivity extends BaseActivity implements LoginFragment.OnLogin
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        prefManager = new PrefManager(this);
+        hawkManager = new HawkManager();
 
-        if(prefManager.getAppUserToken() != null){
+        if(hawkManager.getAppUserToken() != null){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -94,11 +94,11 @@ public class LoginActivity extends BaseActivity implements LoginFragment.OnLogin
 
                         // Get new Instance ID token
                         String token = task.getResult().getToken();
-                        prefManager.storeFirebaseRegId(token);
+                        hawkManager.storeFirebaseRegId(token);
 
                         // Log and toast
 //                        String msg = getString(R.string.msg_token_fmt, token);
-                        Log.d("Firebase ID", prefManager.getFirebaseId());
+                        Log.d("Firebase ID", hawkManager.getFirebaseId());
 //                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -11,7 +11,7 @@ import java.util.List;
 
 import id.co.lesku.R;
 import id.co.lesku.databinding.RvItemProductBinding;
-import id.co.lesku.models.Product;
+import id.co.lesku.model.Product;
 import id.co.lesku.viewmodels.ProductViewModel;
 
 

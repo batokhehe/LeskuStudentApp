@@ -2,6 +2,7 @@ package id.co.lesku.views.fragments.auth;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +19,8 @@ import id.co.lesku.LeskuApplication;
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.databinding.FragmentLoginBinding;
-import id.co.lesku.manager.PrefManager;
-import id.co.lesku.models.User;
+import id.co.lesku.manager.HawkManager;
+import id.co.lesku.model.User;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.utils.constants.S;
 import id.co.lesku.views.activities.MainActivity;
@@ -34,8 +35,9 @@ public class LoginFragment extends BaseFragment
     private FragmentLoginBinding               mBinding;
     private Validator                          mValidator;
     private OnLoginFragmentInteractionListener mListener;
-    private PrefManager                        prefManager;
+    private HawkManager hawkManager;
     LeskuApplication mApp;
+    Configuration configuration = null;
 
     public LoginFragment()
     {
@@ -155,8 +157,8 @@ public class LoginFragment extends BaseFragment
         final String id       = mBinding.tilUserIdWrapper.getEditText().getText().toString();
         final String password = mBinding.etPassword.getText().toString();
 
-        prefManager = new PrefManager(this.getActivity());
-        String regid = prefManager.getFirebaseId();
+        hawkManager = new HawkManager();
+        String regid = hawkManager.getFirebaseId();
 
         if (!mValidator.validate())
         {
@@ -187,7 +189,7 @@ public class LoginFragment extends BaseFragment
                            user.setToken(obj.get("token").getAsString());
                            user.setAppImg(obj.get("app_img").getAsString());
 
-                           prefManager.storeAppUserData(
+                           hawkManager.storeAppUserData(
                                    user.getEmail(),
                                    user.getFirstName(),
                                    user.getToken(),
@@ -196,13 +198,14 @@ public class LoginFragment extends BaseFragment
 
                            Log.d(TAG, "Name : " + user.getLastName());
                            Log.d(TAG, "Email : " + user.getEmail());
-                           Log.d(TAG, "Token : " + prefManager.getAppUserToken());
+                           Log.d(TAG, "Token : " + hawkManager.getAppUserToken());
                            Log.d(TAG, "App Img : " + user.getAppImg());
 
 
-                           if(prefManager.getAppUserToken() != null){
+                           if(hawkManager.getAppUserToken() != null){
 //                               mApp.updateService();
 //                               Toast.makeText(getContext(), "Token : " + prefManager.getAppUserToken(), Toast.LENGTH_SHORT).show();
+                               mApp.onLoggedIn(getContext());
                                Intent intent = new Intent(getContext(), MainActivity.class);
                                startActivity(intent);
                                getActivity().finish();

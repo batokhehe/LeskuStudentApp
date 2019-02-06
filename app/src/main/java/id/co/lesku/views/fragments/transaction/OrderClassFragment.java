@@ -20,17 +20,16 @@ import com.google.gson.JsonObject;
 import com.orhanobut.hawk.Hawk;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
+import id.co.flipbox.sosoito.LoadingLayout;
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.manager.ConfigManager;
-import id.co.lesku.models.OrderClass;
-import id.co.lesku.models.Subject;
-import id.co.lesku.models.TeacherSchedule;
-import id.co.lesku.utils.RetrofitErrorAdapter;
+import id.co.lesku.model.OrderClass;
+import id.co.lesku.model.Subject;
 import id.co.lesku.utils.constants.K;
+import id.co.lesku.views.activities.orders.InvoiceActivity;
 import id.co.lesku.views.adapters.transaction.OrderClassAdapter;
 import id.co.lesku.views.fragments.BaseFragment;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -61,6 +60,8 @@ public class OrderClassFragment extends BaseFragment {
     private ArrayList<String> listSubjectSpinner;
     private ArrayList<Integer> listSubjectSpinnerId;
     private List<Subject> mSubject;
+    private LoadingLayout llOrderClass;
+    private View view;
 
     public OrderClassFragment() {
         // Required empty public constructor
@@ -121,17 +122,21 @@ public class OrderClassFragment extends BaseFragment {
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_order_class, container, false);
+        this.view = rootView;
 
         mOrderClassAdapter = new OrderClassAdapter(getContext(), orderClassArrayList);
         mOrderClassAdapter.setMaxOrder(max_order);
 
-        rvOrder = (RecyclerView) rootView.findViewById(R.id.rvOrder);
-        fabAddOrder = (FloatingActionButton) rootView.findViewById(R.id.fabAddAssembly);
-        fabRemoveOrder = (FloatingActionButton) rootView.findViewById(R.id.fabRemoveAssembly);
+//        llOrderClass = (LoadingLayout) rootView.findViewById(R.id.ll_order_class);
 
-        btnAddOrder = (Button) rootView.findViewById(R.id.btnAddOrder);
-        btnRemoveOrder = (Button) rootView.findViewById(R.id.btnRemoveOrder);
-        btnOrderClass = (Button) rootView.findViewById(R.id.btnOrderClass);
+        rvOrder = (RecyclerView) rootView.findViewById(R.id.rv_order);
+        fabAddOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_add_assembly);
+        fabRemoveOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_remove_assembly);
+        fabRemoveOrder.hide();
+
+//        btnAddOrder = (Button) rootView.findViewById(R.id.btn_add_order);
+//        btnRemoveOrder = (Button) rootView.findViewById(R.id.btn_remove_order);
+        btnOrderClass = (Button) rootView.findViewById(R.id.btn_order_class);
 
         fabAddOrder.setOnClickListener(new View.OnClickListener()
         {
@@ -166,21 +171,21 @@ public class OrderClassFragment extends BaseFragment {
             }
         });
 
-        btnAddOrder.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick (View v) {
-                addOrder(multiplier);
-            }
-        });
-
-        btnRemoveOrder.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick (View v) {
-                removeOrder(multiplier);
-            }
-        });
+//        btnAddOrder.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick (View v) {
+//                addOrder(multiplier);
+//            }
+//        });
+//
+//        btnRemoveOrder.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick (View v) {
+//                removeOrder(multiplier);
+//            }
+//        });
 
         btnOrderClass.setOnClickListener(new View.OnClickListener()
         {
@@ -206,8 +211,7 @@ public class OrderClassFragment extends BaseFragment {
             orderClass.setName("");
             orderClass.setSubject(listSubjectSpinner.get(0));
             orderClass.setImage("blank_photo.png");
-
-            orderClass.setDate(getCurrentDate());
+            orderClass.setSchedule(null);
             orderClassArrayList.add(orderClass);
         }
         mOrderClassAdapter.notifyDataSetChanged();
@@ -240,8 +244,8 @@ public class OrderClassFragment extends BaseFragment {
             OrderClass orderClass = new OrderClass();
             orderClass = orderClassArrayList.get(i);
             jGroup.addProperty("teacherId", orderClass.getTeacherId());
-            jGroup.addProperty("subject", orderClass.getSubject());
-            jGroup.addProperty("date", orderClass.getDate());
+            jGroup.addProperty("subject", orderClass.getSubjectId());
+            jGroup.addProperty("selectedSchedule", orderClass.getSelectedSchedule());
             jOuter.add(jGroup);
         }
         obj.addProperty("productId", productId);
@@ -258,7 +262,9 @@ public class OrderClassFragment extends BaseFragment {
                     public void accept (ResponseBody object) throws Exception
                     {
                         Toast.makeText(getContext(), "Good", Toast.LENGTH_SHORT).show();
-
+                        Intent intent = new Intent(getContext(), InvoiceActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -314,46 +320,42 @@ public class OrderClassFragment extends BaseFragment {
             String image = data.getStringExtra("image");
             String subject = data.getStringExtra("subject");
             int subjectId = data.getIntExtra("subjectId", 0);
-            String date = data.getStringExtra("date");
+//            String date = data.getStringExtra("date");
             int teacherId = data.getIntExtra("teacherId", 0);
             int position = data.getIntExtra("position", 0);
+            ArrayList<String> schedule = data.getStringArrayListExtra("schedule");
+            String selectedSchedule = data.getStringExtra("selectedSchedule");
 //            Toast.makeText(getContext(), "Image : " + image + " Position : " + position, Toast.LENGTH_SHORT).show();
-            mOrderClassAdapter.changeImage(image, subject, subjectId, date, position, teacherId);
 
-            DataManager.can().getTeacherBlankScheduleList(String.valueOf(teacherId)).observeOn(AndroidSchedulers.mainThread())
-                    .defaultIfEmpty(new ArrayList<TeacherSchedule>())
-                    .subscribe(new Consumer<List<TeacherSchedule>>()
-                    {
-                        @Override
-                        public void accept (List<TeacherSchedule> teacherSchedules) throws Exception
-                        {
-                            Log.d(TAG, "accept: " + teacherSchedules.toString());
-//                            Toast.makeText(getContext(), "" + teacherSchedules, Toast.LENGTH_SHORT).show();
-                        }
-                    }, new Consumer<Throwable>() {
-                        @Override
-                        public void accept (Throwable throwable) throws Exception
-                        {
-                            RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
-                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+//            llOrderClass = (LoadingLayout) view.findViewById(R.id.ll_order_class);
+//            llOrderClass.showCustomLoading(true, "Loading..");
+            mOrderClassAdapter.changeImage(image, subject, subjectId, position, teacherId, schedule);
+
+//            DataManager.can().getTeacherBlankScheduleList(String.valueOf(teacherId))
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(new Consumer<JsonObject>()
+//                    {
+//                        @Override
+//                        public void accept (JsonObject object) throws Exception
+//                        {
+//                            JsonArray jsonArray = new JsonArray();
+//                            jsonArray = object.getAsJsonArray("schedule");
+//
+//                            ArrayList<String> listSchedule = new ArrayList<>();
+//                            for (int i = 0; i < jsonArray.size(); i++){
+//                                String schedule = jsonArray.get(i).toString().replace("\"", "");
+//                                listSchedule.add(schedule);
+//                            }
+//                            mOrderClassAdapter.changeSchedule(listSchedule, llOrderClass);
+//                        }
+//                    }, new Consumer<Throwable>() {
+//                        @Override
+//                        public void accept (Throwable throwable) throws Exception
+//                        {
+//                            RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
+//                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//                        }
+//                    });
         }
-    }
-
-    private String getCurrentDate(){
-        Calendar calendar = Calendar.getInstance();
-        int cDay = calendar.get(Calendar.DAY_OF_MONTH);
-        int cMonth = calendar.get(Calendar.MONTH) + 1;
-        int cYear = calendar.get(Calendar.YEAR);
-        return cDay + "/" + cMonth + "/" + cYear;
-    }
-
-    private String getCurrentTime(){
-        Calendar calendar = Calendar.getInstance();
-        int cHour = calendar.get(Calendar.HOUR);
-        int cMinute = calendar.get(Calendar.MINUTE);
-        int cSecond = calendar.get(Calendar.SECOND);
-        return cHour + "/" + cMinute + "/" + cSecond;
     }
 }

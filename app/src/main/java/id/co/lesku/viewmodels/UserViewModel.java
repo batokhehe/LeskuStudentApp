@@ -1,6 +1,6 @@
 package id.co.lesku.viewmodels;
 
-import id.co.lesku.models.User;
+import id.co.lesku.model.User;
 import id.co.lesku.viewmodels.inputs.UserViewModelInputs;
 import id.co.lesku.viewmodels.outputs.UserViewModelOutputs;
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 import id.co.lesku.R;
 import id.co.lesku.databinding.RvItemTeacherOrderBinding;
-import id.co.lesku.models.TeacherOrder;
+import id.co.lesku.model.TeacherOrder;
 import id.co.lesku.viewmodels.TeacherOrderViewModel;
 
 public class TeacherOrderAdapter extends RecyclerView.Adapter<TeacherOrderAdapter.ListViewHolder> {

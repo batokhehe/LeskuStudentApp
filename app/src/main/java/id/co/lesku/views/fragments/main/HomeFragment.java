@@ -17,7 +17,7 @@ import java.util.List;
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.databinding.FragmentHomeBinding;
-import id.co.lesku.models.Product;
+import id.co.lesku.model.Product;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.viewmodels.ProductListViewModel;
 import id.co.lesku.views.adapters.product.ProductAdapter;

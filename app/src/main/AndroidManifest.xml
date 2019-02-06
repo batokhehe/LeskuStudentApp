@@ -53,8 +53,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".views.activities.orders.TeacherOrderActivity"
             android:screenOrientation="portrait" />
-
         <activity android:name=".views.activities.orders.OrderDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".views.activities.orders.InvoiceActivity"
             android:screenOrientation="portrait" />
 
 

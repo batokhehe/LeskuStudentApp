@@ -1,7 +1,9 @@
-package id.co.lesku.models;
+package id.co.lesku.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class TeacherOrder {
     @SerializedName("id")
@@ -40,6 +42,10 @@ public class TeacherOrder {
     @SerializedName("img")
     @Expose
     private String img;
+    @SerializedName("schedule")
+    @Expose
+    private List<String> schedule = null;
+
 
     public int getId() {
         return id;
@@ -127,6 +133,14 @@ public class TeacherOrder {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<String> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(List<String> schedule) {
+        this.schedule = schedule;
     }
 
 }

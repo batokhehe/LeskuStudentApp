@@ -1,6 +1,6 @@
 package id.co.lesku.viewmodels;
 
-import id.co.lesku.models.UnpaidOrder;
+import id.co.lesku.model.UnpaidOrder;
 import id.co.lesku.viewmodels.inputs.UnpaidOrderViewModelInputs;
 import id.co.lesku.viewmodels.outputs.UnpaidOrderViewModelOutputs;
 

@@ -1,6 +1,6 @@
 package id.co.lesku.viewmodels;
 
-import id.co.lesku.models.DetailsOrder;
+import id.co.lesku.model.DetailsOrder;
 import id.co.lesku.viewmodels.inputs.DetailsOrderViewModelInputs;
 import id.co.lesku.viewmodels.outputs.DetailsOrderViewModelOutputs;
 

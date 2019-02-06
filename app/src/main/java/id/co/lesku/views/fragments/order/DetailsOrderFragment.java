@@ -37,7 +37,7 @@ import java.util.List;
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.databinding.FragmentDetailsOrderBinding;
-import id.co.lesku.models.DetailsOrder;
+import id.co.lesku.model.DetailsOrder;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.viewmodels.DetailsOrderListViewModel;
 import id.co.lesku.views.adapters.order.DetailsOrderAdapter;

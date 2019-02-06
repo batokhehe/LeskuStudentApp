@@ -1,6 +1,6 @@
 package id.co.lesku.viewmodels.inputs;
 
-import id.co.lesku.models.User;
+import id.co.lesku.model.User;
 
 public interface UserViewModelInputs
 {

@@ -3,7 +3,7 @@ package id.co.lesku.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import id.co.lesku.models.User;
+import id.co.lesku.model.User;
 
 public class DummyDataFactory
 {

@@ -5,9 +5,8 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import id.co.lesku.data.remote.contracts.OrderClass;
-import id.co.lesku.models.DetailsOrder;
-import id.co.lesku.models.TeacherSchedule;
-import id.co.lesku.models.UnpaidOrder;
+import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.UnpaidOrder;
 import id.co.lesku.utils.constants.K;
 import io.reactivex.Maybe;
 import io.reactivex.schedulers.Schedulers;
@@ -31,7 +30,7 @@ public class OrderAPI extends BaseAPI implements OrderClass {
     }
 
     @Override
-    public Maybe<List<TeacherSchedule>> getTeacherBlankScheduleList(String teacherId) {
+    public Maybe<JsonObject> getTeacherBlankScheduleList(String teacherId) {
         return app.mAPIService.getTeacherBlankSchedule(teacherId).retry(K.MAX_RETRIES).subscribeOn(Schedulers.io());
     }
 

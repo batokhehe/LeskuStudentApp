@@ -4,14 +4,13 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
-import id.co.lesku.models.DetailsOrder;
-import id.co.lesku.models.Product;
-import id.co.lesku.models.StudyLevel;
-import id.co.lesku.models.Subject;
-import id.co.lesku.models.TeacherOrder;
-import id.co.lesku.models.TeacherSchedule;
-import id.co.lesku.models.UnpaidOrder;
-import id.co.lesku.models.User;
+import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.Product;
+import id.co.lesku.model.StudyLevel;
+import id.co.lesku.model.Subject;
+import id.co.lesku.model.TeacherOrder;
+import id.co.lesku.model.UnpaidOrder;
+import id.co.lesku.model.User;
 import io.reactivex.Maybe;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -96,7 +95,7 @@ public interface LeskuAPIService
 
     @FormUrlEncoded
     @POST ("order/teacher_blank_schedules")
-    Maybe<List<TeacherSchedule>> getTeacherBlankSchedule (
+    Maybe<JsonObject> getTeacherBlankSchedule (
             @Field("teacher_id") String teacherid
     );
 

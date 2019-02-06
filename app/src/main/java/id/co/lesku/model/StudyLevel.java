@@ -1,4 +1,4 @@
-package id.co.lesku.models;
+package id.co.lesku.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
