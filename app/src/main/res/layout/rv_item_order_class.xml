@@ -9,8 +9,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dip"
-        android:layout_marginRight="5dip"
+        android:layout_margin="10dip"
+        android:elevation="4dp"
+        android:background="@drawable/shape_rect"
         android:foreground="?attr/selectableItemBackground">
 
             <LinearLayout
@@ -20,29 +21,32 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="5dip"
                     android:weightSum="1">
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="0.7"
                         android:orientation="vertical">
 
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                             android:id="@+id/sSubject"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"/>
+                            android:layout_height="50dp"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_margin="@dimen/nav_header_vertical_spacing"/>
 
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                             android:id="@+id/sSchedule"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:hint="@string/class_time"
-                            app:met_floatingLabel="normal"
-                            android:focusableInTouchMode="false"/>
+                            android:focusableInTouchMode="false"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_margin="@dimen/nav_header_vertical_spacing"/>
 
                     </LinearLayout>
 

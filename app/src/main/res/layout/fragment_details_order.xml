@@ -32,10 +32,23 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
+                <TextView
+                    android:id="@+id/tvUploadTrfFile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/green"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Bukti Transfer Sudah Di-Upload"
+                    android:visibility="gone"/>
+
                 <Button
                     android:id="@+id/btnUploadTrfFile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="@dimen/nav_header_vertical_spacing"
+                    android:background="@drawable/shape_rect_button"
+                    android:textColor="@color/white"
                     android:text="@string/upload"/>
 
             </LinearLayout>

@@ -19,6 +19,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.orhanobut.hawk.Hawk;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -238,8 +240,14 @@ public class OrderClassFragment extends BaseFragment {
                     @Override
                     public void accept (ResponseBody object) throws Exception
                     {
-                        Toast.makeText(getContext(), "Good", Toast.LENGTH_SHORT).show();
+                        String obj = object.string();
+                        JSONObject jsonObject = new JSONObject(obj);
+//                        Toast.makeText(getContext(), "" + jsonObject.get("price"), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), InvoiceActivity.class);
+                        intent.putExtra("price", jsonObject.get("price").toString());
+                        intent.putExtra("ordered_assembly", jsonObject.get("ordered_assembly").toString());
+                        intent.putExtra("ordered_subject", jsonObject.get("ordered_subject").toString());
+                        intent.putExtra("created_at", jsonObject.get("created_at").toString());
                         startActivity(intent);
                         getActivity().finish();
                     }

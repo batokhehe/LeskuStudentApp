@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
@@ -56,6 +57,7 @@ public class DetailsOrderFragment extends BaseFragment {
     private int position;
     private String id, status;
     private Button btnUploadTrfFile;
+    private TextView tvUploadTrfFile;
     private int GALLERY = 1, CAMERA = 2;
 
     public DetailsOrderFragment() {
@@ -90,20 +92,32 @@ public class DetailsOrderFragment extends BaseFragment {
         mBinding.rvDetailsOrder.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.rvDetailsOrder.setAdapter(adapter);
 
+        btnUploadTrfFile = mBinding.btnUploadTrfFile;
+        tvUploadTrfFile = mBinding.tvUploadTrfFile;
+
+        id = getArguments().getString("id");
+        status = getArguments().getString("status");
+        position = getArguments().getInt("position");
+
+//        Toast.makeText(getContext(), "" + status, Toast.LENGTH_SHORT).show();
+
+        if(status.equals("1")){
+            btnUploadTrfFile.setVisibility(View.GONE);
+            tvUploadTrfFile.setVisibility(View.VISIBLE);
+        } else {
+            btnUploadTrfFile.setVisibility(View.VISIBLE);
+            tvUploadTrfFile.setVisibility(View.GONE);
+        }
 
         requestMultiplePermissions();
-        btnUploadTrfFile = mBinding.btnUploadTrfFile;
         btnUploadTrfFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPictureDialog();
             }
         });
-        id = getArguments().getString("id");
-        status = getArguments().getString("status");
-        position = getArguments().getInt("position");
 
-        mBinding.llDetailsOrder.showCustomLoading(true, "Loading Order Details List...");
+        mBinding.llDetailsOrder.showLoading(true, "Loading..");
 
         DataManager.can().getDetailsOrderList(id).observeOn(AndroidSchedulers.mainThread())
                 .defaultIfEmpty(new ArrayList<DetailsOrder>())
@@ -115,7 +129,7 @@ public class DetailsOrderFragment extends BaseFragment {
                         if (mDetailsOrder != null) { mDetailsOrder.clear(); }
                         mDetailsOrder.addAll(details);
                         mBinding.rvDetailsOrder.getAdapter().notifyDataSetChanged();
-                        mBinding.llDetailsOrder.showCustomLoading(false);
+                        mBinding.llDetailsOrder.showLoading(false);
                         if (mDetailsOrder.size() == 0)
                         {
                             mBinding.llDetailsOrder.showEmptyView(true);
@@ -127,7 +141,7 @@ public class DetailsOrderFragment extends BaseFragment {
                     {
                         RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        mBinding.llDetailsOrder.showCustomLoading(false);
+                        mBinding.llDetailsOrder.showLoading(false);
                     }
                 });
 
@@ -236,6 +250,8 @@ public class DetailsOrderFragment extends BaseFragment {
                     public void accept (JsonObject object) throws Exception
                     {
                         Toast.makeText(getContext(), "File Uploaded", Toast.LENGTH_SHORT).show();
+                        btnUploadTrfFile.setVisibility(View.GONE);
+                        tvUploadTrfFile.setVisibility(View.VISIBLE);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

@@ -25,6 +25,9 @@ public class Product {
     @SerializedName("multiple")
     @Expose
     private int multiple;
+    @SerializedName("price")
+    @Expose
+    private String price;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -32,11 +35,12 @@ public class Product {
     @Expose
     private String updatedAt;
 
-    public Product (int id, String name, String image)
+    public Product (int id, String name, String image, String price)
     {
         this.id = id;
         this.name = name;
         this.image = image;
+        this.price = price;
     }
 
     public int getId() {
@@ -93,6 +97,14 @@ public class Product {
 
     public void setMultiple(int multiple) {
         this.multiple = multiple;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getCreatedAt() {

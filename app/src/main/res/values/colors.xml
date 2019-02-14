@@ -9,6 +9,7 @@
     <color name="green">#68B266</color>
     <color name="red">#FF6666</color>
     <color name="gray">#EEEEEE</color>
+    <color name="transparent_gray">#80EEEEEE</color>
     <color name="dark_gray">#BBBBBB</color>
 
     <!-- Screens background color-->

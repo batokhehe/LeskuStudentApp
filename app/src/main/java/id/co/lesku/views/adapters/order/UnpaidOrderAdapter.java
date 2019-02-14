@@ -49,6 +49,12 @@ public class UnpaidOrderAdapter extends RecyclerView.Adapter<UnpaidOrderAdapter.
         return (mUnpaidOrder == null) ? 0 : mUnpaidOrder.size();
     }
 
+    @Override
+    public int getItemViewType(int position)
+    {
+        return position;
+    }
+
     public class ListViewHolder extends RecyclerView.ViewHolder {
         public ListViewHolder(View itemView) {
             super(itemView);

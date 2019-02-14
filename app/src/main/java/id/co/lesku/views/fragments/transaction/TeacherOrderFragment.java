@@ -75,7 +75,7 @@ public class TeacherOrderFragment extends BaseFragment {
 
         Toast.makeText(getContext(), "Subject : " + subject + " Subject ID : " + subjectId + " Position : " + position + " Schedule : " + selectedSchedule, Toast.LENGTH_SHORT).show();
 
-        mBinding.llTeacherOrder.showCustomLoading(true, "Loading Teacher List...");
+        mBinding.llTeacherOrder.showLoading(true, "Loading Teacher List...");
 
         DataManager.can().getTeacherOrderList().observeOn(AndroidSchedulers.mainThread())
                 .defaultIfEmpty(new ArrayList<TeacherOrder>())
@@ -87,7 +87,7 @@ public class TeacherOrderFragment extends BaseFragment {
                         if (mTeacherOrder != null) { mTeacherOrder.clear(); }
                         mTeacherOrder.addAll(teachers);
                         mBinding.rvTeacherOrder.getAdapter().notifyDataSetChanged();
-                        mBinding.llTeacherOrder.showCustomLoading(false);
+                        mBinding.llTeacherOrder.showLoading(false);
                         if (mTeacherOrder.size() == 0)
                         {
                             mBinding.llTeacherOrder.showEmptyView(true);
@@ -99,7 +99,7 @@ public class TeacherOrderFragment extends BaseFragment {
                     {
                         RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        mBinding.llTeacherOrder.showCustomLoading(false);
+                        mBinding.llTeacherOrder.showLoading(false);
                     }
                 });
 

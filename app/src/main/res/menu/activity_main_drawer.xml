@@ -8,7 +8,7 @@
         android:id="@+id/first_group">
         <item
             android:id="@+id/nav_account"
-            android:icon="@mipmap/camera_icon"
+            android:icon="@drawable/ic_account"
             android:title="@string/account" />
     </group>
 
@@ -22,7 +22,7 @@
             android:checked="true"/>
         <item
             android:id="@+id/nav_order"
-            android:icon="@mipmap/camera_icon"
+            android:icon="@drawable/ic_list"
             android:title="@string/orderClass" />
 
         <item

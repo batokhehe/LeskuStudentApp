@@ -29,15 +29,23 @@
                     android:id="@+id/teacherOrderName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/activity_horizontal_margin"
                     android:layout_alignParentLeft="true"
+                    android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@{teacherOrder.name}" />
+
+                <View
+                    style="@style/Divider"
+                    android:layout_margin="@dimen/activity_horizontal_margin"/>
 
                 <TextView
                     android:id="@+id/teacherOrderAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{teacherOrder.address}"
-                    android:paddingLeft="5dip"/>
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@{teacherOrder.address}"/>
 
             </LinearLayout>
 

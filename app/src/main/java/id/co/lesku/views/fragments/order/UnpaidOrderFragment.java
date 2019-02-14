@@ -64,33 +64,9 @@ public class UnpaidOrderFragment extends BaseFragment implements SwipeRefreshLay
         mBinding.rvUnpaidOrder.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.rvUnpaidOrder.setAdapter(adapter);
 
-        mBinding.llUnpaidList.showCustomLoading(true, "Loading User List...");
+//        mBinding.llUnpaidList.showLoading(true, "Loading User List...");
 
-        DataManager.can().getUnpaidOrderList().observeOn(AndroidSchedulers.mainThread())
-                .defaultIfEmpty(new ArrayList<UnpaidOrder>())
-                .subscribe(new Consumer<List<UnpaidOrder>>()
-                {
-                    @Override
-                    public void accept (List<UnpaidOrder> unpaidOrders) throws Exception
-                    {
-                        if (mUnpaidOrder != null) { mUnpaidOrder.clear(); }
-                        mUnpaidOrder.addAll(unpaidOrders);
-                        mBinding.rvUnpaidOrder.getAdapter().notifyDataSetChanged();
-                        mBinding.llUnpaidList.showCustomLoading(false);
-                        if (mUnpaidOrder.size() == 0)
-                        {
-                            mBinding.llUnpaidList.showEmptyView(true);
-                        }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept (Throwable throwable) throws Exception
-                    {
-                        RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        mBinding.llUnpaidList.showCustomLoading(false);
-                    }
-                });
+//        loadRecyclerViewData();
 
         adapter.setOnClickListener(new UnpaidOrderAdapter.OnItemClickListener() {
             @Override
@@ -99,6 +75,7 @@ public class UnpaidOrderFragment extends BaseFragment implements SwipeRefreshLay
                 allowRefresh = true;
                 Intent intent = new Intent(getContext(), OrderDetailsActivity.class);
                 intent.putExtra("id", String.valueOf(unpaidOrder.getId()));
+                intent.putExtra("status", String.valueOf(unpaidOrder.getStatus()));
                 startActivity(intent);
             }
         });
