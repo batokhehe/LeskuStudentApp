@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
         android:elevation="4dp"
-        android:background="@drawable/shape_rect_rv_item"
+        android:background="@drawable/shape_rect"
         android:foreground="?attr/selectableItemBackground">
 
         <ImageView

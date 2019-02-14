@@ -168,7 +168,7 @@ public class LoginFragment extends BaseFragment
         //precaution for double click
         mBinding.btnLogin.setEnabled(false);
 
-        mBinding.loginLoading.showCustomLoading(true, "Signing in...");
+        mBinding.loginLoading.showLoading(true, "Signing in...");
 
         DataManager.can().login(id, password, regid)
                    .observeOn(AndroidSchedulers.mainThread())
@@ -177,7 +177,7 @@ public class LoginFragment extends BaseFragment
                        @Override
                        public void accept (JsonObject object) throws Exception
                        {
-                           mBinding.loginLoading.showCustomLoading(false);
+                           mBinding.loginLoading.showLoading(false);
                            mBinding.btnLogin.setEnabled(true);
 
                            User user = new User();
@@ -216,7 +216,7 @@ public class LoginFragment extends BaseFragment
                        @Override
                        public void accept (Throwable throwable) throws Exception
                        {
-                           mBinding.loginLoading.showCustomLoading(false);
+                           mBinding.loginLoading.showLoading(false);
                            RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                            mBinding.btnLogin.setEnabled(true);

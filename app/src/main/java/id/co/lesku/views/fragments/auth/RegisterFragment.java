@@ -67,7 +67,7 @@ public class RegisterFragment extends BaseFragment
         mValidator = new Validator(mBinding);
         mValidator.enableFormValidationMode();
 
-        mBinding.llRegister.showCustomLoading(true, "Loading Study Level List...");
+        mBinding.llRegister.showLoading(true, "Loading..");
 
         DataManager.can().getStudyLevelList().observeOn(AndroidSchedulers.mainThread())
                 .defaultIfEmpty(new ArrayList<StudyLevel>())
@@ -89,7 +89,7 @@ public class RegisterFragment extends BaseFragment
                                 android.R.layout.simple_dropdown_item_1line, listStudyClassSpinner);
 //                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         mBinding.spinnerStudyLevel.setAdapter(adapter);
-                        mBinding.llRegister.showCustomLoading(false);
+                        mBinding.llRegister.showLoading(false);
                         if (mStudyLevel.size() == 0)
                         {
                             mBinding.llRegister.showEmptyView(true);
@@ -101,7 +101,7 @@ public class RegisterFragment extends BaseFragment
                     {
                         RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        mBinding.llRegister.showCustomLoading(false);
+                        mBinding.llRegister.showLoading(false);
                     }
                 });
 
@@ -190,7 +190,7 @@ public class RegisterFragment extends BaseFragment
         //precaution for double click
         mBinding.btnRegister.setEnabled(false);
 
-        mBinding.llRegister.showCustomLoading(true, "Signing in...");
+        mBinding.llRegister.showLoading(true, "Registering..");
 
         DataManager.can().register(fname, lname, email, studylevelid, parent_name, school_name, address, phone_number, password, cpassword)
                    .observeOn(AndroidSchedulers.mainThread())
@@ -199,9 +199,10 @@ public class RegisterFragment extends BaseFragment
                        @Override
                        public void accept (JsonObject object) throws Exception
                        {
-                           mBinding.llRegister.showCustomLoading(false);
+                           mBinding.llRegister.showLoading(false);
                            mBinding.btnRegister.setEnabled(true);
                            Intent intent = new Intent(getContext(), LoginActivity.class);
+                           Toast.makeText(getContext(), "Register Success, Please Check Your E-mail For Verification", Toast.LENGTH_SHORT).show();
                            startActivity(intent);
                            getActivity().finish();
                        }
@@ -209,7 +210,7 @@ public class RegisterFragment extends BaseFragment
                        @Override
                        public void accept (Throwable throwable) throws Exception
                        {
-                           mBinding.llRegister.showCustomLoading(false);
+                           mBinding.llRegister.showLoading(false);
                            RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                            mBinding.btnRegister.setEnabled(true);

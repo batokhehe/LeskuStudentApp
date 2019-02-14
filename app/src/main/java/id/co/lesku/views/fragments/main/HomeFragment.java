@@ -65,7 +65,7 @@ public class HomeFragment extends BaseFragment {
         mBinding.homeRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.homeRecycleView.setAdapter(adapter);
 
-        mBinding.llHomeList.showCustomLoading(true, "Loading User List...");
+        mBinding.llHomeList.showLoading(true, "Loading..");
 
         DataManager.can().getProductList().observeOn(AndroidSchedulers.mainThread())
                 .defaultIfEmpty(new ArrayList<Product>())
@@ -77,7 +77,7 @@ public class HomeFragment extends BaseFragment {
                         if (mProduct != null) { mProduct.clear(); }
                         mProduct.addAll(products);
                         mBinding.homeRecycleView.getAdapter().notifyDataSetChanged();
-                        mBinding.llHomeList.showCustomLoading(false);
+                        mBinding.llHomeList.showLoading(false);
                         if (mProduct.size() == 0)
                         {
                             mBinding.llHomeList.showEmptyView(true);
@@ -89,7 +89,7 @@ public class HomeFragment extends BaseFragment {
                     {
                         RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        mBinding.llHomeList.showCustomLoading(false);
+                        mBinding.llHomeList.showLoading(false);
                     }
                 });
 

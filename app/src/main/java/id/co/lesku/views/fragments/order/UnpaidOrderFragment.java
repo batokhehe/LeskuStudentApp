@@ -22,7 +22,7 @@ import id.co.lesku.databinding.FragmentUnpaidOrderBinding;
 import id.co.lesku.model.UnpaidOrder;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.viewmodels.UnpaidOrderListViewModel;
-import id.co.lesku.views.activities.orders.OrderDetailsActivity;
+import id.co.lesku.views.activities.order.OrderDetailsActivity;
 import id.co.lesku.views.adapters.order.UnpaidOrderAdapter;
 import id.co.lesku.views.fragments.BaseFragment;
 import io.reactivex.android.schedulers.AndroidSchedulers;

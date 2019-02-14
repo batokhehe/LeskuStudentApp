@@ -1,4 +1,4 @@
-package id.co.lesku.views.activities.orders;
+package id.co.lesku.views.activities.order;
 
 import android.content.Intent;
 import android.os.Bundle;

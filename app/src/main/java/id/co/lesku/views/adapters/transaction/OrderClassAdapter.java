@@ -29,7 +29,7 @@ import id.co.lesku.manager.ConfigManager;
 import id.co.lesku.model.OrderClass;
 import id.co.lesku.model.Subject;
 import id.co.lesku.utils.constants.K;
-import id.co.lesku.views.activities.orders.TeacherOrderActivity;
+import id.co.lesku.views.activities.order.TeacherOrderActivity;
 
 public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.OrderViewHolder> {
 

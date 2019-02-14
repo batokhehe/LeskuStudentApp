@@ -28,10 +28,9 @@
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/first_name"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/first_name"/>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_fname_wrapper"
@@ -46,23 +45,23 @@
                         android:id="@+id/et_reg_fname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/first_name_hint"
                         android:inputType=""
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/last_name"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/last_name" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_lname_wrapper"
@@ -77,23 +76,23 @@
                         android:id="@+id/et_reg_lname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/last_name_hint"
                         android:inputType=""
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/email"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/email"/>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_email_wrapper"
@@ -108,24 +107,24 @@
                         android:id="@+id/et_reg_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/email_hint"
                         android:imeOptions="actionUnspecified"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/study_level"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/study_level" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_reg_study_level_wrapper"
@@ -140,23 +139,19 @@
                         android:id="@+id/spinnerStudyLevel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
                         android:imeOptions="actionUnspecified"
-                        android:layout_marginLeft="-4dp"
                         android:hint="@string/study_level_hint"
                         android:textColorHint="@color/cardview_shadow_end_color"
-                        android:paddingLeft="5dp"
-                        app:met_floatingLabel="normal"/>
+                        android:paddingLeft="5dp"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/parent_name"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/parent_name" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_parentname_wrapper"
@@ -171,23 +166,23 @@
                         android:id="@+id/et_reg_parentname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/parent_name_hint"
                         android:inputType=""
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/school_name"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/school_name" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_schoolname_wrapper"
@@ -202,23 +197,23 @@
                         android:id="@+id/et_reg_schoolname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/school_name_hint"
                         android:inputType=""
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/address"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/address" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_address_wrapper"
@@ -233,23 +228,23 @@
                         android:id="@+id/et_reg_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/address_hint"
                         android:inputType=""
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/phone_number"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/phone_number" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_phonenumber_wrapper"
@@ -264,23 +259,23 @@
                         android:id="@+id/et_reg_phonenumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/phone_number_hint"
                         android:inputType=""
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/password"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/password" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_reg_password_wrapper"
@@ -295,24 +290,25 @@
                         android:id="@+id/et_reg_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/password_hint"
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <id.co.lesku.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_small"
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_marginTop="@dimen/space_large"
-                    android:text="@string/cpassword"
-                    android:layout_marginRight="@dimen/space_small" />
+                    android:text="@string/cpassword" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_reg_cpassword_wrapper"
@@ -327,29 +323,31 @@
                         android:id="@+id/et_reg_cpassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="-4dp"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/password_hint"
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}"
-                        android:layout_marginLeft="-4dp" />
+                        app:validateEmptyAutoDismiss="@{true}" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/btn_register"
-                    android:layout_marginBottom="@dimen/space_medium"
-                    android:layout_marginEnd="@dimen/space_small"
-                    android:layout_marginStart="@dimen/space_small"
-                    android:layout_marginTop="@dimen/space_medium"
-                    android:text="@string/register"
-                    android:layout_height="50dp"
-                    android:layout_width="200dp" />
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/shape_rect_button"
+                    android:textColor="@color/white"
+                    android:text="@string/register" />
 
             </LinearLayout>
+
         </id.co.flipbox.sosoito.LoadingLayout>
+
     </ScrollView>
 
 </layout>

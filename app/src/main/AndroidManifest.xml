@@ -51,11 +51,11 @@
             android:screenOrientation="portrait" />
         <activity android:name=".views.activities.auth.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.orders.TeacherOrderActivity"
+        <activity android:name=".views.activities.order.TeacherOrderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.orders.OrderDetailsActivity"
+        <activity android:name=".views.activities.order.OrderDetailsActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.orders.InvoiceActivity"
+        <activity android:name=".views.activities.order.InvoiceActivity"
             android:screenOrientation="portrait" />
 
 

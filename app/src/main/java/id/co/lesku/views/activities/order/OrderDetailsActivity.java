@@ -1,5 +1,6 @@
-package id.co.lesku.views.activities.orders;
+package id.co.lesku.views.activities.order;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,23 +9,25 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import id.co.lesku.R;
-import id.co.lesku.views.fragments.transaction.TeacherOrderFragment;
+import id.co.lesku.views.fragments.order.DetailsOrderFragment;
 
-public class TeacherOrderActivity extends AppCompatActivity {
+public class OrderDetailsActivity extends AppCompatActivity {
 
-    private String subject, selectedSchedule;
-    private int position, subjectId;
-    private Toolbar toolbar;
+    private String id, status;
+    private TextView tvId;
     private Handler mHandler;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_order);
+        setContentView(R.layout.activity_details_order);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar_teacher_order);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_details_order);
         setSupportActionBar(toolbar);
 
         mHandler = new Handler();
@@ -32,23 +35,18 @@ public class TeacherOrderActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
-                subject= null;
-                position = 0;
-                subjectId = 0;
-                selectedSchedule = null;
+                id = "";
+                status = "";
             } else {
-                subject = extras.getString("subject");
-                subjectId = extras.getInt("subjectId");
-                position = extras.getInt("position");
-                selectedSchedule = extras.getString("selectedSchedule");
+                id = extras.getString("id");
+                status = extras.getString("status");
             }
         } else {
-            subject = (String) savedInstanceState.getSerializable("subject");
-            subjectId = (int) savedInstanceState.getSerializable("subjectId");
-            position = (int) savedInstanceState.getSerializable("position");
-            selectedSchedule = (String) savedInstanceState.getSerializable("selectedSchedule");
+            id = (String) savedInstanceState.getSerializable("id");
+            status = (String) savedInstanceState.getSerializable("status");
         }
 
+        Toast.makeText(this, "Order ID : " + id, Toast.LENGTH_SHORT).show();
         if (savedInstanceState == null) {
             loadFragment();
         }
@@ -59,17 +57,15 @@ public class TeacherOrderActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // update the main content by replacing fragments
-                Fragment fragment = new TeacherOrderFragment();
+                Fragment fragment = new DetailsOrderFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("subject", subject);
-                bundle.putInt("subjectId", subjectId);
-                bundle.putInt("position", position);
-                bundle.putString("selectedSchedule", selectedSchedule);
+                bundle.putString("id", id);
+                bundle.putString("status", status);
                 fragment.setArguments(bundle);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                         android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.teacherOrderFrame, fragment);
+                fragmentTransaction.replace(R.id.detailsOrderFrame, fragment);
                 fragmentTransaction.commitAllowingStateLoss();
             }
         };
@@ -82,5 +78,13 @@ public class TeacherOrderActivity extends AppCompatActivity {
 
     public void finishActivity(View v) {
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+            fragment.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

@@ -29,7 +29,7 @@ import id.co.lesku.manager.ConfigManager;
 import id.co.lesku.model.OrderClass;
 import id.co.lesku.model.Subject;
 import id.co.lesku.utils.constants.K;
-import id.co.lesku.views.activities.orders.InvoiceActivity;
+import id.co.lesku.views.activities.order.InvoiceActivity;
 import id.co.lesku.views.adapters.transaction.OrderClassAdapter;
 import id.co.lesku.views.fragments.BaseFragment;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -104,8 +104,6 @@ public class OrderClassFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        Toast.makeText(getContext(), "" + Hawk.get(K.SUBJECT_LIST), Toast.LENGTH_SHORT).show();
-
         productId = getArguments().getInt("id");
         multiplier = getArguments().getInt("multiple");
         min_order = getArguments().getInt("min_order");
@@ -127,15 +125,11 @@ public class OrderClassFragment extends BaseFragment {
         mOrderClassAdapter = new OrderClassAdapter(getContext(), orderClassArrayList);
         mOrderClassAdapter.setMaxOrder(max_order);
 
-//        llOrderClass = (LoadingLayout) rootView.findViewById(R.id.ll_order_class);
-
         rvOrder = (RecyclerView) rootView.findViewById(R.id.rv_order);
         fabAddOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_add_assembly);
         fabRemoveOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_remove_assembly);
         fabRemoveOrder.hide();
 
-//        btnAddOrder = (Button) rootView.findViewById(R.id.btn_add_order);
-//        btnRemoveOrder = (Button) rootView.findViewById(R.id.btn_remove_order);
         btnOrderClass = (Button) rootView.findViewById(R.id.btn_order_class);
 
         fabAddOrder.setOnClickListener(new View.OnClickListener()
@@ -170,22 +164,6 @@ public class OrderClassFragment extends BaseFragment {
                 }
             }
         });
-
-//        btnAddOrder.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick (View v) {
-//                addOrder(multiplier);
-//            }
-//        });
-//
-//        btnRemoveOrder.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick (View v) {
-//                removeOrder(multiplier);
-//            }
-//        });
 
         btnOrderClass.setOnClickListener(new View.OnClickListener()
         {
@@ -223,7 +201,6 @@ public class OrderClassFragment extends BaseFragment {
             int initialize = size - 1;
             int limit = initialize - multiplier;
             for (int i = initialize; i > limit; i--) {
-//            Toast.makeText(getContext(), "Remove Item ~ i = " + i, Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "Remove Item ~ i = " + i);
                 orderClassArrayList.remove(i);
                 mOrderClassAdapter.notifyItemRemoved(i);
@@ -320,42 +297,11 @@ public class OrderClassFragment extends BaseFragment {
             String image = data.getStringExtra("image");
             String subject = data.getStringExtra("subject");
             int subjectId = data.getIntExtra("subjectId", 0);
-//            String date = data.getStringExtra("date");
             int teacherId = data.getIntExtra("teacherId", 0);
             int position = data.getIntExtra("position", 0);
             ArrayList<String> schedule = data.getStringArrayListExtra("schedule");
             String selectedSchedule = data.getStringExtra("selectedSchedule");
-//            Toast.makeText(getContext(), "Image : " + image + " Position : " + position, Toast.LENGTH_SHORT).show();
-
-//            llOrderClass = (LoadingLayout) view.findViewById(R.id.ll_order_class);
-//            llOrderClass.showCustomLoading(true, "Loading..");
             mOrderClassAdapter.changeImage(image, subject, subjectId, position, teacherId, schedule);
-
-//            DataManager.can().getTeacherBlankScheduleList(String.valueOf(teacherId))
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe(new Consumer<JsonObject>()
-//                    {
-//                        @Override
-//                        public void accept (JsonObject object) throws Exception
-//                        {
-//                            JsonArray jsonArray = new JsonArray();
-//                            jsonArray = object.getAsJsonArray("schedule");
-//
-//                            ArrayList<String> listSchedule = new ArrayList<>();
-//                            for (int i = 0; i < jsonArray.size(); i++){
-//                                String schedule = jsonArray.get(i).toString().replace("\"", "");
-//                                listSchedule.add(schedule);
-//                            }
-//                            mOrderClassAdapter.changeSchedule(listSchedule, llOrderClass);
-//                        }
-//                    }, new Consumer<Throwable>() {
-//                        @Override
-//                        public void accept (Throwable throwable) throws Exception
-//                        {
-//                            RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
-//                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//                        }
-//                    });
         }
     }
 }
