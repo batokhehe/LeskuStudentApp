@@ -45,9 +45,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".views.activities.MainActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".views.activities.others.IntroSliderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.MainActivity"
+        <activity android:name=".views.activities.others.AccountActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".views.activities.auth.LoginActivity"
             android:screenOrientation="portrait" />

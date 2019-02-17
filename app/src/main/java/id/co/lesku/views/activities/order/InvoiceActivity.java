@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,15 +18,18 @@ import id.co.lesku.views.activities.MainActivity;
 
 public class InvoiceActivity extends AppCompatActivity {
 
-    private Button btnGotoOrderPage;
+    private Button btnGotoOrderPage, btnBackInvoice;
     private String price, ordered_assembly, ordered_subject;
     private String created_at;
     private HawkManager hawkManager;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoice);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_invoice);
+        setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -60,8 +64,9 @@ public class InvoiceActivity extends AppCompatActivity {
         tvCreatedAt.setText(created_at);
         tvOrderedAssembly.setText(ordered_assembly);
         tvOrderedSubject.setText(ordered_subject);
-        tvPrice.setText("Rp. " + formatter.format(price));
-
+//        tvPrice.setText("Rp. " + formatter.format(price.toString()));
+        tvPrice.setText(price);
+        btnBackInvoice = (Button) findViewById(R.id.btn_back_invoice);
         btnGotoOrderPage = (Button) findViewById(R.id.btn_goto_order_page);
 
         btnGotoOrderPage.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +74,15 @@ public class InvoiceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(InvoiceActivity.this, MainActivity.class);
                 intent.putExtra("gotoOrder", 1);
+                startActivity(intent);
+                finish();
+            }
+        });
+        
+        btnBackInvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InvoiceActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

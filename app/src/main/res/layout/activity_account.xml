@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_account"
+        layout="@layout/toolbar_account"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <id.co.flipbox.sosoito.LoadingLayout
+            android:id="@+id/ll_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+
+                    <ImageView
+                        android:id="@+id/iv_account_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/btn_camera_new_account_image"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/ic_camera_outline" />
+
+                </RelativeLayout>
+
+                <id.co.lesku.views.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/name"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_account_name_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:layout_marginStart="@dimen/space_small"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/et_account_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
+                        android:hint="@string/name_hint"
+                        android:inputType=""
+                        android:maxLines="1"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <id.co.lesku.views.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/email"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_account_email_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:layout_marginStart="@dimen/space_small"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/et_account_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
+                        android:hint="@string/email_hint"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <id.co.lesku.views.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/address" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_account_address_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:layout_marginStart="@dimen/space_small"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/et_account_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
+                        android:hint="@string/address_hint"
+                        android:inputType=""
+                        android:maxLines="1"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <id.co.lesku.views.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_small"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/phone_number" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_account_phonenumber_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:layout_marginStart="@dimen/space_small"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/et_account_phonenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_round"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:padding="@dimen/nav_header_vertical_spacing"
+                        android:hint="@string/phone_number_hint"
+                        android:inputType=""
+                        android:maxLines="1"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+        </id.co.flipbox.sosoito.LoadingLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btnBackDetailsOrder"
+            android:id="@+id/btn_back_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -22,11 +22,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/backDetailsOrder"
+            android:layout_toRightOf="@+id/backTeacherOrder"
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/details_order"/>
+            android:text="@string/account"/>
+
+        <Button
+            android:id="@+id/btn_update_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:background="@color/colorPrimary"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white"
+            android:drawableRight="@mipmap/save_white"/>
 
     </RelativeLayout>
 

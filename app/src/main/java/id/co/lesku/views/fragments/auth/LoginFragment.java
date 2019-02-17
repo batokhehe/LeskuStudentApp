@@ -186,12 +186,16 @@ public class LoginFragment extends BaseFragment
                            String tempLName = obj.get("last_name").getAsString();
                            user.setFirstName(tempFName + ' ' + tempLName);
                            user.setEmail(obj.get("email").getAsString());
+                           user.setAddress(obj.get("address").getAsString());
+                           user.setPhoneNumber(obj.get("phone_number").getAsString());
                            user.setToken(obj.get("token").getAsString());
                            user.setAppImg(obj.get("app_img").getAsString());
 
                            hawkManager.storeAppUserData(
                                    user.getEmail(),
                                    user.getFirstName(),
+                                   user.getAddress(),
+                                   user.getPhoneNumber(),
                                    user.getToken(),
                                    user.getAppImg()
                            );

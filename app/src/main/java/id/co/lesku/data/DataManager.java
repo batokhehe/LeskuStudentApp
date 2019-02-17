@@ -75,6 +75,12 @@ public class DataManager implements DataManagerType
     }
 
     @Override
+    public Maybe<JsonObject> updateAccount(String name, String email, String address, String phoneNumber, String encodedImage)
+    {
+        return sAuthAPI.updateAccount(name, email, address, phoneNumber, encodedImage);
+    }
+
+    @Override
     public void logout ()
     {
         sAuthAPI.logout();

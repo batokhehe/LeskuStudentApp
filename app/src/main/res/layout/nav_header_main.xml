@@ -22,19 +22,19 @@
         android:padding="@dimen/activity_horizontal_margin">
 
         <ImageView
-            android:id="@+id/img_profile"
-            android:layout_width="@dimen/profile_width"
-            android:layout_height="@dimen/profile_height"
+            android:id="@+id/iv_profile_image"
+            android:layout_width="@dimen/profile"
+            android:layout_height="@dimen/profile"
             android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
         <TextView
-            android:id="@+id/tvUserName"
+            android:id="@+id/tv_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
         <TextView
-            android:id="@+id/tvUserEmail"
+            android:id="@+id/tv_user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

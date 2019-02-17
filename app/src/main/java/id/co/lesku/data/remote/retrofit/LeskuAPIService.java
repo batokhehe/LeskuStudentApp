@@ -60,6 +60,16 @@ public interface LeskuAPIService
     @GET ("users/{id}")
     Maybe<JsonObject> forgotPassword (@Path ("id") String id);
 
+    @FormUrlEncoded
+    @POST("student/update_account/")
+    Maybe<JsonObject> updateAccount (
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("address") String address,
+            @Field("phone_number") String phoneNumber,
+            @Field("encoded_image") String encodedImage
+    );
+
     @GET ("users/")
     Maybe<List<User>> getUsers ();
 

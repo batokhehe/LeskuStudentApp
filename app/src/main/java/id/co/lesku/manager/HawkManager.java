@@ -11,9 +11,11 @@ public class HawkManager {
         Hawk.put(ConfigManager.IS_FIRST_TIME_LAUNCH, isFirstTime);
     }
 
-    public void storeAppUserData(String email, String name, String token, String app_img) {
+    public void storeAppUserData(String email, String name, String address, String phoneNumber, String token, String app_img) {
         Hawk.put(ConfigManager.APP_USER_EMAIL, email);
         Hawk.put(ConfigManager.APP_USER_NAME, name);
+        Hawk.put(ConfigManager.APP_USER_ADDRESS, address);
+        Hawk.put(ConfigManager.APP_USER_PHONENUMBER, phoneNumber);
         Hawk.put(ConfigManager.APP_USER_TOKEN, token);
         Hawk.put(ConfigManager.APP_USER_IMG, app_img);
     }
@@ -39,6 +41,14 @@ public class HawkManager {
 
     public String getAppUserName() {
         return Hawk.get(ConfigManager.APP_USER_NAME, null);
+    }
+
+    public String getAppUserAddress() {
+        return Hawk.get(ConfigManager.APP_USER_ADDRESS, null);
+    }
+
+    public String getAppUserPhoneNumber() {
+        return Hawk.get(ConfigManager.APP_USER_PHONENUMBER, null);
     }
 
     public String getAppUserToken() {

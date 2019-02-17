@@ -184,7 +184,7 @@ public class DetailsOrderFragment extends BaseFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                choosePhotoFromGallary();
+                                choosePhotoFromGallery();
                                 break;
                             case 1:
                                 takePhotoFromCamera();
@@ -195,7 +195,7 @@ public class DetailsOrderFragment extends BaseFragment {
         pictureDialog.show();
     }
 
-    public void choosePhotoFromGallary() {
+    public void choosePhotoFromGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 

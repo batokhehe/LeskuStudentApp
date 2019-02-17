@@ -31,6 +31,7 @@ import id.co.lesku.manager.ConfigManager;
 import id.co.lesku.manager.HawkManager;
 import id.co.lesku.views.activities.auth.LoginActivity;
 import id.co.lesku.views.activities.others.AboutUsActivity;
+import id.co.lesku.views.activities.others.AccountActivity;
 import id.co.lesku.views.activities.others.PrivacyPolicyActivity;
 import id.co.lesku.views.fragments.SettingsFragment;
 import id.co.lesku.views.fragments.main.AccountFragment;
@@ -101,9 +102,9 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         View hView = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        tvUserName = (TextView) hView.findViewById(R.id.tvUserName);
-        tvUserEmail = (TextView) hView.findViewById(R.id.tvUserEmail);
-        ivUserImg = (ImageView) hView.findViewById(R.id.img_profile);
+        tvUserName = (TextView) hView.findViewById(R.id.tv_user_name);
+        tvUserEmail = (TextView) hView.findViewById(R.id.tv_user_email);
+        ivUserImg = (ImageView) hView.findViewById(R.id.iv_profile_image);
         ivHeaderImg = (ImageView) hView.findViewById(R.id.img_header_bg);
 
         // load toolbar titles from string resources
@@ -187,9 +188,9 @@ public class MainActivity extends AppCompatActivity
                 switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.nav_account:
-                        navItemIndex = 0;
-                        CURRENT_TAG = TAG_ACCOUNT;
-                        break;
+                        startActivity(new Intent(MainActivity.this, AccountActivity.class));
+                        drawer.closeDrawers();
+                        return true;
                     case R.id.nav_home:
                         navItemIndex = 1;
                         CURRENT_TAG = TAG_HOME;
@@ -305,7 +306,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         // show or hide the fab button
-        toggleFab();
+//        toggleFab();
 
         //Closing drawer on item click
         drawer.closeDrawers();
@@ -380,14 +381,14 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
 
         // show menu only when home fragment is selected
-        if (navItemIndex == 1) {
-            getMenuInflater().inflate(R.menu.main, menu);
-        }
+//        if (navItemIndex == 1) {
+//            getMenuInflater().inflate(R.menu.main, menu);
+//        }
 
         // when fragment is notifications, load the menu created for notifications
-        if (navItemIndex == 3) {
-            getMenuInflater().inflate(R.menu.notifications, menu);
-        }
+//        if (navItemIndex == 3) {
+//            getMenuInflater().inflate(R.menu.notifications, menu);
+//        }
         return true;
     }
 
@@ -396,25 +397,25 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
-            return true;
-        }
-
-        // user is in notifications fragment
-        // and selected 'Mark all as Read'
-        if (id == R.id.action_mark_all_read) {
-            Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
-        }
-
-        // user is in notifications fragment
-        // and selected 'Clear All'
-        if (id == R.id.action_clear_notifications) {
-            Toast.makeText(getApplicationContext(), "Clear all notifications!", Toast.LENGTH_LONG).show();
-        }
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_logout) {
+//            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+//            return true;
+//        }
+//
+//        // user is in notifications fragment
+//        // and selected 'Mark all as Read'
+//        if (id == R.id.action_mark_all_read) {
+//            Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
+//        }
+//
+//        // user is in notifications fragment
+//        // and selected 'Clear All'
+//        if (id == R.id.action_clear_notifications) {
+//            Toast.makeText(getApplicationContext(), "Clear all notifications!", Toast.LENGTH_LONG).show();
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -471,5 +472,17 @@ public class MainActivity extends AppCompatActivity
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Loading profile image
+        Glide.with(this)
+                .asBitmap()
+                .load(decodedString)
+                .apply(new RequestOptions().circleCrop())
+                .thumbnail(0.5f)
+                .into(ivUserImg);
     }
 }

@@ -29,6 +29,8 @@ public interface DataManagerType
 
     Maybe<JsonObject> register(String fname, String lname, String email, int studylevelid, String parentname, String schoolname, String address, String phone_number, String password, String cpassword);
 
+    Maybe<JsonObject> updateAccount(String name, String email, String address, String phoneNumber, String encodedImage);
+
     void logout();
 
     Maybe<JsonObject> forgotPassword (String id);

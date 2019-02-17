@@ -124,6 +124,9 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
             if(position != RecyclerView.NO_POSITION) {
 //                String date = tvDate.getText().toString();
                 String selectedSubject = subject.get(position);
+                if(selectedSubject.isEmpty()){
+                    selectedSubject = listSubjectSpinner.get(0);
+                }
                 int selectedSubjectId = subjectId.get(position);
 
                 Intent intent = new Intent(mContext, TeacherOrderActivity.class);
@@ -172,7 +175,7 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
         this.maxOrder = maxOrder;
         for (int i=0; i<maxOrder;i++){
             subject.add(i, "");
-            subjectId.add(i, 0);
+            subjectId.add(i, 1);
             schedule.add(i, "");
         }
     }
