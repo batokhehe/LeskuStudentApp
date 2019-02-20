@@ -28,6 +28,12 @@ public class DetailsOrder {
     @SerializedName("study_start_at")
     @Expose
     private String studyStartAt;
+    @SerializedName("teacher_age")
+    @Expose
+    private String teacherAge;
+    @SerializedName("status")
+    @Expose
+    private int status;
 
     public int getId() {
         return id;
@@ -77,6 +83,14 @@ public class DetailsOrder {
         this.teacherName = teacherName;
     }
 
+    public String getTeacherAge() {
+        return teacherAge;
+    }
+
+    public void setTeacherAge(String teacherAge) {
+        this.teacherAge = teacherAge;
+    }
+
     public String getTeacherImage() {
         return teacherImage;
     }
@@ -91,5 +105,13 @@ public class DetailsOrder {
 
     public void setStudyStartAt(String studyStartAt) {
         this.studyStartAt = studyStartAt;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -36,8 +36,8 @@ import id.co.lesku.views.activities.others.PrivacyPolicyActivity;
 import id.co.lesku.views.fragments.SettingsFragment;
 import id.co.lesku.views.fragments.main.AccountFragment;
 import id.co.lesku.views.fragments.main.HomeFragment;
-import id.co.lesku.views.fragments.main.NotificationsFragment;
 import id.co.lesku.views.fragments.order.OrderFragment;
+import id.co.lesku.views.fragments.schedule.ScheduleFragment;
 import id.co.lesku.views.fragments.transaction.OrderClassFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private NavigationView navigationView;
-    private String userName, userEmail, userImg;
+    private String userName, userEmail, userImg, userBalance;
     private ImageView ivUserImg, ivHeaderImg;
-    private TextView tvUserName, tvUserEmail;
+    private TextView tvUserName, tvUserEmail, tvUserBalance;
     private byte[] decodedString;
     HawkManager hawkManager;
     private DrawerLayout drawer;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG_HOME = "home";
     private static final String TAG_ACCOUNT = "account";
     private static final String TAG_ORDER = "order";
-    private static final String TAG_NOTIFICATIONS = "notifications";
+    private static final String TAG_SCHEDULE = "schedule";
     private static final String TAG_SETTINGS = "settings";
     public static String CURRENT_TAG = TAG_HOME;
 
@@ -76,10 +76,12 @@ public class MainActivity extends AppCompatActivity
     private Handler mHandler;
 
     public static Context contextOfApplication;
+    private Bundle savedInstanceState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.savedInstanceState = savedInstanceState; 
 
         contextOfApplication = getApplicationContext();
 
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity
         hawkManager = new HawkManager();
         userName = hawkManager.getAppUserName();
         userEmail = hawkManager.getAppUserEmail();
+        userBalance = hawkManager.getAppUserBalance();
         userImg = hawkManager.getAppUserImg();
 
         decodedString = Base64.decode(userImg, Base64.DEFAULT);
@@ -104,6 +107,7 @@ public class MainActivity extends AppCompatActivity
         View hView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         tvUserName = (TextView) hView.findViewById(R.id.tv_user_name);
         tvUserEmail = (TextView) hView.findViewById(R.id.tv_user_email);
+        tvUserBalance = (TextView) hView.findViewById(R.id.tv_user_balance);
         ivUserImg = (ImageView) hView.findViewById(R.id.iv_profile_image);
         ivHeaderImg = (ImageView) hView.findViewById(R.id.img_header_bg);
 
@@ -157,6 +161,7 @@ public class MainActivity extends AppCompatActivity
         // name, website
         tvUserName.setText(userName);
         tvUserEmail.setText(userEmail);
+        tvUserBalance.setText(userBalance);
 
         // loading header background image
         Glide.with(this).load(urlNavHeaderBg)
@@ -199,13 +204,9 @@ public class MainActivity extends AppCompatActivity
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_ORDER;
                         break;
-                    case R.id.nav_notifications:
+                    case R.id.nav_schedule:
                         navItemIndex = 3;
-                        CURRENT_TAG = TAG_NOTIFICATIONS;
-                        break;
-                    case R.id.nav_settings:
-                        navItemIndex = 4;
-                        CURRENT_TAG = TAG_SETTINGS;
+                        CURRENT_TAG = TAG_SCHEDULE;
                         break;
                     case R.id.nav_about_us:
                         // launch new intent instead of loading fragment
@@ -331,8 +332,8 @@ public class MainActivity extends AppCompatActivity
                 return orderFragment;
             case 3:
                 // notifications fragment
-                NotificationsFragment notificationsFragment = new NotificationsFragment();
-                return notificationsFragment;
+                ScheduleFragment scheduleFragment = new ScheduleFragment();
+                return scheduleFragment;
 
             case 4:
                 // settings fragment
@@ -434,9 +435,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_order) {
 
-        } else if (id == R.id.nav_notifications) {
-
-        } else if (id == R.id.nav_settings) {
+        } else if (id == R.id.nav_schedule) {
 
         } else if (id == R.id.nav_about_us) {
 
@@ -477,6 +476,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+        Toast.makeText(contextOfApplication, "Activity Resumed", Toast.LENGTH_SHORT).show();
         // Loading profile image
         Glide.with(this)
                 .asBitmap()

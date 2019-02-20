@@ -20,8 +20,8 @@ public class UnpaidOrderStorage implements RAGEContract<UnpaidOrder, Integer>, C
 
     @Override
     public Maybe<List<UnpaidOrder>> getList() {
-        List<UnpaidOrder> teacherOrder = isCacheValid() ? Hawk.get(K.UNPAID_ORDER_LIST, new ArrayList<UnpaidOrder>()) : null;
-        return teacherOrder == null ? Maybe.<List<UnpaidOrder>>empty() : Maybe.just(teacherOrder).subscribeOn(Schedulers.io());
+        List<UnpaidOrder> unpaidOrders = isCacheValid() ? Hawk.get(K.UNPAID_ORDER_LIST, new ArrayList<UnpaidOrder>()) : null;
+        return unpaidOrders == null ? Maybe.<List<UnpaidOrder>>empty() : Maybe.just(unpaidOrders).subscribeOn(Schedulers.io());
     }
 
     @Override

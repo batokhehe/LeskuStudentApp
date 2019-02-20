@@ -5,6 +5,12 @@ public interface TeacherOrderViewModelOutputs {
 
     String getName();
 
+    String getAge();
+
+    String getGraduated();
+
+    String getMajor();
+
     String getAddress();
 
     String getImage();

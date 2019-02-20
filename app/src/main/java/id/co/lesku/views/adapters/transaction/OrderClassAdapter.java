@@ -104,7 +104,7 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int itemposition, long id) {
                     position = getAdapterPosition();
-                    String selectedSchedule= parent.getItemAtPosition(position).toString();
+                    String selectedSchedule= parent.getItemAtPosition(itemposition).toString();
 //                    schedule.set(position, selectedSchedule);
                     OrderClass orderClass = mOrderClass.get(position);
                     orderClass.setSelectedSchedule(selectedSchedule);

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -21,11 +22,13 @@ public class DetailsOrderAdapter extends RecyclerView.Adapter<DetailsOrderAdapte
     private List<DetailsOrder> mDetailsOrder;
     private String TAG = "DetailsOrderListAdapter";
     private Context context;
+    private String orderStatus;
 
-    public DetailsOrderAdapter(List<DetailsOrder> products, Context ctx)
+    public DetailsOrderAdapter(List<DetailsOrder> products, Context ctx, String status)
     {
         mDetailsOrder = products;
         context = ctx;
+        orderStatus = status;
     }
 
     @NonNull
@@ -53,6 +56,12 @@ public class DetailsOrderAdapter extends RecyclerView.Adapter<DetailsOrderAdapte
     public class ListViewHolder extends RecyclerView.ViewHolder {
         public ListViewHolder(View itemView) {
             super(itemView);
+            TextView status = (TextView) itemView.findViewById(R.id.tv_detail_order_status);
+            if(orderStatus.equals("0")){
+                status.setVisibility(View.GONE);
+            } else {
+                status.setVisibility(View.VISIBLE);
+            }
         }
 
         void setBinding (RvItemDetailsOrderBinding binding)

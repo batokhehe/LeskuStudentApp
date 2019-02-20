@@ -39,9 +39,15 @@ public class TeacherOrder {
     @SerializedName("image")
     @Expose
     private String image;
-    @SerializedName("img")
+    @SerializedName("age")
     @Expose
-    private String img;
+    private String age;
+    @SerializedName("graduated")
+    @Expose
+    private String graduated;
+    @SerializedName("major")
+    @Expose
+    private String major;
     @SerializedName("schedule")
     @Expose
     private List<String> schedule = null;
@@ -141,6 +147,30 @@ public class TeacherOrder {
 
     public void setSchedule(List<String> schedule) {
         this.schedule = schedule;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getGraduated() {
+        return graduated;
+    }
+
+    public void setGraduated(String graduated) {
+        this.graduated = graduated;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
     }
 
 }

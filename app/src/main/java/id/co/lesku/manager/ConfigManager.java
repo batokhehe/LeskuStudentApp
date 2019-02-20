@@ -2,8 +2,8 @@ package id.co.lesku.manager;
 
 public class ConfigManager {
     //BASE URL
-//    public static final String BASE_URL = "http://192.168.1.5:8000/api/";
-//    public static final String BASE_URL_IMAGE = "http://192.168.1.5:8000/img/";
+//    public static final String BASE_URL = "http://192.168.1.6:8000/api/";
+//    public static final String BASE_URL_IMAGE = "http://192.168.1.6:8000/img/";
     public static final String BASE_URL = "http://192.168.43.54:8000/api/";
     public static final String BASE_URL_IMAGE = "http://192.168.43.54:8000/img/";
 
@@ -24,6 +24,7 @@ public class ConfigManager {
     //User Data
     public static final String APP_USER_EMAIL = "appUserEmail";
     public static final String APP_USER_NAME = "appUserName";
+    public static final String APP_USER_BALANCE = "appUserBalance";
     public static final String APP_USER_ADDRESS = "appUserAddress";
     public static final String APP_USER_PHONENUMBER = "appUserPhoneNumber";
     public static final String APP_USER_TOKEN = "appUserToken";

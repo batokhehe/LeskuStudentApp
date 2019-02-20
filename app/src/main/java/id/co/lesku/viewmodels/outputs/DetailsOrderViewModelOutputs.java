@@ -9,7 +9,13 @@ public interface DetailsOrderViewModelOutputs {
 
     String getTeacherName();
 
+    String getTeacherAge();
+
     String getTeacherImage();
 
     String getStudyStartAt();
+
+    int getStatus();
+
+    String getStatusMessage();
 }

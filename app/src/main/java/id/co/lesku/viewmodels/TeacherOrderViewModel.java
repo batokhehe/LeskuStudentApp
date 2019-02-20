@@ -33,6 +33,24 @@ public class TeacherOrderViewModel extends BaseViewModel implements TeacherOrder
     }
 
     @Override
+    public String getAge()
+    {
+        return String.valueOf(mTeacherOrder.getAge());
+    }
+
+    @Override
+    public String getGraduated ()
+    {
+        return String.valueOf(mTeacherOrder.getGraduated());
+    }
+
+    @Override
+    public String getMajor ()
+    {
+        return String.valueOf(mTeacherOrder.getMajor());
+    }
+
+    @Override
     public String getAddress ()
     {
         return String.valueOf(mTeacherOrder.getAddress());

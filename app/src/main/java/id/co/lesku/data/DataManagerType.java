@@ -5,12 +5,15 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.PaidOrder;
 import id.co.lesku.model.Product;
 import id.co.lesku.model.StudyLevel;
 import id.co.lesku.model.Subject;
 import id.co.lesku.model.TeacherOrder;
 import id.co.lesku.model.UnpaidOrder;
+import id.co.lesku.model.UpcomingSchedule;
 import id.co.lesku.model.User;
+import id.co.lesku.model.WaitingOrder;
 import io.reactivex.Maybe;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -55,10 +58,23 @@ public interface DataManagerType
     //UNPAID ORDER
     Maybe<List<UnpaidOrder>> getUnpaidOrderList();
 
+    //WAITING ORDER
+    Maybe<List<WaitingOrder>> getWaitingOrderList();
+
+    //PAID ORDER
+    Maybe<List<PaidOrder>> getPaidOrderList();
+
     //ORDER DETAILS
     Maybe<List<DetailsOrder>> getDetailsOrderList(String studyClassId);
 
     Maybe<JsonObject> getTeacherBlankScheduleList(String teacherId);
 
     Maybe<JsonObject> uploadTrfFile(String id, String trfFile);
+
+    //UPCOMING SCHEDULE
+    Maybe<List<UpcomingSchedule>> getUpcomingScheduleList();
+
+    Maybe<JsonObject> confirmSchedule(int id);
+
+    Maybe<JsonObject> reSchedule(int id);
 }

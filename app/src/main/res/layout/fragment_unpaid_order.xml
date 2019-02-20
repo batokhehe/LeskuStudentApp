@@ -6,24 +6,25 @@
             type="id.co.lesku.viewmodels.UnpaidOrderListViewModel"/>
     </data>
 
-    <id.co.flipbox.sosoito.LoadingLayout
+    <android.support.v4.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ll_unpaid_list"
+        android:id="@+id/swipe_unpaid_order"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <id.co.flipbox.sosoito.LoadingLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/swipeUnpaidOrder"
+            android:id="@+id/ll_unpaid_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvUnpaidOrder"
+                android:id="@+id/rv_unpaid_order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </id.co.flipbox.sosoito.LoadingLayout>
 
-    </id.co.flipbox.sosoito.LoadingLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </layout>

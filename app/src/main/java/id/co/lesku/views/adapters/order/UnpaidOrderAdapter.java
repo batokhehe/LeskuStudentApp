@@ -50,9 +50,8 @@ public class UnpaidOrderAdapter extends RecyclerView.Adapter<UnpaidOrderAdapter.
     }
 
     @Override
-    public int getItemViewType(int position)
-    {
-        return position;
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
@@ -64,6 +63,8 @@ public class UnpaidOrderAdapter extends RecyclerView.Adapter<UnpaidOrderAdapter.
                     int position = getAdapterPosition();
                     if (listener != null && position != RecyclerView.NO_POSITION){
                         listener.onItemClick(mUnpaidOrder.get(position));
+                    } else {
+                        //do nothing
                     }
                 }
             });

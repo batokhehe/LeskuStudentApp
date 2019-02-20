@@ -185,6 +185,7 @@ public class LoginFragment extends BaseFragment
                            String tempFName = obj.get("first_name").getAsString();
                            String tempLName = obj.get("last_name").getAsString();
                            user.setFirstName(tempFName + ' ' + tempLName);
+                           user.setBalance(obj.get("balance").getAsString());
                            user.setEmail(obj.get("email").getAsString());
                            user.setAddress(obj.get("address").getAsString());
                            user.setPhoneNumber(obj.get("phone_number").getAsString());
@@ -194,6 +195,7 @@ public class LoginFragment extends BaseFragment
                            hawkManager.storeAppUserData(
                                    user.getEmail(),
                                    user.getFirstName(),
+                                   user.getBalance(),
                                    user.getAddress(),
                                    user.getPhoneNumber(),
                                    user.getToken(),

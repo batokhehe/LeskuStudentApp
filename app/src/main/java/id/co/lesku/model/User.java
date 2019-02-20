@@ -12,6 +12,9 @@ public class User
     @SerializedName("last_name")
     @Expose
     private String lastName;
+    @SerializedName("balance")
+    @Expose
+    private String balance;
     @SerializedName("email")
     @Expose
     private String email;
@@ -42,6 +45,14 @@ public class User
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
     }
 
     public String getEmail() {

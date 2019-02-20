@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.orhanobut.hawk.Hawk;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,9 @@ import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.databinding.FragmentHomeBinding;
 import id.co.lesku.model.Product;
+import id.co.lesku.model.Subject;
 import id.co.lesku.utils.RetrofitErrorAdapter;
+import id.co.lesku.utils.constants.K;
 import id.co.lesku.viewmodels.ProductListViewModel;
 import id.co.lesku.views.adapters.product.ProductAdapter;
 import id.co.lesku.views.fragments.BaseFragment;
@@ -29,6 +33,7 @@ import io.reactivex.functions.Consumer;
 public class HomeFragment extends BaseFragment {
     FragmentHomeBinding mBinding;
     List<Product>       mProduct;
+    List<Subject>       mSubject;
     private OnFragmentInteractionListener mListener;
     ProductAdapter adapter;
 
@@ -36,6 +41,7 @@ public class HomeFragment extends BaseFragment {
         // Required empty public constructor
         setArguments(new Bundle());
         mProduct = new ArrayList<>();
+        mSubject = new ArrayList<>();
     }
 
     @Override
@@ -92,6 +98,27 @@ public class HomeFragment extends BaseFragment {
                         mBinding.llHomeList.showLoading(false);
                     }
                 });
+
+        if(Hawk.get(K.SUBJECT_LIST) == null){
+            DataManager.can().getSubject().observeOn(AndroidSchedulers.mainThread())
+                    .defaultIfEmpty(new ArrayList<Subject>())
+                    .subscribe(new Consumer<List<Subject>>()
+                    {
+                        @Override
+                        public void accept (List<Subject> subjects) throws Exception
+                        {
+                            if (mSubject != null) { mSubject.clear(); }
+                            mSubject.addAll(subjects);
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept (Throwable throwable) throws Exception
+                        {
+                            RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
+                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
 
         adapter.setOnClickListener(new ProductAdapter.OnItemClickListener() {
             @Override

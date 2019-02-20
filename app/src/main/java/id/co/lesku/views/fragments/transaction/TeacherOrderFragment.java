@@ -73,7 +73,7 @@ public class TeacherOrderFragment extends BaseFragment {
         position = getArguments().getInt("position");
         selectedSchedule = getArguments().getString("selectedSchedule");
 
-        Toast.makeText(getContext(), "Subject : " + subject + " Subject ID : " + subjectId + " Position : " + position + " Schedule : " + selectedSchedule, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "Subject : " + subject + " Subject ID : " + subjectId + " Position : " + position + " Schedule : " + selectedSchedule, Toast.LENGTH_SHORT).show();
 
         mBinding.llTeacherOrder.showLoading(true, "Loading Teacher List...");
 

@@ -37,9 +37,13 @@
     <!-- B -->
     <!-- C -->
     <string name="choose_teacher_order">Choose Your Teacher</string>
+    <string name="choose_teacher">Pilih Guru</string>
+    <string name="choose_subject">Pilih Mata Pelajaran</string>
+    <string name="choose_schedule">Pilih Jadwal</string>
     <string name="class_time">Waktu Les</string>
     <string name="closeDrawer">close_drawer</string>
     <string name="cpassword">Confirm Password</string>
+    <string name="confirm">Confirm</string>
     <!-- D -->
     <string name="default_notification_channel_name" translatable="true">News</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
@@ -111,7 +115,9 @@
     <string name="register">Register</string>
     <string name="remove_order">Remove Order</string>
     <string name="reset_password_instruction">We will send a link to your email for your reset password action.</string>
+    <string name="reschedule">Reschedule</string>
     <!-- S -->
+    <string name="schedule">Jadwal</string>
     <string name="school_name">School Name</string>
     <string name="school_name_hint">Your School Name</string>
     <string name="search">Search</string>
@@ -120,6 +126,7 @@
     <string name="sign_in">Sign In</string>
     <string name="study_level">Study Level</string>
     <string name="study_level_hint">Select Study Level</string>
+    <string name="subject">Mata Pelajaran</string>
     <!-- T -->
     <string name="title_activity_main">MainActivity</string>
     <!-- U -->

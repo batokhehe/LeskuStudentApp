@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="180dp"
             android:orientation="horizontal"
             android:padding="5dip"
             android:weightSum="1">
@@ -26,16 +26,34 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/detailsOrderName"
+                    android:id="@+id/tv_detail_order_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@{detailsOrder.subjectName}" />
 
+                <View
+                    style="@style/Divider"
+                    android:layout_margin="5dp"/>
+
                 <TextView
-                    android:id="@+id/detailsOrderStudyStartAt"
+                    android:id="@+id/tv_detail_order_study_start_at"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@{detailsOrder.studyStartAt}"
+                    android:paddingLeft="5dip"/>
+
+                <TextView
+                    android:id="@+id/tv_detail_order_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@{detailsOrder.status == 0 || detailsOrder.status == 3 ? @color/red : @color/green}"
+                    android:text="@{detailsOrder.statusMessage}"
                     android:paddingLeft="5dip"/>
 
             </LinearLayout>
@@ -44,12 +62,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/detailsOrderImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="130dp"
                     android:scaleType="fitXY"
                     app:imageTeacherUrl="@{detailsOrder.teacherImage}"/>
 
@@ -57,7 +76,9 @@
                     android:id="@+id/detailsOrderTeacherName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{detailsOrder.teacherName}"/>
+                    android:gravity="center_horizontal"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@{detailsOrder.teacherName + `, ` + detailsOrder.teacherAge + `th`}"/>
 
             </LinearLayout>
 

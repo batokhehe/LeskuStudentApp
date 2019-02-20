@@ -25,25 +25,64 @@
                 android:layout_weight="0.6"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/teacherOrderName"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/activity_horizontal_margin"
-                    android:layout_alignParentLeft="true"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@{teacherOrder.name}" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/teacherOrderName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_horizontal_margin"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@{teacherOrder.name}" />
+
+                    <TextView
+                        android:id="@+id/teacherOrderAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@{`, ` + teacherOrder.age + `th`}" />
+
+                </LinearLayout>
 
                 <View
                     style="@style/Divider"
-                    android:layout_margin="@dimen/activity_horizontal_margin"/>
+                    android:layout_margin="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/teacherOrderGraduate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_horizontal_margin"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@{teacherOrder.graduated}" />
+
+                    <TextView
+                        android:id="@+id/teacherOrderMajor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@{` - ` + teacherOrder.major}" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/teacherOrderAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/activity_horizontal_margin"
+                    android:padding="8dp"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@{teacherOrder.address}"/>
 
@@ -57,7 +96,7 @@
                 <ImageView
                     android:id="@+id/teacherOrderImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:scaleType="fitXY"
                     app:imageTeacherUrl="@{teacherOrder.image}"/>
 

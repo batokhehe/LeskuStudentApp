@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
         android:elevation="2dp"
-        android:background="@drawable/shape_rect"
+        android:background="@drawable/shape_rect_rv_item"
         android:foreground="?attr/selectableItemBackground">
 
         <LinearLayout

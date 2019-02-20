@@ -41,6 +41,11 @@ public class DetailsOrderViewModel extends BaseViewModel implements DetailsOrder
     }
 
     @Override
+    public String getTeacherAge() {
+        return String.valueOf(mDetailsOrder.getTeacherAge());
+    }
+
+    @Override
     public String getTeacherImage() {
         return String.valueOf(mDetailsOrder.getTeacherImage());
     }
@@ -48,5 +53,26 @@ public class DetailsOrderViewModel extends BaseViewModel implements DetailsOrder
     @Override
     public String getStudyStartAt() {
         return String.valueOf(mDetailsOrder.getStudyStartAt());
+    }
+
+    @Override
+    public int getStatus() {
+        return mDetailsOrder.getStatus();
+    }
+
+    @Override
+    public String getStatusMessage() {
+        String message = "";
+        String status = String.valueOf(mDetailsOrder.getStatus());
+        if(status.equals("0")){
+            message = "Belum Disetujui";
+        } else if (status.equals("1")){
+            message = "Sudah Disetujui";
+        } else if (status.equals("3")){
+            message = "Belum Dimulai";
+        } else {
+            message = "Sudah Selesai";
+        }
+        return message;
     }
 }

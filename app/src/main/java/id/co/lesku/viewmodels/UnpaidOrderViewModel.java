@@ -60,7 +60,7 @@ public class UnpaidOrderViewModel extends BaseViewModel implements UnpaidOrderVi
         String messages = "";
         if(mUnpaidOrder.getStatus() == 0) {
             messages = "Bukti Transfer Belum di Upload.";
-        } else if(mUnpaidOrder.getStatus() == 1) {
+        } else {
             messages = "Bukti Transfer Sudah di Upload, Menunggu Verifikasi";
         }
         return messages;

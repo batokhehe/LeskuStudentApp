@@ -5,12 +5,15 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.PaidOrder;
 import id.co.lesku.model.Product;
 import id.co.lesku.model.StudyLevel;
 import id.co.lesku.model.Subject;
 import id.co.lesku.model.TeacherOrder;
 import id.co.lesku.model.UnpaidOrder;
+import id.co.lesku.model.UpcomingSchedule;
 import id.co.lesku.model.User;
+import id.co.lesku.model.WaitingOrder;
 import io.reactivex.Maybe;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -87,7 +90,7 @@ public interface LeskuAPIService
     @GET ("products/")
     Maybe<List<Product>> getProducts ();
 
-    //OrderClass
+    //Order
     @GET ("order/teachers")
     Maybe<List<TeacherOrder>> getTeachersOrder ();
 
@@ -96,6 +99,12 @@ public interface LeskuAPIService
 
     @GET ("order/unpaid")
     Maybe<List<UnpaidOrder>> getUnpaidOrderList ();
+
+    @GET ("order/waiting")
+    Maybe<List<WaitingOrder>> getWaitingOrderList ();
+
+    @GET ("order/paid")
+    Maybe<List<PaidOrder>> getPaidOrderList ();
 
     @FormUrlEncoded
     @POST ("order/detail")
@@ -114,5 +123,21 @@ public interface LeskuAPIService
     Maybe<JsonObject> uploadTrfFile (
             @Field("id") String id,
             @Field("trf_file") String trfFile
+    );
+
+    //Schedule
+    @GET ("schedule/upcoming")
+    Maybe<List<UpcomingSchedule>> getUpcomingScheduleList ();
+
+    @FormUrlEncoded
+    @POST ("schedule/confirm_schedule")
+    Maybe<JsonObject> confirmSchedule (
+            @Field("id") int id
+    );
+
+    @FormUrlEncoded
+    @POST ("schedule/reschedule")
+    Maybe<JsonObject> reSchedule (
+            @Field("id") int id
     );
 }

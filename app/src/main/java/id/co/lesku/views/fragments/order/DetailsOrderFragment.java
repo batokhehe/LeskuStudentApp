@@ -87,7 +87,11 @@ public class DetailsOrderFragment extends BaseFragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_details_order, container, false);
         mBinding.setTeacherOrders(new DetailsOrderListViewModel());
 
-        adapter = new DetailsOrderAdapter(mDetailsOrder, getContext());
+        id = getArguments().getString("id");
+        status = getArguments().getString("status");
+        position = getArguments().getInt("position");
+
+        adapter = new DetailsOrderAdapter(mDetailsOrder, getContext(), status);
 
         mBinding.rvDetailsOrder.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.rvDetailsOrder.setAdapter(adapter);
@@ -95,13 +99,10 @@ public class DetailsOrderFragment extends BaseFragment {
         btnUploadTrfFile = mBinding.btnUploadTrfFile;
         tvUploadTrfFile = mBinding.tvUploadTrfFile;
 
-        id = getArguments().getString("id");
-        status = getArguments().getString("status");
-        position = getArguments().getInt("position");
-
-//        Toast.makeText(getContext(), "" + status, Toast.LENGTH_SHORT).show();
-
-        if(status.equals("1")){
+        if(status.equals("2") || status.equals("3")) {
+            btnUploadTrfFile.setVisibility(View.GONE);
+            tvUploadTrfFile.setVisibility(View.GONE);
+        } else if(status.equals("1")){
             btnUploadTrfFile.setVisibility(View.GONE);
             tvUploadTrfFile.setVisibility(View.VISIBLE);
         } else {

@@ -106,10 +106,12 @@ public class AccountActivity extends AppCompatActivity {
                                 user.setPhoneNumber(phoneNumber);
                                 user.setAppImg(encodedImage);
                                 user.setToken(String.valueOf(hawkManager.getAppUserToken()));
+                                user.setBalance(String.valueOf(hawkManager.getAppUserBalance()));
 
                                 hawkManager.storeAppUserData(
                                         user.getEmail(),
                                         user.getFirstName(),
+                                        user.getBalance(),
                                         user.getAddress(),
                                         user.getPhoneNumber(),
                                         user.getToken(),

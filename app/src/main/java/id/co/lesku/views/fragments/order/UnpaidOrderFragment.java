@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,9 +96,6 @@ public class UnpaidOrderFragment extends BaseFragment implements SwipeRefreshLay
         mBinding.swipeUnpaidOrder.post(new Runnable() {
             @Override
             public void run() {
-
-                mBinding.swipeUnpaidOrder.setRefreshing(true);
-
                 // Fetching data from server
                 loadRecyclerViewData();
             }
@@ -117,7 +116,12 @@ public class UnpaidOrderFragment extends BaseFragment implements SwipeRefreshLay
 
     @Override
     public void onRefresh() {
-        loadRecyclerViewData();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                loadRecyclerViewData();
+            }
+        });
     }
 
     public interface OnFragmentInteractionListener {
@@ -136,12 +140,17 @@ public class UnpaidOrderFragment extends BaseFragment implements SwipeRefreshLay
                     @Override
                     public void accept (List<UnpaidOrder> unpaidOrders) throws Exception
                     {
-                        if (mUnpaidOrder != null) { mUnpaidOrder.clear(); }
+                        mUnpaidOrder.clear();
                         mUnpaidOrder.addAll(unpaidOrders);
+                        for (UnpaidOrder anArray : mUnpaidOrder) {
+                            Log.d("Unpaid", "ID: " + anArray.getId() + " Product : " + anArray.getProductName() + " Status : " + anArray.getStatus() + " Created At : " + anArray.getCreatedAt());
+                        }
                         mBinding.rvUnpaidOrder.getAdapter().notifyDataSetChanged();
                         if (mUnpaidOrder.size() == 0)
                         {
                             mBinding.llUnpaidList.showEmptyView(true);
+                        } else {
+                            mBinding.llUnpaidList.showEmptyView(false);
                         }
                         mBinding.swipeUnpaidOrder.setRefreshing(false);
                     }
