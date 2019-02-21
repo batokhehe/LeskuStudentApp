@@ -33,7 +33,7 @@ import id.co.lesku.views.activities.auth.LoginActivity;
 import id.co.lesku.views.activities.others.AboutUsActivity;
 import id.co.lesku.views.activities.others.AccountActivity;
 import id.co.lesku.views.activities.others.PrivacyPolicyActivity;
-import id.co.lesku.views.fragments.SettingsFragment;
+import id.co.lesku.views.fragments.history.HistoryFragment;
 import id.co.lesku.views.fragments.main.AccountFragment;
 import id.co.lesku.views.fragments.main.HomeFragment;
 import id.co.lesku.views.fragments.order.OrderFragment;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG_ACCOUNT = "account";
     private static final String TAG_ORDER = "order";
     private static final String TAG_SCHEDULE = "schedule";
-    private static final String TAG_SETTINGS = "settings";
+    private static final String TAG_HISTORY = "history";
     public static String CURRENT_TAG = TAG_HOME;
 
     // toolbar titles respected to selected nav menu item
@@ -208,6 +208,10 @@ public class MainActivity extends AppCompatActivity
                         navItemIndex = 3;
                         CURRENT_TAG = TAG_SCHEDULE;
                         break;
+                    case R.id.nav_history:
+                        navItemIndex = 4;
+                        CURRENT_TAG = TAG_HISTORY;
+                        break;
                     case R.id.nav_about_us:
                         // launch new intent instead of loading fragment
                         startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
@@ -331,14 +335,13 @@ public class MainActivity extends AppCompatActivity
                 OrderFragment orderFragment = new OrderFragment();
                 return orderFragment;
             case 3:
-                // notifications fragment
+                // schedule fragment
                 ScheduleFragment scheduleFragment = new ScheduleFragment();
                 return scheduleFragment;
-
             case 4:
-                // settings fragment
-                SettingsFragment settingsFragment = new SettingsFragment();
-                return settingsFragment;
+                // history fragment
+                HistoryFragment historyFragment = new HistoryFragment();
+                return historyFragment;
             default:
                 HomeFragment homeFragmentDefault = new HomeFragment();
                 return homeFragmentDefault;

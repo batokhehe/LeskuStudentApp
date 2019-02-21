@@ -68,10 +68,10 @@ public class DetailsOrderViewModel extends BaseViewModel implements DetailsOrder
             message = "Belum Disetujui";
         } else if (status.equals("1")){
             message = "Sudah Disetujui";
-        } else if (status.equals("3")){
-            message = "Belum Dimulai";
-        } else {
+        } else if (status.equals("9")){
             message = "Sudah Selesai";
+        } else {
+            message = "Belum Dimulai";
         }
         return message;
     }

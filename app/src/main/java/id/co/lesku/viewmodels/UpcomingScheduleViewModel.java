@@ -59,4 +59,23 @@ public class UpcomingScheduleViewModel extends BaseViewModel implements Upcoming
     public String getStudyStartAt() {
         return "Tanggal Pertemuan : " + String.valueOf(mUpcomingSchedule.getStudyStartAt());
     }
+
+    @Override
+    public int getStudentStatus() {
+        return mUpcomingSchedule.getStudentStatus();
+    }
+
+    @Override
+    public String getStatusText() {
+        int status = mUpcomingSchedule.getStudentStatus();
+        String message = "";
+        if(status == 4){
+            message = "Pertemuan telah dikonformasi";
+        } else if (status == 5){
+            message = "Menunggu Persetujan Reschedule";
+        } else if (status == 6){
+            message = "Reschedule";
+        }
+        return message;
+    }
 }

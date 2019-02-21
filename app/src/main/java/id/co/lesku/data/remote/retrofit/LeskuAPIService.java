@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.History;
 import id.co.lesku.model.PaidOrder;
 import id.co.lesku.model.Product;
 import id.co.lesku.model.StudyLevel;
@@ -139,5 +140,17 @@ public interface LeskuAPIService
     @POST ("schedule/reschedule")
     Maybe<JsonObject> reSchedule (
             @Field("id") int id
+    );
+
+    //History
+    @GET ("history")
+    Maybe<List<History>> getHistoryList ();
+
+    @FormUrlEncoded
+    @POST ("history/rating")
+    Maybe<JsonObject> rating (
+            @Field("id") int id,
+            @Field("rating") float rating,
+            @Field("comment") String comment
     );
 }

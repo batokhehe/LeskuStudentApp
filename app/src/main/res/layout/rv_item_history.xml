@@ -3,8 +3,8 @@
     <data>
         <import type="android.view.View" />
         <variable
-            name="upcomingSchedule"
-            type="id.co.lesku.viewmodels.UpcomingScheduleViewModel"/>
+            name="history"
+            type="id.co.lesku.viewmodels.HistoryViewModel"/>
     </data>
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -15,11 +15,11 @@
         android:foreground="?attr/selectableItemBackground">
 
         <TextView
-            android:id="@+id/upcomingScheduleId"
+            android:id="@+id/historyId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="@{upcomingSchedule.id}" />
+            android:text="@{history.id}" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,21 +40,21 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/upcomingScheduleSubjectName"
+                        android:id="@+id/historySubjectName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:textStyle="bold"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@{upcomingSchedule.subjectName}" />
+                        android:text="@{history.subjectName}" />
 
                     <TextView
-                        android:id="@+id/upcomingScheduleStudyStartAt"
+                        android:id="@+id/historyStudyStartAt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@{upcomingSchedule.studyStartAt}" />
+                        android:text="@{history.studyStartAt}" />
 
                 </LinearLayout>
 
@@ -65,63 +65,53 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/upcomingScheduleteacherImage"
+                        android:id="@+id/historyteacherImage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:scaleType="fitXY"
-                        app:imageTeacherUrl="@{upcomingSchedule.teacherImage}"/>
+                        app:imageTeacherUrl="@{history.teacherImage}"/>
 
                     <TextView
-                        android:id="@+id/upcomingScheduleteacherName"
+                        android:id="@+id/historyteacherName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@{upcomingSchedule.teacherName}" />
+                        android:text="@{history.teacherName}" />
 
                     <TextView
-                        android:id="@+id/upcomingScheduleteacherAddress"
+                        android:id="@+id/historyteacherAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@{upcomingSchedule.teacherAddress}" />
+                        android:text="@{history.teacherAddress}" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="@{upcomingSchedule.studentStatus == 0 ? View.GONE : View.VISIBLE}"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@{upcomingSchedule.getStatusText}"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:visibility="@{history.studentStatus == 0 ? View.GONE : View.VISIBLE}"-->
+                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                <!--android:text="@{history.getStatusText}"/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
-                android:orientation="horizontal"
-                android:visibility="@{upcomingSchedule.studentStatus == 0 ? View.VISIBLE : View.GONE}">
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_confirm_Schedule"
+                    android:id="@+id/btn_rating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_weight="1"
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:background="@color/green"
-                    android:text="@string/confirm"/>
-
-                <Button
-                    android:id="@+id/btn_reschedule_Schedule"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:background="@color/red"
-                    android:text="@string/reschedule"/>
+                    android:text="@string/rating"/>
 
             </LinearLayout>
 

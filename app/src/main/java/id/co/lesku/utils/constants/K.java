@@ -18,4 +18,6 @@ public class K
     public static String DETAILS_ORDER_LIST      = "DETAILS_ORDER_LIST";
 
     public static String UPCOMING_SCHEDULE_LIST      = "UPCOMING_SCHEDULE_LIST";
+
+    public static String HISTORY_LIST      = "HISTORY_LIST";
 }

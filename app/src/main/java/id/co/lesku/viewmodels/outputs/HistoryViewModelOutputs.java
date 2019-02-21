@@ -1,6 +1,6 @@
 package id.co.lesku.viewmodels.outputs;
 
-public interface UpcomingScheduleViewModelOutputs {
+public interface HistoryViewModelOutputs {
     String getId();
 
     String getStudyClassId();

@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import id.co.lesku.data.local.DetailsOrderStorage;
+import id.co.lesku.data.local.HistoryStorage;
 import id.co.lesku.data.local.PaidOrderStorage;
 import id.co.lesku.data.local.ProductStorage;
 import id.co.lesku.data.local.StudyLevelStorage;
@@ -23,6 +24,7 @@ import id.co.lesku.data.remote.SubjectAPI;
 import id.co.lesku.data.remote.TeacherOrderAPI;
 import id.co.lesku.data.remote.UserAPI;
 import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.History;
 import id.co.lesku.model.PaidOrder;
 import id.co.lesku.model.Product;
 import id.co.lesku.model.StudyLevel;
@@ -70,6 +72,7 @@ public class DataManager implements DataManagerType
     private static StudyLevelStorage sStudyLevelStorage = new StudyLevelStorage();
     private static SubjectStorage sSubjectStorage = new SubjectStorage();
     private static UpcomingScheduleStorage sUpcomingScheduleStorage = new UpcomingScheduleStorage();
+    private static HistoryStorage sHistoryStorage = new HistoryStorage();
 
     //AUTH
 
@@ -277,5 +280,24 @@ public class DataManager implements DataManagerType
     public Maybe<JsonObject> reSchedule(int id)
     {
         return sScheduleAPI.reSchedule(id);
+    }
+
+    @Override
+    public Maybe<List<History>> getHistoryList()
+    {
+        return Maybe.concat(sHistoryStorage.getList(), sScheduleAPI.getHistoryList().doOnSuccess(new Consumer<List<History>>()
+        {
+            @Override
+            public void accept (List<History> histories) throws Exception
+            {
+                sHistoryStorage.addAll(histories);
+            }
+        })).firstElement();
+    }
+
+    @Override
+    public Maybe<JsonObject> rating(int id, float rating, String comment)
+    {
+        return sScheduleAPI.rating(id, rating, comment);
     }
 }

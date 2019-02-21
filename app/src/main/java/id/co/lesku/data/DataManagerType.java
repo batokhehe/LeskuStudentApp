@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import id.co.lesku.model.DetailsOrder;
+import id.co.lesku.model.History;
 import id.co.lesku.model.PaidOrder;
 import id.co.lesku.model.Product;
 import id.co.lesku.model.StudyLevel;
@@ -77,4 +78,8 @@ public interface DataManagerType
     Maybe<JsonObject> confirmSchedule(int id);
 
     Maybe<JsonObject> reSchedule(int id);
+
+    Maybe<List<History>> getHistoryList();
+
+    Maybe<JsonObject> rating(int id, float rating, String comment);
 }
