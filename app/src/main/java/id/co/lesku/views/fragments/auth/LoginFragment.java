@@ -1,5 +1,7 @@
 package id.co.lesku.views.fragments.auth;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -23,7 +25,7 @@ import id.co.lesku.manager.HawkManager;
 import id.co.lesku.model.User;
 import id.co.lesku.utils.RetrofitErrorAdapter;
 import id.co.lesku.utils.constants.S;
-import id.co.lesku.views.activities.MainActivity;
+import id.co.lesku.views.activities.others.SplashActivity;
 import id.co.lesku.views.fragments.BaseFragment;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -209,11 +211,13 @@ public class LoginFragment extends BaseFragment
 
 
                            if(hawkManager.getAppUserToken() != null){
-//                               mApp.updateService();
-//                               Toast.makeText(getContext(), "Token : " + prefManager.getAppUserToken(), Toast.LENGTH_SHORT).show();
-                               mApp.onLoggedIn(getContext());
-                               Intent intent = new Intent(getContext(), MainActivity.class);
-                               startActivity(intent);
+                               Intent mStartActivity = new Intent(getContext(), SplashActivity.class);
+                               int mPendingIntentId = 123456;
+                               PendingIntent mPendingIntent = PendingIntent.getActivity(getContext(), mPendingIntentId, mStartActivity,
+                                       PendingIntent.FLAG_CANCEL_CURRENT);
+                               AlarmManager mgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+                               mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                               System.exit(0);
                                getActivity().finish();
                            }
 

@@ -18,6 +18,6 @@ public class BindingAdapter {
     @android.databinding.BindingAdapter("imageProductUrl")
     public static void setImageProductUrl(ImageView imageView, String url) {
         Context context = imageView.getContext();
-        Glide.with(context).load(ConfigManager.BASE_URL_IMAGE + url).into(imageView);
+        Glide.with(context).load(ConfigManager.BASE_URL_IMAGE + "products/" + url).into(imageView);
     }
 }

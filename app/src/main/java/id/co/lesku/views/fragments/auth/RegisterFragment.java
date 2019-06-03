@@ -76,7 +76,6 @@ public class RegisterFragment extends BaseFragment
                     @Override
                     public void accept (List<StudyLevel> studyLevels) throws Exception
                     {
-//                        Log.d(TAG, "accept: " + studyLevels.toString());
                         if (mStudyLevel != null) { mStudyLevel.clear(); }
                         mStudyLevel.addAll(studyLevels);
                         listStudyClassSpinner = new ArrayList<String>();
@@ -87,7 +86,6 @@ public class RegisterFragment extends BaseFragment
                         }
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                                 android.R.layout.simple_dropdown_item_1line, listStudyClassSpinner);
-//                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         mBinding.spinnerStudyLevel.setAdapter(adapter);
                         mBinding.llRegister.showLoading(false);
                         if (mStudyLevel.size() == 0)

@@ -15,6 +15,16 @@ public class StudyLevelAPI extends BaseAPI implements CRUDContract<StudyLevel, I
     }
 
     @Override
+    public Maybe<List<StudyLevel>> findList(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Maybe<List<StudyLevel>> findListSelected(Integer id, Integer io) {
+        return null;
+    }
+
+    @Override
     public void create(StudyLevel obj) {
 
     }

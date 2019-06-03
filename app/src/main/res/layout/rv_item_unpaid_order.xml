@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:textColor="@{unpaidOrder.status == 0 ? @color/red : @color/green}"
+                android:textColor="@{unpaidOrder.status == 1 ? @color/red : @color/green}"
                 android:text="@{unpaidOrder.statusMessages}" />
 
         </LinearLayout>

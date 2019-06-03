@@ -58,7 +58,7 @@ public class UnpaidOrderViewModel extends BaseViewModel implements UnpaidOrderVi
     @Override
     public String getStatusMessages() {
         String messages = "";
-        if(mUnpaidOrder.getStatus() == 0) {
+        if(mUnpaidOrder.getStatus() == 1) {
             messages = "Bukti Transfer Belum di Upload.";
         } else {
             messages = "Bukti Transfer Sudah di Upload, Menunggu Verifikasi";

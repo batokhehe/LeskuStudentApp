@@ -37,7 +37,7 @@ public class OrderAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle (int position)
     {
-        String[] titleList = {"Belum Bayar", "Menunggu", "Kelas Diikuti"};
+        String[] titleList = {"Menunggu", "Belum Bayar", "Kelas Diikuti"};
         // TODO: implement your own page title.
 //        return mFragments.get(position).getClass().getSimpleName();
         return titleList[position];

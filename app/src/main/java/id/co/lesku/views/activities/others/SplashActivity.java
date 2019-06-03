@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.orhanobut.hawk.Hawk;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import id.co.lesku.R;
 import id.co.lesku.data.DataManager;
 import id.co.lesku.manager.HawkManager;
+import id.co.lesku.model.StudyLevel;
 import id.co.lesku.model.Subject;
 import id.co.lesku.utils.RetrofitErrorAdapter;
+import id.co.lesku.utils.constants.K;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 
@@ -21,6 +25,7 @@ public class SplashActivity extends AppCompatActivity {
 
     HawkManager hawkManager;
     List<Subject> mSubject;
+    List<StudyLevel> mStudyLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         hawkManager = new HawkManager();
         mSubject = new ArrayList<>();
+        mStudyLevel = new ArrayList<>();
         startGetData();
     }
 
@@ -39,16 +45,16 @@ public class SplashActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            if(hawkManager.getAppUserToken() != null){
-                DataManager.can().getSubject().observeOn(AndroidSchedulers.mainThread())
-                        .defaultIfEmpty(new ArrayList<Subject>())
-                        .subscribe(new Consumer<List<Subject>>()
+            if(hawkManager.getAppUserToken() != null && Hawk.get(K.STUDY_LEVEL_LIST) == null){
+                DataManager.can().getStudyLevelList().observeOn(AndroidSchedulers.mainThread())
+                        .defaultIfEmpty(new ArrayList<StudyLevel>())
+                        .subscribe(new Consumer<List<StudyLevel>>()
                         {
                             @Override
-                            public void accept (List<Subject> subjects) throws Exception
+                            public void accept (List<StudyLevel> studyLevels) throws Exception
                             {
-                                if (mSubject != null) { mSubject.clear(); }
-                                mSubject.addAll(subjects);
+                                if (mStudyLevel != null) { mStudyLevel.clear(); }
+                                mStudyLevel.addAll(studyLevels);
                             }
                         }, new Consumer<Throwable>() {
                             @Override
@@ -58,6 +64,24 @@ public class SplashActivity extends AppCompatActivity {
                                 Toast.makeText(SplashActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
+//                DataManager.can().getSubject().observeOn(AndroidSchedulers.mainThread())
+//                        .defaultIfEmpty(new ArrayList<Subject>())
+//                        .subscribe(new Consumer<List<Subject>>()
+//                        {
+//                            @Override
+//                            public void accept (List<Subject> subjects) throws Exception
+//                            {
+//                                if (mSubject != null) { mSubject.clear(); }
+//                                mSubject.addAll(subjects);
+//                            }
+//                        }, new Consumer<Throwable>() {
+//                            @Override
+//                            public void accept (Throwable throwable) throws Exception
+//                            {
+//                                RetrofitErrorAdapter error = new RetrofitErrorAdapter(throwable);
+//                                Toast.makeText(SplashActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+//                            }
+//                        });
             }
             //some heavy processing resulting in a Data String
             for (int i = 0; i < 5; i++) {

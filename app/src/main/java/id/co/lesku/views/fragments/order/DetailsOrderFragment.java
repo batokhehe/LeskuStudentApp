@@ -99,10 +99,10 @@ public class DetailsOrderFragment extends BaseFragment {
         btnUploadTrfFile = mBinding.btnUploadTrfFile;
         tvUploadTrfFile = mBinding.tvUploadTrfFile;
 
-        if(status.equals("2") || status.equals("3")) {
+        if(status.equals("0") || status.equals("3")) {
             btnUploadTrfFile.setVisibility(View.GONE);
             tvUploadTrfFile.setVisibility(View.GONE);
-        } else if(status.equals("1")){
+        } else if(status.equals("2")){
             btnUploadTrfFile.setVisibility(View.GONE);
             tvUploadTrfFile.setVisibility(View.VISIBLE);
         } else {

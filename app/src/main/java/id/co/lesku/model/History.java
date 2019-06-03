@@ -31,6 +31,9 @@ public class History {
     @SerializedName("student_status")
     @Expose
     private int studentStatus;
+    @SerializedName("rating")
+    @Expose
+    private String rating;
 
     public int getId() {
         return id;
@@ -102,5 +105,13 @@ public class History {
 
     public void setStudentStatus(int studentStatus) {
         this.studentStatus = studentStatus;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

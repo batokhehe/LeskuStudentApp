@@ -15,7 +15,7 @@ import id.co.lesku.views.fragments.transaction.TeacherOrderFragment;
 public class TeacherOrderActivity extends AppCompatActivity {
 
     private String subject, selectedSchedule;
-    private int position, subjectId;
+    private int position, subjectId, studyLevel;
     private Toolbar toolbar;
     private Handler mHandler;
 
@@ -39,12 +39,14 @@ public class TeacherOrderActivity extends AppCompatActivity {
             } else {
                 subject = extras.getString("subject");
                 subjectId = extras.getInt("subjectId");
+                studyLevel = extras.getInt("studyLevel");
                 position = extras.getInt("position");
                 selectedSchedule = extras.getString("selectedSchedule");
             }
         } else {
             subject = (String) savedInstanceState.getSerializable("subject");
             subjectId = (int) savedInstanceState.getSerializable("subjectId");
+            studyLevel = (int) savedInstanceState.getSerializable("studyLevel");
             position = (int) savedInstanceState.getSerializable("position");
             selectedSchedule = (String) savedInstanceState.getSerializable("selectedSchedule");
         }
@@ -64,6 +66,7 @@ public class TeacherOrderActivity extends AppCompatActivity {
                 bundle.putString("subject", subject);
                 bundle.putInt("subjectId", subjectId);
                 bundle.putInt("position", position);
+                bundle.putInt("studyLevel", studyLevel);
                 bundle.putString("selectedSchedule", selectedSchedule);
                 fragment.setArguments(bundle);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import id.co.lesku.R;
 import id.co.lesku.manager.HawkManager;
-import id.co.lesku.views.activities.auth.LoginActivity;
+import id.co.lesku.views.activities.MainActivity;
 
 public class IntroSliderActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -120,7 +120,7 @@ public class IntroSliderActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         hawkManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(IntroSliderActivity.this, LoginActivity.class));
+        startActivity(new Intent(IntroSliderActivity.this, MainActivity.class));
         finish();
     }
 

@@ -7,19 +7,23 @@
     android:gravity="center_horizontal"
     android:padding="@dimen/activity_horizontal_margin">
 
-    <android.support.v7.widget.AppCompatRatingBar
-        android:id="@+id/rb_rating_teacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:rating="0"
-        android:stepSize="1" />
-
-    <EditText
-        android:id="@+id/et_comment"
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/spinner_study_level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/comment_hint"/>
+        android:imeOptions="actionUnspecified"
+        android:hint="@string/study_level_hint"
+        android:textColorHint="@color/cardview_shadow_end_color"
+        android:paddingLeft="5dp"/>
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/spinner_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionUnspecified"
+        android:hint="@string/study_order_hint"
+        android:textColorHint="@color/cardview_shadow_end_color"
+        android:paddingLeft="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -2,10 +2,14 @@ package id.co.lesku.manager;
 
 public class ConfigManager {
     //BASE URL
-//    public static final String BASE_URL = "http://192.168.1.6:8000/api/";
-//    public static final String BASE_URL_IMAGE = "http://192.168.1.6:8000/img/";
-    public static final String BASE_URL = "http://192.168.43.54:8000/api/";
-    public static final String BASE_URL_IMAGE = "http://192.168.43.54:8000/img/";
+//    public static final String BASE_URL = "http://" + Hawk.get(K.IP) + "/api/";
+//    public static final String BASE_URL_IMAGE = "http://" + Hawk.get(K.IP) + "/img/";
+//    public static final String BASE_URL = "http://192.168.1.11:8000/api/";
+//    public static final String BASE_URL_IMAGE = "http://192.168.1.11:8000/img/";
+//    public static final String BASE_URL = "http://192.168.43.54:8000/api/";
+//    public static final String BASE_URL_IMAGE = "http://192.168.43.54:8000/img/";
+    public static final String BASE_URL = "http://lesku.co.id/progress/public/api/";
+    public static final String BASE_URL_IMAGE = "http://lesku.co.id/progress/public/img/";
 
     // global topic to receive app wide push notifications
     public static final String TOPIC_GLOBAL = "global";

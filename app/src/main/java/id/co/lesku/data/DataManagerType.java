@@ -48,10 +48,10 @@ public interface DataManagerType
 
     Maybe<List<StudyLevel>> getStudyLevelList();
 
-    Maybe<List<Subject>> getSubject();
+    Maybe<List<Subject>> getSubject(int studyLevelId);
 
     //TEACHER ORDER
-    Maybe<List<TeacherOrder>> getTeacherOrderList();
+    Maybe<List<TeacherOrder>> getTeacherOrderList(int subjectId, int studyLevel);
 
     //ORDER
     Maybe<ResponseBody> addOrderClass(RequestBody object);

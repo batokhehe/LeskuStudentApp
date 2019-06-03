@@ -20,8 +20,8 @@ public class SubjectStorage implements RAGEContract<Subject, Integer>, CacheCont
 
     @Override
     public Maybe<List<Subject>> getList() {
-        List<Subject> teacherOrder = isCacheValid() ? Hawk.get(K.SUBJECT_LIST, new ArrayList<Subject>()) : null;
-        return teacherOrder == null ? Maybe.<List<Subject>>empty() : Maybe.just(teacherOrder).subscribeOn(Schedulers.io());
+        List<Subject> subjects = isCacheValid() ? Hawk.get(K.SUBJECT_LIST, new ArrayList<Subject>()) : null;
+        return subjects == null ? Maybe.<List<Subject>>empty() : Maybe.just(subjects).subscribeOn(Schedulers.io());
     }
 
     @Override

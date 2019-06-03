@@ -66,8 +66,9 @@
 
                     <ImageView
                         android:id="@+id/upcomingScheduleteacherImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
                         android:scaleType="fitXY"
                         app:imageTeacherUrl="@{upcomingSchedule.teacherImage}"/>
 
@@ -111,8 +112,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:background="@color/green"
-                    android:text="@string/confirm"/>
+                    android:background="@drawable/shape_rect_button_green"
+                    android:text="@string/confirm"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/btn_reschedule_Schedule"
@@ -120,8 +122,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:background="@color/red"
-                    android:text="@string/reschedule"/>
+                    android:background="@drawable/shape_rect_button_red"
+                    android:text="@string/reschedule"
+                    android:textColor="@color/white"/>
 
             </LinearLayout>
 

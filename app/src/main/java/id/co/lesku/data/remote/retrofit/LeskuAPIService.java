@@ -39,7 +39,7 @@ public interface LeskuAPIService
     */
 
     @FormUrlEncoded
-    @POST("auth/login/")
+    @POST("auth/login")
     Maybe<JsonObject> login (
             @Field("email") String email,
             @Field("password") String password,
@@ -47,7 +47,7 @@ public interface LeskuAPIService
     );
 
     @FormUrlEncoded
-    @POST("auth/register/")
+    @POST("auth/register")
     Maybe<JsonObject> register(
             @Field("fname") String fname,
             @Field("lname") String lname,
@@ -65,7 +65,7 @@ public interface LeskuAPIService
     Maybe<JsonObject> forgotPassword (@Path ("id") String id);
 
     @FormUrlEncoded
-    @POST("student/update_account/")
+    @POST("student/update_account")
     Maybe<JsonObject> updateAccount (
             @Field("name") String name,
             @Field("email") String email,
@@ -74,7 +74,7 @@ public interface LeskuAPIService
             @Field("encoded_image") String encodedImage
     );
 
-    @GET ("users/")
+    @GET ("users")
     Maybe<List<User>> getUsers ();
 
     @GET ("users/{id}")
@@ -82,18 +82,25 @@ public interface LeskuAPIService
 
     //Home
 
-    @GET ("study_levels/")
+    @GET ("study_levels")
     Maybe<List<StudyLevel>> getStudyLevels ();
 
-    @GET ("subjects/")
-    Maybe<List<Subject>> getSubjects ();
+    @FormUrlEncoded
+    @POST ("subjects")
+    Maybe<List<Subject>> getSubjects (
+            @Field("study_level_id") int studyLevelId
+    );
 
-    @GET ("products/")
+    @GET ("products")
     Maybe<List<Product>> getProducts ();
 
     //Order
-    @GET ("order/teachers")
-    Maybe<List<TeacherOrder>> getTeachersOrder ();
+    @FormUrlEncoded
+    @POST ("order/teachers")
+    Maybe<List<TeacherOrder>> getTeachersOrder(
+            @Field("subject_id") Integer subjectId,
+            @Field("study_level_id") Integer studyLevel
+    );
 
     @POST ("order/add")
     Maybe<ResponseBody> addOrderClass (@Body RequestBody object);

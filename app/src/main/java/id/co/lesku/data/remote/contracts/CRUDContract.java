@@ -8,6 +8,10 @@ public interface CRUDContract<T, U>
 {
     Maybe<List<T>> getList();
 
+    Maybe<List<T>> findList(U id);
+
+    Maybe<List<T>> findListSelected(U id, U io);
+
     void create(T obj);
 
     Maybe<T> read(U id);

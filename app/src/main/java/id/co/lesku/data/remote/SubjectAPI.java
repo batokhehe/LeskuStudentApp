@@ -11,8 +11,19 @@ import io.reactivex.schedulers.Schedulers;
 public class SubjectAPI extends BaseAPI implements CRUDContract<Subject, Integer> {
     @Override
     public Maybe<List<Subject>> getList() {
-        return app.mAPIService.getSubjects().retry(K.MAX_RETRIES).subscribeOn(Schedulers.io());
+        return null;
     }
+
+    @Override
+    public Maybe<List<Subject>> findList(Integer studyLevelId) {
+        return app.mAPIService.getSubjects(studyLevelId).retry(K.MAX_RETRIES).subscribeOn(Schedulers.io());
+    }
+
+    @Override
+    public Maybe<List<Subject>> findListSelected(Integer id, Integer io) {
+        return null;
+    }
+
 
     @Override
     public void create(Subject obj) {

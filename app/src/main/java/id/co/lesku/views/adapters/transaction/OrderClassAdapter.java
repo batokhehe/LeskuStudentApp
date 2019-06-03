@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,11 +42,12 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
     private ArrayList<String> subject = new ArrayList<String>();
     private ArrayList<Integer> subjectId = new ArrayList<Integer>();
     private ArrayList<String> schedule = new ArrayList<String>();
-    private int maxOrder = 0;
+    private int maxOrder = 0, mStudyLevel;
 
-    public OrderClassAdapter(Context context, ArrayList<OrderClass> orderClass) {
+    public OrderClassAdapter(Context context, ArrayList<OrderClass> orderClass, int studyLevelId) {
         mOrderClass = orderClass;
         mContext = context;
+        mStudyLevel = studyLevelId;
     }
 
     @NonNull
@@ -69,12 +71,14 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
         public int position;
         public MaterialBetterSpinner sSubject;
         public MaterialBetterSpinner sSchedule;
+        public LinearLayout lSchedule;
 
         public OrderViewHolder(View itemView) {
             super(itemView);
 
             sSubject = (MaterialBetterSpinner) itemView.findViewById(R.id.sSubject);
             sSchedule = (MaterialBetterSpinner) itemView.findViewById(R.id.sSchedule);
+            lSchedule = (LinearLayout) itemView.findViewById(R.id.linear_schedule);
             ivTeacher = (ImageView) itemView.findViewById(R.id.ivTeacher);
             ivTeacher.setOnClickListener(this);
 
@@ -132,6 +136,7 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
                 Intent intent = new Intent(mContext, TeacherOrderActivity.class);
                 intent.putExtra("subject", selectedSubject);
                 intent.putExtra("subjectId", selectedSubjectId);
+                intent.putExtra("studyLevel", mStudyLevel);
                 intent.putExtra("position", position);
                 ((Activity) mContext).startActivityForResult(intent, ConfigManager.REQUEST_CODE_TEACHER);
 //                Toast.makeText(mContext, "Subject : " + selectedSubject + " Position : " + position + " Date : " + date, Toast.LENGTH_SHORT).show();
@@ -151,6 +156,9 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
         ArrayAdapter<String> scheduleAdapter = new ArrayAdapter<String>(mContext,
                 android.R.layout.simple_dropdown_item_1line, orderClass.getSchedule());
         holder.sSchedule.setAdapter(scheduleAdapter);
+        if(orderClass.getSchedule() != null){
+            holder.lSchedule.setVisibility(View.VISIBLE);
+        }
         if(orderClass.getSelectedSchedule() != null){
             holder.sSchedule.setText(orderClass.getSelectedSchedule());
         }

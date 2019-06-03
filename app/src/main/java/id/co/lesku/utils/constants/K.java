@@ -20,4 +20,6 @@ public class K
     public static String UPCOMING_SCHEDULE_LIST      = "UPCOMING_SCHEDULE_LIST";
 
     public static String HISTORY_LIST      = "HISTORY_LIST";
+
+    public static String IP      = "IP";
 }

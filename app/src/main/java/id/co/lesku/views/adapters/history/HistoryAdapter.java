@@ -2,15 +2,20 @@ package id.co.lesku.views.adapters.history;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
@@ -31,7 +36,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ListView
     private List<History> mHistory;
     private Context mContext;
     private OnItemClickListener listener;
-    private Button btnRating;
 
     public HistoryAdapter(List<History> Historys, Context context) {
         mHistory = Historys;
@@ -53,6 +57,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ListView
     @Override
     public void onBindViewHolder(@NonNull HistoryAdapter.ListViewHolder holder, int position) {
         holder.setSchedule(mHistory.get(position));
+        History history = mHistory.get(position);
+        if(history.getRating() != null && !TextUtils.isEmpty(history.getRating())){
+            holder.linearRating.setVisibility(View.VISIBLE);
+            holder.btnRating.setVisibility(View.GONE);
+            holder.tvRating.setText(history.getRating());
+        } else {
+            holder.linearRating.setVisibility(View.GONE);
+            holder.btnRating.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -67,9 +80,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ListView
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
+        public LinearLayout linearRating;
+        public Button btnRating;
+        public TextView tvRating;
+
         public ListViewHolder(View itemView) {
             super(itemView);
 
+            linearRating = (LinearLayout) itemView.findViewById(R.id.ll_rating);
+            tvRating = (TextView) itemView.findViewById(R.id.tv_rating);
             btnRating = (Button) itemView.findViewById(R.id.btn_rating);
             btnRating.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -160,7 +179,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ListView
                     {
                         dialog.dismiss();
                         Toast.makeText(mContext, "Submitted", Toast.LENGTH_SHORT).show();
-                        removeAt(position);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(
+                                mContext);
+                        builder.setMessage("Rating Submitted, Thanks.")
+                                .setCancelable(false)
+                                .setPositiveButton("Ok",
+                                        new DialogInterface.OnClickListener() {
+                                            //do something
+                                            public void onClick(DialogInterface dialog,
+                                                                int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                        final AlertDialog alert = builder.create();
+                        alert.show();
+                        removeAt(position, Math.round(rating), id);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -173,9 +206,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ListView
                 });
     }
 
-    public void removeAt(int position) {
-        mHistory.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, mHistory.size());
+    public void removeAt(int position, int rating, int id) {
+        History history = new History();
+        history.setRating(String.valueOf(rating));
+        history.setId(id);
+
+        mHistory.set(position, history);
+//        notifyItemRemoved(position);
+        notifyItemChanged(position, mHistory.size());
     }
 }

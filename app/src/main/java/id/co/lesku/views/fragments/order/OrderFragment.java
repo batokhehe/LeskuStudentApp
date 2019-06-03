@@ -66,8 +66,8 @@ public class OrderFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         mFragments = new ArrayList<>();
-        mFragments.add(new UnpaidOrderFragment());
         mFragments.add(new WaitingOrderFragment());
+        mFragments.add(new UnpaidOrderFragment());
         mFragments.add(new PaidOrderFragment());
         ViewPager mViewPager = (ViewPager) view.findViewById(R.id.vp_order_fragments_container);
         mViewPager.setAdapter(new OrderAdapter(getChildFragmentManager(), mFragments));

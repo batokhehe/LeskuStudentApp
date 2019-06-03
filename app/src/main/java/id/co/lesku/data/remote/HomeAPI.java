@@ -16,6 +16,16 @@ public class HomeAPI extends BaseAPI implements CRUDContract<Product, Integer> {
     }
 
     @Override
+    public Maybe<List<Product>> findList(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Maybe<List<Product>> findListSelected(Integer id, Integer io) {
+        return null;
+    }
+
+    @Override
     public void create(Product obj) {
 
     }

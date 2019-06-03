@@ -17,6 +17,16 @@ public class UserAPI extends BaseAPI implements CRUDContract<User, Integer>
     }
 
     @Override
+    public Maybe<List<User>> findList(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Maybe<List<User>> findListSelected(Integer id, Integer io) {
+        return null;
+    }
+
+    @Override
     public void create (User obj)
     {
         // TODO: implement your own code 

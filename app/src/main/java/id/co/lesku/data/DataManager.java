@@ -156,9 +156,9 @@ public class DataManager implements DataManagerType
     }
 
     @Override
-    public Maybe<List<Subject>> getSubject()
+    public Maybe<List<Subject>> getSubject(int studyLevelId)
     {
-        return Maybe.concat(sSubjectStorage.getList(), sSubjectAPI.getList().doOnSuccess(new Consumer<List<Subject>>()
+        return Maybe.concat(sSubjectStorage.getList(), sSubjectAPI.findList(studyLevelId).doOnSuccess(new Consumer<List<Subject>>()
         {
             @Override
             public void accept (List<Subject> subjects) throws Exception
@@ -170,9 +170,9 @@ public class DataManager implements DataManagerType
 
     //ORDER
     @Override
-    public Maybe<List<TeacherOrder>> getTeacherOrderList ()
+    public Maybe<List<TeacherOrder>> getTeacherOrderList(int subjectId, int studyLevel)
     {
-        return Maybe.concat(sTeacherOrderStorage.getList(), sTeacherOrderAPI.getList().doOnSuccess(new Consumer<List<TeacherOrder>>()
+        return Maybe.concat(sTeacherOrderStorage.getList(), sTeacherOrderAPI.findListSelected(subjectId, studyLevel).doOnSuccess(new Consumer<List<TeacherOrder>>()
         {
             @Override
             public void accept (List<TeacherOrder> teacherOrder) throws Exception

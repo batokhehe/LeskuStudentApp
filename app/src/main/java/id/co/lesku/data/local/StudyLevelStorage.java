@@ -31,7 +31,7 @@ public class StudyLevelStorage implements RAGEContract<StudyLevel, Integer>, Cac
 
     @Override
     public void addAll(List<StudyLevel> objs) {
-
+        Hawk.put(K.STUDY_LEVEL_LIST, objs);
     }
 
     @Override

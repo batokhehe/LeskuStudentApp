@@ -66,8 +66,8 @@
 
                     <ImageView
                         android:id="@+id/historyteacherImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:scaleType="fitXY"
                         app:imageTeacherUrl="@{history.teacherImage}"/>
 
@@ -104,14 +104,36 @@
                 android:weightSum="1"
                 android:orientation="horizontal">
 
+                <LinearLayout
+                    android:id="@+id/ll_rating"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="*"/>
+
+                    <TextView
+                        android:id="@+id/tv_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
                 <Button
                     android:id="@+id/btn_rating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:background="@color/green"
-                    android:text="@string/rating"/>
+                    android:background="@drawable/shape_rect_button_green"
+                    android:text="@string/rating"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 

@@ -17,6 +17,7 @@ import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity
     private static final String urlNavHeaderBg = ConfigManager.BASE_URL_IMAGE + "/sample_background.jpg";
 
     // index to identify current nav menu item
-    public static int navItemIndex = 0;
+    public static int navItemIndex = 1;
 
     // tags used to attach the fragments
     private static final String TAG_HOME = "home";
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity
 
     public static Context contextOfApplication;
     private Bundle savedInstanceState;
+    private Button btnAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,69 +89,88 @@ public class MainActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        btnAccount = (Button) toolbar.findViewById(R.id.btn_login_home);
+
         setSupportActionBar(toolbar);
 
         mHandler = new Handler();
-
         hawkManager = new HawkManager();
-        userName = hawkManager.getAppUserName();
-        userEmail = hawkManager.getAppUserEmail();
-        userBalance = hawkManager.getAppUserBalance();
-        userImg = hawkManager.getAppUserImg();
 
-        decodedString = Base64.decode(userImg, Base64.DEFAULT);
-//        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        if(hawkManager.getAppUserToken() != null){
+            btnAccount.setVisibility(View.GONE);
 
-        //Navigation view Header
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+            userName = hawkManager.getAppUserName();
+            userEmail = hawkManager.getAppUserEmail();
+            userBalance = hawkManager.getAppUserBalance();
+            userImg = hawkManager.getAppUserImg();
 
-        View hView = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        tvUserName = (TextView) hView.findViewById(R.id.tv_user_name);
-        tvUserEmail = (TextView) hView.findViewById(R.id.tv_user_email);
-        tvUserBalance = (TextView) hView.findViewById(R.id.tv_user_balance);
-        ivUserImg = (ImageView) hView.findViewById(R.id.iv_profile_image);
-        ivHeaderImg = (ImageView) hView.findViewById(R.id.img_header_bg);
+            decodedString = Base64.decode(userImg, Base64.DEFAULT);
 
-        // load toolbar titles from string resources
-        activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
+            //Navigation view Header
+            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+            View hView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+            tvUserName = (TextView) hView.findViewById(R.id.tv_user_name);
+            tvUserEmail = (TextView) hView.findViewById(R.id.tv_user_email);
+            tvUserBalance = (TextView) hView.findViewById(R.id.tv_user_balance);
+            ivUserImg = (ImageView) hView.findViewById(R.id.iv_profile_image);
+            ivHeaderImg = (ImageView) hView.findViewById(R.id.img_header_bg);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+            // load toolbar titles from string resources
+            activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
-        //Load nav menu header data
-        loadNavHeader();
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
-        //initializing navigation menu
-        setUpNavigationView();
+            //Load nav menu header data
+            loadNavHeader();
 
-        Bundle extras = getIntent().getExtras();
-        if(extras != null) {
-            Toast.makeText(this, "Go To Order : " + extras.getInt("gotoOrder", 0), Toast.LENGTH_SHORT).show();
-            int gotoOrder = extras.getInt("gotoOrder", 0);
-            if(gotoOrder == 1){
-                navItemIndex = 2;
-                CURRENT_TAG = TAG_ORDER;
+            //initializing navigation menu
+            setUpNavigationView();
+
+            Bundle extras = getIntent().getExtras();
+            if(extras != null) {
+                Toast.makeText(this, "Go To Order : " + extras.getInt("gotoOrder", 0), Toast.LENGTH_SHORT).show();
+                int gotoOrder = extras.getInt("gotoOrder", 0);
+                if(gotoOrder == 1){
+                    navItemIndex = 2;
+                    CURRENT_TAG = TAG_ORDER;
+                    loadHomeFragment();
+                }
+            }
+            if (savedInstanceState == null && extras == null) {
+                navItemIndex = 1;
+                CURRENT_TAG = TAG_HOME;
                 loadHomeFragment();
             }
-        }
-        if (savedInstanceState == null && extras == null) {
-            navItemIndex = 1;
-            CURRENT_TAG = TAG_HOME;
-            loadHomeFragment();
-        }
+        } else {
+            btnAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+            Runnable mPendingRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    Fragment fragment = new HomeFragment();
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                            android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.frame, fragment);
+                    fragmentTransaction.commitAllowingStateLoss();
+                }
+            };
 
-//        navigationView.setNavigationItemSelectedListener(this);
+            // If mPendingRunnable is not null, then add to the message queue
+            if (mPendingRunnable != null) {
+                mHandler.post(mPendingRunnable);
+            }
+        }
     }
 
     /***
@@ -309,9 +330,6 @@ public class MainActivity extends AppCompatActivity
         if (mPendingRunnable != null) {
             mHandler.post(mPendingRunnable);
         }
-
-        // show or hide the fab button
-//        toggleFab();
 
         //Closing drawer on item click
         drawer.closeDrawers();
@@ -480,12 +498,14 @@ public class MainActivity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
         Toast.makeText(contextOfApplication, "Activity Resumed", Toast.LENGTH_SHORT).show();
-        // Loading profile image
-        Glide.with(this)
-                .asBitmap()
-                .load(decodedString)
-                .apply(new RequestOptions().circleCrop())
-                .thumbnail(0.5f)
-                .into(ivUserImg);
+        if(hawkManager.getAppUserToken() != null){
+            // Loading profile image
+            Glide.with(this)
+                    .asBitmap()
+                    .load(decodedString)
+                    .apply(new RequestOptions().circleCrop())
+                    .thumbnail(0.5f)
+                    .into(ivUserImg);
+        }
     }
 }

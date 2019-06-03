@@ -53,9 +53,9 @@ public class OrderClassFragment extends BaseFragment {
     private OrderClassAdapter mOrderClassAdapter;
     ArrayList<OrderClass> orderClassArrayList = new ArrayList<>();
 
-    FloatingActionButton fabAddOrder, fabRemoveOrder;
+//    FloatingActionButton fabAddOrder, fabRemoveOrder;
     Button btnAddOrder, btnRemoveOrder, btnOrderClass;
-    private int multiplier, min_order, max_order, productId;
+    private int multiplier, minOrder, maxOrder, productId, studyLevelId;
     private FloatingActionButton addAssembly, removeAssembly;
 
     private OnFragmentInteractionListener mListener;
@@ -64,6 +64,7 @@ public class OrderClassFragment extends BaseFragment {
     private List<Subject> mSubject;
     private LoadingLayout llOrderClass;
     private View view;
+    private int order;
 
     public OrderClassFragment() {
         // Required empty public constructor
@@ -108,8 +109,12 @@ public class OrderClassFragment extends BaseFragment {
 
         productId = getArguments().getInt("id");
         multiplier = getArguments().getInt("multiple");
-        min_order = getArguments().getInt("min_order");
-        max_order = getArguments().getInt("max_order");
+        minOrder = getArguments().getInt("min_order");
+        maxOrder = getArguments().getInt("max_order");
+        studyLevelId = getArguments().getInt("study_level_id");
+        order = getArguments().getInt("order");
+
+        Toast.makeText(getContext(), "Study Level ID : " + studyLevelId, Toast.LENGTH_SHORT).show();
 
         //Subject
         listSubjectSpinner = new ArrayList<String>();
@@ -124,48 +129,48 @@ public class OrderClassFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_order_class, container, false);
         this.view = rootView;
 
-        mOrderClassAdapter = new OrderClassAdapter(getContext(), orderClassArrayList);
-        mOrderClassAdapter.setMaxOrder(max_order);
+        mOrderClassAdapter = new OrderClassAdapter(getContext(), orderClassArrayList, studyLevelId);
+        mOrderClassAdapter.setMaxOrder(order);
 
         rvOrder = (RecyclerView) rootView.findViewById(R.id.rv_order);
-        fabAddOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_add_assembly);
-        fabRemoveOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_remove_assembly);
-        fabRemoveOrder.hide();
+//        fabAddOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_add_assembly);
+//        fabRemoveOrder = (FloatingActionButton) rootView.findViewById(R.id.fab_remove_assembly);
+//        fabRemoveOrder.hide();
 
         btnOrderClass = (Button) rootView.findViewById(R.id.btn_order_class);
 
-        fabAddOrder.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick (View v) {
-                if(mOrderClassAdapter.getItemCount() < max_order){
-                    addOrder(multiplier);
-                }
-                if(mOrderClassAdapter.getItemCount() > (max_order - multiplier)) {
-                    fabAddOrder.hide();
-                }
-
-                if(mOrderClassAdapter.getItemCount() > min_order){
-                    fabRemoveOrder.show();
-                }
-            }
-        });
-
-        fabRemoveOrder.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick (View v) {
-                if(mOrderClassAdapter.getItemCount() > min_order){
-                    removeOrder(multiplier);
-                }
-                if(mOrderClassAdapter.getItemCount() < (min_order + multiplier)) {
-                    fabRemoveOrder.hide();
-                }
-                if(mOrderClassAdapter.getItemCount() < max_order){
-                    fabAddOrder.show();
-                }
-            }
-        });
+//        fabAddOrder.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick (View v) {
+//                if(mOrderClassAdapter.getItemCount() < maxOrder){
+//                    addOrder(multiplier);
+//                }
+//                if(mOrderClassAdapter.getItemCount() > (maxOrder - multiplier)) {
+//                    fabAddOrder.hide();
+//                }
+//
+//                if(mOrderClassAdapter.getItemCount() > minOrder){
+//                    fabRemoveOrder.show();
+//                }
+//            }
+//        });
+//
+//        fabRemoveOrder.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick (View v) {
+//                if(mOrderClassAdapter.getItemCount() > minOrder){
+//                    removeOrder(multiplier);
+//                }
+//                if(mOrderClassAdapter.getItemCount() < (minOrder + multiplier)) {
+//                    fabRemoveOrder.hide();
+//                }
+//                if(mOrderClassAdapter.getItemCount() < maxOrder){
+//                    fabAddOrder.show();
+//                }
+//            }
+//        });
 
         btnOrderClass.setOnClickListener(new View.OnClickListener()
         {
@@ -178,7 +183,7 @@ public class OrderClassFragment extends BaseFragment {
         rvOrder.setLayoutManager(new LinearLayoutManager(getContext()));
         rvOrder.setAdapter(mOrderClassAdapter);
 
-        addOrder(multiplier);
+        addOrder(order);
 
         return rootView;
     }
@@ -242,7 +247,6 @@ public class OrderClassFragment extends BaseFragment {
                     {
                         String obj = object.string();
                         JSONObject jsonObject = new JSONObject(obj);
-//                        Toast.makeText(getContext(), "" + jsonObject.get("price"), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), InvoiceActivity.class);
                         intent.putExtra("price", jsonObject.get("price").toString());
                         intent.putExtra("ordered_assembly", jsonObject.get("ordered_assembly").toString());

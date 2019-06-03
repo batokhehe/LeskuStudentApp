@@ -13,7 +13,6 @@
         android:id="@+id/vp_order_fragments_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tl_order_tabs_container"
-        android:layout_marginTop="@dimen/space_small"/>
+        android:layout_below="@id/tl_order_tabs_container" />
 
 </RelativeLayout>

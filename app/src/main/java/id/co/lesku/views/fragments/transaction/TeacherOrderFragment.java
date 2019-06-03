@@ -33,7 +33,7 @@ public class TeacherOrderFragment extends BaseFragment {
     List<TeacherOrder> mTeacherOrder;
     private OnFragmentInteractionListener mListener;
     TeacherOrderAdapter adapter;
-    private int position, subjectId;
+    private int position, subjectId, studyLevel;
     private String subject, selectedSchedule;
 
     public TeacherOrderFragment() {
@@ -71,13 +71,14 @@ public class TeacherOrderFragment extends BaseFragment {
         subject = getArguments().getString("subject");
         subjectId = getArguments().getInt("subjectId", 0);
         position = getArguments().getInt("position");
+        studyLevel = getArguments().getInt("studyLevel");
         selectedSchedule = getArguments().getString("selectedSchedule");
 
 //        Toast.makeText(getContext(), "Subject : " + subject + " Subject ID : " + subjectId + " Position : " + position + " Schedule : " + selectedSchedule, Toast.LENGTH_SHORT).show();
 
         mBinding.llTeacherOrder.showLoading(true, "Loading Teacher List...");
 
-        DataManager.can().getTeacherOrderList().observeOn(AndroidSchedulers.mainThread())
+        DataManager.can().getTeacherOrderList(subjectId, studyLevel).observeOn(AndroidSchedulers.mainThread())
                 .defaultIfEmpty(new ArrayList<TeacherOrder>())
                 .subscribe(new Consumer<List<TeacherOrder>>()
                 {
