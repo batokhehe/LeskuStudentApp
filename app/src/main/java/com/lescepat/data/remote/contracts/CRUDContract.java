@@ -1,0 +1,22 @@
+package com.lescepat.data.remote.contracts;
+
+import java.util.List;
+
+import io.reactivex.Maybe;
+
+public interface CRUDContract<T, U, S>
+{
+    Maybe<List<T>> getList();
+
+    Maybe<List<T>> findList(U id);
+
+    Maybe<List<T>> findListSelected(U id, U io, S s);
+
+    void create(T obj);
+
+    Maybe<T> read(U id);
+
+    void update(T obj, U id);
+
+    void delete(U id);
+}

@@ -4,11 +4,12 @@
         <import type="android.view.View" />
         <variable
             name="product"
-            type="id.co.lesku.viewmodels.ProductViewModel"/>
+            type="com.lescepat.viewmodels.ProductViewModel"/>
         <variable name="productlist"
-            type="id.co.lesku.viewmodels.ProductListViewModel"/>
+            type="com.lescepat.viewmodels.ProductListViewModel"/>
     </data>
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
@@ -57,5 +58,5 @@
                 <!--android:src="@drawable/ic_dots"/>-->
 
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>

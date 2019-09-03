@@ -3,10 +3,10 @@
     <data>
         <variable
             name="orders"
-            type="id.co.lesku.viewmodels.WaitingOrderListViewModel"/>
+            type="com.lescepat.viewmodels.WaitingOrderListViewModel"/>
     </data>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_waiting_order"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_waiting_order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -27,6 +27,6 @@
 
         </id.co.flipbox.sosoito.LoadingLayout>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </layout>

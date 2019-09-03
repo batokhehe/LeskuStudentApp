@@ -4,7 +4,7 @@
     <data>
         <variable
             name="auth"
-            type="id.co.lesku.viewmodels.AuthViewModel"/>
+            type="com.lescepat.viewmodels.AuthViewModel"/>
     </data>
 
     <ScrollView
@@ -29,14 +29,14 @@
                     android:orientation="vertical"
                     android:layout_gravity="center">
 
-                    <id.co.lesku.views.customviews.CustomTextView
+                    <com.lescepat.views.customviews.CustomTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/space_small"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/user_id" />
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_user_id_wrapper"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -58,16 +58,16 @@
                             app:validateEmpty="@{true}"
                             app:validateEmptyAutoDismiss="@{true}" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <id.co.lesku.views.customviews.CustomTextView
+                    <com.lescepat.views.customviews.CustomTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/space_small"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/password"/>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_password_wrapper"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                             app:validateEmpty="@{true}"
                             app:validateEmptyAutoDismiss="@{true}" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
                         android:id="@+id/btn_login"
@@ -101,7 +101,7 @@
                         android:textColor="@color/white"
                         android:text="@string/sign_in"/>
 
-                    <id.co.lesku.views.customviews.CustomTextView
+                    <com.lescepat.views.customviews.CustomTextView
                         android:id="@+id/tv_forgot_password"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -125,14 +125,14 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/activity_horizontal_margin">
 
-                    <id.co.lesku.views.customviews.CustomTextView
+                    <com.lescepat.views.customviews.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|bottom"
                         android:textColor="@color/dark_gray"
                         android:text="Don't have an account? " />
 
-                    <id.co.lesku.views.customviews.CustomTextView
+                    <com.lescepat.views.customviews.CustomTextView
                         android:id="@+id/tv_register"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"

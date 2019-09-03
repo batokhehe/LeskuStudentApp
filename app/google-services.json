@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:915442474535:android:be9db768aea50168",
+        "mobilesdk_app_id": "1:915442474535:android:4f728f2e14e5b23e",
         "android_client_info": {
-          "package_name": "co.id.lesku"
+          "package_name": "com.lescepat"
         }
       },
       "oauth_client": [
@@ -25,15 +25,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915442474535-5u24jfibcgd7qbcvl337gklcc5e0sll4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -56,15 +54,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915442474535-5u24jfibcgd7qbcvl337gklcc5e0sll4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -4,9 +4,10 @@
         <import type="android.view.View" />
         <variable
             name="teacherOrder"
-            type="id.co.lesku.viewmodels.TeacherOrderViewModel"/>
+            type="com.lescepat.viewmodels.TeacherOrderViewModel"/>
     </data>
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
@@ -105,6 +106,6 @@
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </layout>

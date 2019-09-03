@@ -4,9 +4,10 @@
         <import type="android.view.View" />
         <variable
             name="upcomingSchedule"
-            type="id.co.lesku.viewmodels.UpcomingScheduleViewModel"/>
+            type="com.lescepat.viewmodels.UpcomingScheduleViewModel"/>
     </data>
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
@@ -131,6 +132,6 @@
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </layout>

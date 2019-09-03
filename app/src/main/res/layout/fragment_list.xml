@@ -3,7 +3,7 @@
     <data>
         <variable
             name="users"
-            type="id.co.lesku.viewmodels.UserListViewModel"/>
+            type="com.lescepat.viewmodels.UserListViewModel"/>
     </data>
 
     <id.co.flipbox.sosoito.LoadingLayout
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

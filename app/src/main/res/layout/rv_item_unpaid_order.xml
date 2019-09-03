@@ -4,9 +4,10 @@
         <import type="android.view.View" />
         <variable
             name="unpaidOrder"
-            type="id.co.lesku.viewmodels.UnpaidOrderViewModel"/>
+            type="com.lescepat.viewmodels.UnpaidOrderViewModel"/>
     </data>
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
@@ -77,8 +78,36 @@
                 android:textColor="@{unpaidOrder.status == 1 ? @color/red : @color/green}"
                 android:text="@{unpaidOrder.statusMessages}" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_invoice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/shape_rect_button_green"
+                    android:text="@string/invoice"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/btn_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/shape_rect_button_green"
+                    android:text="@string/details_order"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </layout>

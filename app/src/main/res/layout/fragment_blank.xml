@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <id.co.lesku.views.customviews.CustomTextView
+    <com.lescepat.views.customviews.CustomTextView
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         You can refer to https://docs.google.com/presentation/d/1IyzTFO4-vBxSd-mog7k6yUKP8wVOGFqx7SuUfwY93bk for the style guide"
         android:textAlignment="center"/>
 
-    <id.co.lesku.views.customviews.CustomTextView
+    <com.lescepat.views.customviews.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

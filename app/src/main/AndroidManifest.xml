@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="id.co.lesku">
+    package="com.lescepat">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".LeskuApplication"
+        android:name="com.lescepat.LeskuApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -37,7 +37,7 @@
             android:value="@string/default_notification_channel_id" />
         <!-- [END fcm_default_channel] -->
 
-        <activity android:name=".views.activities.others.SplashActivity"
+        <activity android:name="com.lescepat.views.activities.others.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,24 +45,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.activities.MainActivity"
+        <activity android:name="com.lescepat.views.activities.MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.others.IntroSliderActivity"
+        <activity android:name="com.lescepat.views.activities.others.IntroSliderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.others.AccountActivity"
+        <activity android:name="com.lescepat.views.activities.others.AccountActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.auth.LoginActivity"
+        <activity android:name="com.lescepat.views.activities.auth.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.order.TeacherOrderActivity"
+        <activity android:name="com.lescepat.views.activities.order.TeacherOrderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.order.OrderDetailsActivity"
+        <activity android:name="com.lescepat.views.activities.order.OrderDetailsActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.activities.order.InvoiceActivity"
+        <activity android:name="com.lescepat.views.activities.order.InvoiceActivity"
             android:screenOrientation="portrait" />
 
 
         <!-- Firebase Notifications -->
-        <service android:name=".service.LeskuFirebaseMessagingService">
+        <service android:name="com.lescepat.service.LeskuFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

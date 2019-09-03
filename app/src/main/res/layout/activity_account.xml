@@ -45,7 +45,7 @@
 
                 </RelativeLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
@@ -74,7 +74,7 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
@@ -104,7 +104,7 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
@@ -133,7 +133,7 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"

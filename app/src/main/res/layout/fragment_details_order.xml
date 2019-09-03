@@ -3,7 +3,7 @@
     <data>
         <variable
             name="teacherOrders"
-            type="id.co.lesku.viewmodels.DetailsOrderListViewModel"/>
+            type="com.lescepat.viewmodels.DetailsOrderListViewModel"/>
     </data>
 
     <id.co.flipbox.sosoito.LoadingLayout
@@ -18,7 +18,7 @@
             android:orientation="vertical"
             android:weightSum="1">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDetailsOrder"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

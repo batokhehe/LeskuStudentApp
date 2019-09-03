@@ -5,7 +5,7 @@
 
         <variable
             name="auth"
-            type="id.co.lesku.viewmodels.AuthViewModel"/>
+            type="com.lescepat.viewmodels.AuthViewModel"/>
     </data>
 
     <ScrollView
@@ -25,14 +25,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/first_name"/>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_fname_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -52,18 +52,19 @@
                         android:inputType=""
                         android:maxLines="1"
                         app:validateEmpty="@{true}"
-                        app:validateEmptyAutoDismiss="@{true}" />
+                        app:validateEmptyAutoDismiss="@{true}"
+                        android:importantForAutofill="no" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/last_name" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_lname_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -85,16 +86,16 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/email"/>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_email_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,16 +118,16 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/study_level" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_reg_study_level_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -144,16 +145,16 @@
                         android:textColorHint="@color/cardview_shadow_end_color"
                         android:paddingLeft="5dp"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/parent_name" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_parentname_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,16 +176,16 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/school_name" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_schoolname_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -206,16 +207,16 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/address" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_address_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -237,16 +238,16 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/phone_number" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_phonenumber_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -268,16 +269,16 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/password" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_reg_password_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -300,9 +301,9 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <id.co.lesku.views.customviews.CustomTextView
+                <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/space_small"
@@ -310,7 +311,7 @@
                     android:layout_marginTop="@dimen/space_large"
                     android:text="@string/cpassword" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_reg_cpassword_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -333,7 +334,7 @@
                         app:validateEmpty="@{true}"
                         app:validateEmptyAutoDismiss="@{true}" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/btn_register"
