@@ -314,13 +314,8 @@ public class OrderClassFragment extends BaseFragment {
             int position = data.getIntExtra("position", 0);
             String schedule = data.getStringExtra("schedule");
             String selectedSchedule = data.getStringExtra("selectedSchedule");
-            mOrderClassAdapter.changeImage(image, subject, subjectId, position, teacherId, schedule);
-            Toast.makeText(getContext(), "Position : " + position +
-                    " ~ Item : " + position + " " +
-                    " subect : " + subject + " " +
-                            " subject Id : " + subjectId + " " +
-                    " schedule : " + schedule,
-                    Toast.LENGTH_SHORT).show();
+            mOrderClassAdapter.changeImage(image, subject, subjectId, teacherId, schedule, position);
+            Log.d("Fragment", "On Result: " + "Subject : " + subject + " Position : " + position + " schedule : " + schedule);
         }
     }
 }

@@ -11,19 +11,19 @@ import com.lescepat.data.remote.retrofit.RetrofitServiceFactory;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.orhanobut.hawk.Hawk;
 
-import com.lescepat.data.remote.retrofit.LeskuAPIService;
+import com.lescepat.data.remote.retrofit.LesCepatAPIService;
 
-public class LeskuApplication extends Application {
-    private static LeskuApplication   sApp;
-    public LeskuAPIService mAPIService;
+public class LesCepatApplication extends Application {
+    private static LesCepatApplication sApp;
+    public LesCepatAPIService mAPIService;
     public GoogleApiClient mGoogleApiClient;
     public Location mLastLocation;
 
-    public static LeskuApplication getInstance ()
+    public static LesCepatApplication getInstance ()
     {
         if (sApp == null)
         {
-            sApp = new LeskuApplication();
+            sApp = new LesCepatApplication();
         }
 
         return sApp;
@@ -36,19 +36,19 @@ public class LeskuApplication extends Application {
 
         Hawk.init(getApplicationContext()).build();
         sApp = this;
-        mAPIService = RetrofitServiceFactory.createService(LeskuAPIService.class, this);
+        mAPIService = RetrofitServiceFactory.createService(LesCepatAPIService.class, this);
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         sApp = this;
-        mAPIService = RetrofitServiceFactory.createService(LeskuAPIService.class, LeskuApplication.this);
+        mAPIService = RetrofitServiceFactory.createService(LesCepatAPIService.class, LesCepatApplication.this);
     }
 
     public void onLoggedIn(Context context){
         sApp = this;
-        mAPIService = RetrofitServiceFactory.createService(LeskuAPIService.class, context);
+        mAPIService = RetrofitServiceFactory.createService(LesCepatAPIService.class, context);
     }
 
     public boolean isNetworkAvailable ()

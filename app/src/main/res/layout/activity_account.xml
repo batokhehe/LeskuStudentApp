@@ -52,7 +52,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/name"/>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_account_name_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                         android:inputType=""
                         android:maxLines="1"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/email"/>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_account_email_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                         android:inputType="textEmailAddress"
                         android:maxLines="1" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/address" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_account_address_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                         android:inputType=""
                         android:maxLines="1"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.lescepat.views.customviews.CustomTextView
                     android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/phone_number" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_account_phonenumber_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
                         android:inputType=""
                         android:maxLines="1"/>
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 

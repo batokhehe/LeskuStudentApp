@@ -5,25 +5,25 @@ import android.util.Log;
 
 import java.io.IOException;
 
-import com.lescepat.LeskuApplication;
+import com.lescepat.LesCepatApplication;
 import okhttp3.Interceptor;
 import okhttp3.Response;
 
 
 public class ResponseInterceptor implements Interceptor
 {
-    private LeskuApplication leskuApplication;
+    private LesCepatApplication lesCepatApplication;
     private Context       mContext;
 
     public ResponseInterceptor()
     {
-        leskuApplication = LeskuApplication.getInstance();
+        lesCepatApplication = LesCepatApplication.getInstance();
         mContext = null;
     }
 
     public ResponseInterceptor(Context context)
     {
-        leskuApplication = LeskuApplication.getInstance();
+        lesCepatApplication = LesCepatApplication.getInstance();
         mContext = context;
     }
 

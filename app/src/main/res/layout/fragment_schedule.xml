@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tl_schedule_tabs_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <androidx.core.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_schedule_fragments_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

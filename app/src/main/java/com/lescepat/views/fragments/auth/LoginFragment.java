@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.gson.JsonObject;
-import com.lescepat.LeskuApplication;
+import com.lescepat.LesCepatApplication;
 import com.lescepat.R;
 import com.lescepat.data.DataManager;
 import com.lescepat.databinding.FragmentLoginBinding;
@@ -39,14 +39,14 @@ public class LoginFragment extends BaseFragment
     private Validator                          mValidator;
     private OnLoginFragmentInteractionListener mListener;
     private HawkManager hawkManager;
-    LeskuApplication mApp;
+    LesCepatApplication mApp;
     Configuration configuration = null;
 
     public LoginFragment()
     {
         // Required empty public constructor
         setArguments(new Bundle());
-        mApp = new LeskuApplication();
+        mApp = new LesCepatApplication();
     }
 
     @Override

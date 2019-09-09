@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#71C7EC</color>
+    <color name="colorPrimary">#BBFF00</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000</color>
@@ -11,6 +11,7 @@
     <color name="gray">#EEEEEE</color>
     <color name="transparent_gray">#80EEEEEE</color>
     <color name="dark_gray">#BBBBBB</color>
+    <color name="darker_gray">#4B4B4D</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#f64c73</color>

@@ -52,7 +52,9 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
     private ArrayList<String> subject = new ArrayList<String>();
     private ArrayList<Integer> subjectId = new ArrayList<Integer>();
     private ArrayList<String> schedule = new ArrayList<String>();
+    private ArrayList<String> scheduleShow = new ArrayList<String>();
     private int maxOrder = 0, mStudyLevel;
+    private int lastPosition = 0;
 
     public OrderClassAdapter(Context context, Activity activity, ArrayList<OrderClass> orderClass, int studyLevelId) {
         mOrderClass = orderClass;
@@ -118,8 +120,8 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
                     position = getAdapterPosition();
                     Toast.makeText(itemView.getContext(), "Position : " + position + " ~ Item : " + itemposition + " " + listSubjectSpinner.get(itemposition) + " Id : " + listSubjectSpinnerId.get(itemposition), Toast.LENGTH_SHORT).show();
 
-                    subject.add(position, listSubjectSpinner.get(itemposition));
-                    subjectId.add(position, listSubjectSpinnerId.get(itemposition));
+                    subject.set(position, listSubjectSpinner.get(itemposition));
+                    subjectId.set(position, listSubjectSpinnerId.get(itemposition));
                 }
             });
 
@@ -169,11 +171,13 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
                     }
                     SimpleDateFormat simpleDateFormat  = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                     Log.d("UNIX", "onClick: " + calendar.getTimeInMillis() + " " + simpleDateFormat.format(parsedDate));
-
+                    position = getAdapterPosition();
                     tvDate.setText(String.valueOf(calendar.getTime()));
+                    scheduleShow.set(position, String.valueOf(calendar.getTime()));
                     tvDateHidden.setText(String.valueOf(calendar.getTimeInMillis()));
-                    schedule.add(position, String.valueOf(calendar.getTimeInMillis()));
+                    schedule.set(position, String.valueOf(calendar.getTimeInMillis()));
                     alertDialog.dismiss();
+                    lastPosition = getAdapterPosition();
                 }});
 
             btnDatePicker.setOnClickListener(new View.OnClickListener() {
@@ -204,7 +208,7 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
                 intent.putExtra("position", position);
                 intent.putExtra("schedule", selectedSchedule);
                 ((Activity) mContext).startActivityForResult(intent, ConfigManager.REQUEST_CODE_TEACHER);
-//                Toast.makeText(mContext, "Subject : " + selectedSubject + " Position : " + position + " Date : " + date, Toast.LENGTH_SHORT).show();
+                Log.d("Adapter", "Intent: " + "Subject : " + selectedSubject + " Position : " + position + " schedule : " + selectedSchedule);
             }
         }
     }
@@ -219,6 +223,7 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
         .into(iv);
         holder.sSubject.setText(orderClass.getSubject());
         holder.tvDateHidden.setText(orderClass.getSchedule());
+        holder.tvDate.setText(scheduleShow.get(position));
 //        ArrayAdapter<String> scheduleAdapter = new ArrayAdapter<String>(mContext,
 //                android.R.layout.simple_dropdown_item_1line, orderClass.getSchedule());
 //        holder.sSchedule.setAdapter(scheduleAdapter);
@@ -230,7 +235,7 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
 //        }
     }
 
-    public void changeImage(String url, String subject, int subjectId, int position, int teacherId, String schedule){
+    public void changeImage(String url, String subject, int subjectId, int teacherId, String schedule, int position){
         OrderClass orderClass = new OrderClass();
         orderClass.setImage(url);
         orderClass.setTeacherId(teacherId);
@@ -238,7 +243,9 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
         orderClass.setSubjectId(subjectId);
         orderClass.setSchedule(schedule);
         mOrderClass.set(position, orderClass);
-        this.notifyDataSetChanged();
+        this.notifyItemChanged(position);
+        OrderClass orderClass1 = mOrderClass.get(position);
+        Log.d("Adapter", "Change Image: " + "Subject : " + orderClass1.getSubject() + " Position : " + position + " schedule : " + orderClass1.getSchedule());
     }
 
     public ArrayList<OrderClass> getArrayList(){
@@ -251,6 +258,7 @@ public class OrderClassAdapter extends RecyclerView.Adapter<OrderClassAdapter.Or
             subject.add(i, "");
             subjectId.add(i, 1);
             schedule.add(i, "");
+            scheduleShow.add(i, "");
         }
     }
 }

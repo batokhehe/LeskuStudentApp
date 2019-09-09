@@ -12,13 +12,13 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.lescepat.LeskuApplication;
+import com.lescepat.LesCepatApplication;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class BaseActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
-    LeskuApplication app = LeskuApplication.getInstance();
+    LesCepatApplication app = LesCepatApplication.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
