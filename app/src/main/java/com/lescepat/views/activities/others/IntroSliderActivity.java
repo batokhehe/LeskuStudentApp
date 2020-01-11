@@ -60,8 +60,7 @@ public class IntroSliderActivity extends AppCompatActivity {
         layouts = new int[]{
                 R.layout.welcome_slider1,
                 R.layout.welcome_slider2,
-                R.layout.welcome_slider3,
-                R.layout.welcome_slider4};
+                R.layout.welcome_slider3};
 
         // tombol dots (lingkaran kecil perpindahan slide)
         addBottomDots(0);

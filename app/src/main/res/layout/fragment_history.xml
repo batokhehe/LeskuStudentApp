@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="history"
@@ -22,7 +22,8 @@
             android:id="@+id/rv_history"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/gray"/>
+            android:background="@drawable/background"
+            tools:listitem="@layout/rv_item_history"/>
 
         </id.co.flipbox.sosoito.LoadingLayout>
 

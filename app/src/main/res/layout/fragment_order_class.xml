@@ -17,29 +17,26 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="0.9"
-            android:weightSum="1">
+            android:layout_weight="1">
 
             <!-- TODO: Update blank fragment layout -->
                 <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_order"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:background="@color/gray"/>
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:background="@drawable/background"
+                tools:listitem="@layout/rv_item_order_class"/>
 
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_order_class"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_height="50dp"
             android:background="@drawable/shape_rect_button"
             android:textColor="@color/white"
-            android:text="@string/orderClass"/>
+            android:text="@string/order"/>
 
     </LinearLayout>
 

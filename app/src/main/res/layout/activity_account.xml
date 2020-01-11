@@ -12,7 +12,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@drawable/background">
 
         <id.co.flipbox.sosoito.LoadingLayout
             android:id="@+id/ll_account"
@@ -157,7 +158,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:padding="@dimen/nav_header_vertical_spacing"
                         android:hint="@string/phone_number_hint"
-                        android:inputType=""
+                        android:inputType="number"
                         android:maxLines="1"/>
 
                 </com.google.android.material.textfield.TextInputLayout>

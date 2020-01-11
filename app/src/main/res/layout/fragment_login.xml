@@ -11,16 +11,17 @@
         android:id="@+id/sv_login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@drawable/background">
 
         <id.co.flipbox.sosoito.LoadingLayout
             android:id="@+id/login_loading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" >
 
                 <LinearLayout
                     android:id="@+id/ll_user_login_form"
@@ -107,7 +108,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/activity_horizontal_margin"
                         android:layout_gravity="right"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/lightBlue"
                         android:text="@string/forgot_password"/>
 
                 </LinearLayout>

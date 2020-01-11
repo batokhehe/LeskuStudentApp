@@ -19,5 +19,9 @@ public interface UpcomingScheduleViewModelOutputs {
 
     int getStudentStatus();
 
+    int getStatus();
+
+    String getUniqueCode();
+
     String getStatusText();
 }

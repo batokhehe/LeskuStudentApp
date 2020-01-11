@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
+        android:elevation="10dp"
         android:foreground="?attr/selectableItemBackground">
 
         <LinearLayout
@@ -44,16 +45,22 @@
                     android:id="@+id/tv_detail_order_study_start_at"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_horizontal"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@{detailsOrder.studyStartAt}"
                     android:paddingLeft="5dip"/>
 
                 <TextView
                     android:id="@+id/tv_detail_order_status"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@{detailsOrder.status == 0 || detailsOrder.status == 3 ? @color/red : @color/green}"
+                    android:background="@{detailsOrder.status == 0 || detailsOrder.status == 3 ? @drawable/shape_rect_button_red_outline : @drawable/shape_rect_button_green_outline}"
                     android:text="@{detailsOrder.statusMessage}"
                     android:paddingLeft="5dip"/>
 

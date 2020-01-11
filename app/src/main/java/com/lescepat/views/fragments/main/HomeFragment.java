@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.lescepat.R;
 import com.lescepat.data.DataManager;
@@ -83,7 +84,12 @@ public class HomeFragment extends BaseFragment {
         adapter = new ProductAdapter(mProduct, getContext());
         hawkManager = new HawkManager();
 
-        mBinding.homeRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        int mNoOfColumns = RecyclerViewUtils.calculateNoOfColumns(getContext(), 300);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+
+        mBinding.homeRecycleView.setNestedScrollingEnabled(false);
+        mBinding.homeRecycleView.setLayoutManager(layoutManager);
+//        mBinding.homeRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.homeRecycleView.setAdapter(adapter);
 
         mBinding.llHomeList.showLoading(true, "Loading..");

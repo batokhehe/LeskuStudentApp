@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
-        android:elevation="2dp"
+        android:elevation="10dp"
         android:background="@drawable/shape_rect_rv_item"
         android:foreground="?attr/selectableItemBackground">
 
@@ -30,53 +30,101 @@
 
             <TextView
                 android:id="@+id/unpaidOrderProductName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@{unpaidOrder.productName}" />
 
-            <TextView
-                android:id="@+id/unpaidOrderCreatedAt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@{unpaidOrder.createdAt}" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                style="@style/Divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal"
-                android:layout_weight="1">
+                android:gravity="center_horizontal">
 
                 <TextView
-                    android:id="@+id/unpaidOrderOrderedAssembly"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:paddingLeft="10dip"
-                    android:text="@{unpaidOrder.orderedAssembly}"/>
+                    android:layout_marginRight="3dp"
+                    android:text="@string/orderClass" />
 
                 <TextView
-                    android:id="@+id/unpaidOrderOrderedSubject"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:paddingLeft="10dip"
-                    android:text="@{unpaidOrder.orderedSubject}" />
+                    android:layout_marginRight="3dp"
+                    android:text=":" />
+
+                <TextView
+                    android:id="@+id/unpaidOrderCreatedAt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@{unpaidOrder.createdAt}" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/unpaidOrderMessages"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:textColor="@{unpaidOrder.status == 1 ? @color/red : @color/green}"
-                android:text="@{unpaidOrder.statusMessages}" />
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:weightSum="1"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/unpaidOrderMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:textColor="@{unpaidOrder.status == 1 ? @color/red : @color/green}"
+                    android:background="@{unpaidOrder.status == 1 ? @drawable/shape_rect_button_red_outline : @drawable/shape_rect_button_green_outline}"
+                    android:text="@{unpaidOrder.statusMessages}" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="10dip"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/unpaidOrderOrderedAssembly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@{unpaidOrder.orderedAssembly}"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.4dp"
+                        style="@style/Divider" />
+
+                    <TextView
+                        android:id="@+id/unpaidOrderOrderedSubject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@{unpaidOrder.orderedSubject}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

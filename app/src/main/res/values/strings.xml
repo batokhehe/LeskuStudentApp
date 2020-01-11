@@ -100,6 +100,7 @@
         <item>History</item>
     </string-array>
     <!-- O -->
+    <string name="order">Pesan</string>
     <string name="orderClass">Pesanan</string>
     <string name="other">Other</string>
     <string name="openDrawer">open_drawer</string>

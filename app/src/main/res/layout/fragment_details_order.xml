@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="teacherOrders"
@@ -22,33 +22,38 @@
                 android:id="@+id/rvDetailsOrder"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.9"
+                android:layout_weight="1"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:background="@color/gray"/>
+                android:background="@drawable/background"
+                tools:listitem="@layout/rv_item_details_order"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:weightSum="1">
 
                 <TextView
                     android:id="@+id/tvUploadTrfFile"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:textColor="@color/green"
+                    android:textColor="@color/colorPrimary"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Bukti Transfer Sudah Di-Upload"
+                    android:background="@drawable/shape_rect_button_green_outline"
                     android:visibility="gone"/>
 
                 <Button
                     android:id="@+id/btnUploadTrfFile"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/nav_header_vertical_spacing"
-                    android:background="@drawable/shape_rect_button"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/shape_rect_button_green"
                     android:textColor="@color/white"
                     android:text="@string/upload"/>
 

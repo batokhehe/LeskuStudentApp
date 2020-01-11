@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="orders"
@@ -7,13 +8,11 @@
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_waiting_order"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <id.co.flipbox.sosoito.LoadingLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/ll_waiting_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -22,8 +21,9 @@
                 android:id="@+id/rv_waiting_order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/background"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:background="@color/gray"/>
+                tools:listitem="@layout/rv_item_waiting_order" />
 
         </id.co.flipbox.sosoito.LoadingLayout>
 

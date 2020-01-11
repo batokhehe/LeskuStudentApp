@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
-        android:elevation="2dp"
+        android:elevation="10dp"
         android:background="@drawable/shape_rect_rv_item"
         android:foreground="?attr/selectableItemBackground">
 
@@ -30,52 +30,101 @@
 
             <TextView
                 android:id="@+id/waitingOrderProductName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@{waitingOrder.productName}" />
 
-            <TextView
-                android:id="@+id/waitingOrderCreatedAt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@{waitingOrder.createdAt}" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                style="@style/Divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal"
-                android:layout_weight="1">
+                android:gravity="center_horizontal">
 
                 <TextView
-                    android:id="@+id/waitingOrderOrderedAssembly"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:paddingLeft="10dip"
-                    android:text="@{waitingOrder.orderedAssembly}"/>
+                    android:layout_marginRight="3dp"
+                    android:text="@string/orderClass" />
 
                 <TextView
-                    android:id="@+id/waitingOrderOrderedSubject"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:paddingLeft="10dip"
-                    android:text="@{waitingOrder.orderedSubject}" />
+                    android:layout_marginRight="3dp"
+                    android:text=":" />
+
+                <TextView
+                    android:id="@+id/waitingOrderCreatedAt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@{waitingOrder.createdAt}" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/waitingOrderMessages"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="@{waitingOrder.statusMessages}" />
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:weightSum="1"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/waitingOrderMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:background="@drawable/shape_rect_button_red_outline"
+                    android:layout_marginRight="5dp"
+                    android:text="@{waitingOrder.statusMessages}" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="10dip"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/waitingOrderOrderedAssembly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@{waitingOrder.orderedAssembly}"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.4dp"
+                        style="@style/Divider" />
+
+                    <TextView
+                        android:id="@+id/waitingOrderOrderedSubject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@{waitingOrder.orderedSubject}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

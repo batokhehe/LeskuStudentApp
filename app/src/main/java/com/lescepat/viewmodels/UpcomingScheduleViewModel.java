@@ -66,9 +66,18 @@ public class UpcomingScheduleViewModel extends BaseViewModel implements Upcoming
     }
 
     @Override
+    public int getStatus() {
+        return mUpcomingSchedule.getStudentStatus();
+    }
+
+    @Override
+    public String getUniqueCode() {
+        return mUpcomingSchedule.getUniqueCode();
+    }
+
+    @Override
     public String getStatusText() {
         int status = mUpcomingSchedule.getStudentStatus();
-        String uniqueCode = mUpcomingSchedule.getUniqueCode();
         String message = "";
         if(status == 4){
             message = "Pertemuan telah dikonfirmasi";
@@ -77,6 +86,6 @@ public class UpcomingScheduleViewModel extends BaseViewModel implements Upcoming
         } else if (status == 6){
             message = "Reschedule";
         }
-        return uniqueCode + "\n" + message;
+        return message;
     }
 }
