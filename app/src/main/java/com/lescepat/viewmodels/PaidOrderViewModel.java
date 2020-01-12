@@ -47,7 +47,7 @@ public class PaidOrderViewModel extends BaseViewModel implements PaidOrderViewMo
 
     @Override
     public String getCreatedAt() {
-        return "Tanggal Pemesanan : " + String.valueOf(mPaidOrder.getCreatedAt());
+        return "Pesanan : " + String.valueOf(mPaidOrder.getCreatedAt());
     }
 
     @Override

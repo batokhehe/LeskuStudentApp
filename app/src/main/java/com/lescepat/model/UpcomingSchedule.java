@@ -34,6 +34,9 @@ public class UpcomingSchedule {
     @SerializedName("unique_code")
     @Expose
     private String uniqueCode;
+    @SerializedName("status")
+    @Expose
+    private int status;
 
     public int getId() {
         return id;
@@ -113,5 +116,13 @@ public class UpcomingSchedule {
 
     public void setUniqueCode(String uniqueCode) {
         this.uniqueCode = uniqueCode;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

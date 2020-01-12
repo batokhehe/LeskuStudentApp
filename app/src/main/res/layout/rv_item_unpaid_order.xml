@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
-        android:elevation="10dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
         android:background="@drawable/shape_rect_rv_item"
         android:foreground="?attr/selectableItemBackground">
 
@@ -87,8 +88,9 @@
                 <TextView
                     android:id="@+id/unpaidOrderMessages"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
+                    android:padding="5dp"
                     android:gravity="center"
                     android:textColor="@{unpaidOrder.status == 1 ? @color/red : @color/green}"
                     android:background="@{unpaidOrder.status == 1 ? @drawable/shape_rect_button_red_outline : @drawable/shape_rect_button_green_outline}"
@@ -105,7 +107,7 @@
 
                     <TextView
                         android:id="@+id/unpaidOrderOrderedAssembly"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:text="@{unpaidOrder.orderedAssembly}"/>
@@ -117,7 +119,7 @@
 
                     <TextView
                         android:id="@+id/unpaidOrderOrderedSubject"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:text="@{unpaidOrder.orderedSubject}" />

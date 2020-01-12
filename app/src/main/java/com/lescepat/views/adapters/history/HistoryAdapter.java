@@ -3,6 +3,8 @@ package com.lescepat.views.adapters.history;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,6 +99,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ListView
                     final int position = getAdapterPosition();
                     final History history = mHistory.get(position);
                     final Dialog dialog = new Dialog(mContext);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.setContentView(R.layout.dialog_rating);
                     dialog.setTitle(R.string.rating);
 
@@ -193,6 +196,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ListView
                                             }
                                         });
                         final AlertDialog alert = builder.create();
+                        alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        alert.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog);
                         alert.show();
                         removeAt(position, Math.round(rating), id);
                     }

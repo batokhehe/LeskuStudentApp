@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
-        android:elevation="10dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
         android:foreground="?attr/selectableItemBackground">
 
         <LinearLayout
@@ -57,6 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:padding="5dp"
                     android:layout_gravity="center_horizontal"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@{detailsOrder.status == 0 || detailsOrder.status == 3 ? @color/red : @color/green}"

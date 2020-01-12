@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
-        android:elevation="2dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
         android:background="@drawable/shape_rect_rv_item"
         android:foreground="?attr/selectableItemBackground">
 
@@ -30,45 +31,71 @@
 
             <TextView
                 android:id="@+id/paidOrderProductName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@{paidOrder.productName}" />
 
-            <TextView
-                android:id="@+id/paidOrderCreatedAt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@{paidOrder.createdAt}" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                style="@style/Divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal"
-                android:layout_weight="1">
+                android:gravity="center_horizontal"
+                android:weightSum="1">
 
                 <TextView
-                    android:id="@+id/paidOrderOrderedAssembly"
+                    android:id="@+id/paidOrderCreatedAt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center_horizontal"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@{paidOrder.createdAt}" />
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:paddingLeft="10dip"
-                    android:text="@{paidOrder.orderedAssembly}"/>
+                    android:paddingRight="10dip"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/paidOrderOrderedSubject"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:paddingLeft="10dip"
-                    android:text="@{paidOrder.orderedSubject}" />
+                    <TextView
+                        android:id="@+id/paidOrderOrderedAssembly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@{paidOrder.orderedAssembly}"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.4dp"
+                        style="@style/Divider" />
+
+                    <TextView
+                        android:id="@+id/paidOrderOrderedSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@{paidOrder.orderedSubject}" />
+
+                </LinearLayout>
 
             </LinearLayout>
+
 
         </LinearLayout>
 

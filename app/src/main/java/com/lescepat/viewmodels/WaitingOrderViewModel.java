@@ -47,7 +47,7 @@ public class WaitingOrderViewModel extends BaseViewModel implements WaitingOrder
 
     @Override
     public String getCreatedAt() {
-        return "Tanggal Pemesanan : " + String.valueOf(mWaitingOrder.getCreatedAt());
+        return String.valueOf(mWaitingOrder.getCreatedAt());
     }
 
     @Override
@@ -57,7 +57,7 @@ public class WaitingOrderViewModel extends BaseViewModel implements WaitingOrder
 
     @Override
     public String getStatusMessages() {
-        String messages = mWaitingOrder.getAccepted() + " dari " + mWaitingOrder.getOrderedAssembly() + " disetejui";
+        String messages = mWaitingOrder.getAccepted() + " dari " + mWaitingOrder.getOrderedAssembly() + " disetujui";
         return messages;
     }
 }

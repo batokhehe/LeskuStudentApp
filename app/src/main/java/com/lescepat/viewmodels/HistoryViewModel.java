@@ -57,7 +57,7 @@ public class HistoryViewModel extends BaseViewModel implements HistoryViewModelI
 
     @Override
     public String getStudyStartAt() {
-        return "Tanggal Pertemuan : " + String.valueOf(mHistory.getStudyStartAt());
+        return String.valueOf(mHistory.getStudyStartAt());
     }
 
     @Override

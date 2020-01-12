@@ -10,9 +10,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
-        android:elevation="10dp"
-        android:background="@drawable/shape_rect_rv_item"
+        android:layout_margin="5dip"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
         android:foreground="?attr/selectableItemBackground">
 
         <TextView
@@ -42,10 +42,11 @@
 
                     <TextView
                         android:id="@+id/upcomingScheduleSubjectName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="@dimen/activity_horizontal_margin"
                         android:paddingTop="@dimen/activity_horizontal_margin"
+                        android:gravity="center_horizontal"
                         android:textStyle="bold"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@{upcomingSchedule.subjectName}" />
@@ -71,6 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_gravity="center_horizontal"
+                        android:padding="5dp"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@{upcomingSchedule.getStatus == 0 || upcomingSchedule.getStatus == 3 ? @color/red : @color/green}"
                         android:background="@{upcomingSchedule.getStatus == 0 || upcomingSchedule.getStatus == 3 ? @drawable/shape_rect_button_red_outline : @drawable/shape_rect_button_green_outline}"
@@ -83,7 +85,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.4"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/upcomingScheduleteacherImage"
@@ -95,9 +98,10 @@
 
                     <TextView
                         android:id="@+id/upcomingScheduleteacherName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
+                        android:gravity="center_horizontal"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@{upcomingSchedule.teacherName}" />
 
@@ -126,6 +130,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:padding="5dp"
+                    android:gravity="center_horizontal"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@{upcomingSchedule.getStatusText}"
                     android:textColor="@color/colorPrimary"
@@ -136,6 +142,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:padding="5dp"
+                    android:gravity="center_horizontal"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@{upcomingSchedule.getUniqueCode}"
                     android:textColor="@color/black"

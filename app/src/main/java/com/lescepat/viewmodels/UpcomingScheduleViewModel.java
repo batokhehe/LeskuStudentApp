@@ -57,7 +57,7 @@ public class UpcomingScheduleViewModel extends BaseViewModel implements Upcoming
 
     @Override
     public String getStudyStartAt() {
-        return "Tanggal Pertemuan : " + String.valueOf(mUpcomingSchedule.getStudyStartAt());
+        return String.valueOf(mUpcomingSchedule.getStudyStartAt());
     }
 
     @Override
@@ -67,7 +67,7 @@ public class UpcomingScheduleViewModel extends BaseViewModel implements Upcoming
 
     @Override
     public int getStatus() {
-        return mUpcomingSchedule.getStudentStatus();
+        return mUpcomingSchedule.getStatus();
     }
 
     @Override
@@ -77,7 +77,7 @@ public class UpcomingScheduleViewModel extends BaseViewModel implements Upcoming
 
     @Override
     public String getStatusText() {
-        int status = mUpcomingSchedule.getStudentStatus();
+        int status = mUpcomingSchedule.getStatus();
         String message = "";
         if(status == 4){
             message = "Pertemuan telah dikonfirmasi";

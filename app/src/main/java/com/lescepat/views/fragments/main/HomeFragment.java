@@ -3,6 +3,8 @@ package com.lescepat.views.fragments.main;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -146,6 +148,7 @@ public class HomeFragment extends BaseFragment {
             public void onItemClick(Product product) {
                 if(hawkManager.getAppUserToken() != null) {
                     final Dialog dialog = new Dialog(getContext());
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.setContentView(R.layout.dialog_study_level);
                     dialog.setTitle(R.string.study_level_hint);
 

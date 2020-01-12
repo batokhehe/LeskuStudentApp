@@ -47,7 +47,7 @@ public class UnpaidOrderViewModel extends BaseViewModel implements UnpaidOrderVi
 
     @Override
     public String getCreatedAt() {
-        return "Tanggal Pemesanan : " + String.valueOf(mUnpaidOrder.getCreatedAt());
+        return String.valueOf(mUnpaidOrder.getCreatedAt());
     }
 
     @Override

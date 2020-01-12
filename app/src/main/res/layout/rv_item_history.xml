@@ -10,9 +10,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
-        android:elevation="2dp"
-        android:background="@drawable/shape_rect_rv_item"
+        android:layout_margin="5dip"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
         android:foreground="?attr/selectableItemBackground">
 
         <TextView
@@ -42,9 +42,9 @@
 
                     <TextView
                         android:id="@+id/historySubjectName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:gravity="center_horizontal"
                         android:paddingTop="@dimen/activity_horizontal_margin"
                         android:textStyle="bold"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -71,7 +71,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.4"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/historyteacherImage"
@@ -83,7 +84,7 @@
 
                     <TextView
                         android:id="@+id/historyteacherName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:gravity="center_horizontal"

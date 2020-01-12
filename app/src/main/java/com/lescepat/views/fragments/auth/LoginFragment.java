@@ -230,7 +230,7 @@ public class LoginFragment extends BaseFragment
                                PendingIntent mPendingIntent = PendingIntent.getActivity(getContext(), mPendingIntentId, mStartActivity,
                                        PendingIntent.FLAG_CANCEL_CURRENT);
                                AlarmManager mgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
-                               mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 10, mPendingIntent);
+                               mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 5, mPendingIntent);
                                System.exit(0);
                                getActivity().finish();
                            }
