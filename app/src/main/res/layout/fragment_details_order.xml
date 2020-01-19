@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Bukti Transfer Sudah Di-Upload"
                     android:background="@drawable/shape_rect_button_green_outline"
